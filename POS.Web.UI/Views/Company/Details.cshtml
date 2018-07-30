@@ -1,0 +1,115 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_COMPANY
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>POS_COMPANY</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_DESC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_DESC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HTTP_HOST_ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HTTP_HOST_ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NTN_NO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NTN_NO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REGISTEREDBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REGISTEREDBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISACTIVE_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISACTIVE_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISPOSTED_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISPOSTED_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MODIFIEDBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDWHEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDWHEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MODIFIEDWHEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MODIFIEDWHEN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COMPANY_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{867681ED-77D9-4049-BF86-7783156F2FA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeezTech.POS.Web.DAL</RootNamespace>
+    <AssemblyName>POS.Web.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DALCompany.cs" />
+    <Compile Include="DALCompanyBranch.cs" />
+    <Compile Include="DALMenu.cs" />
+    <Compile Include="DALUser.cs" />
+    <Compile Include="EntityDataModel\POSDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POSDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POSDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POSDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POSDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_ACCESS_GROUP.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_ACCOUNTS_LEVEL_I.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_ACCOUNTS_LEVEL_II.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_ACCOUNTS_LEVEL_III.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_BANK.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_BANK_BRANCH.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_BRANCH.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_CASHIER_COUNTER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_CITY.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_COMPANY.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_COUNTRY.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_CUSTOMER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_CUSTOMER_PROMOTIONS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_CUSTOMER_PROMOTION_DETAIL.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_DISPLAY_FLOORS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_DISPLAY_INVENTORY_TRACKING.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_DISPLAY_RAGS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_DISPLAY_RAGS_FLOOR.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_DISPLAY_SECTIONS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_DISPLAY_STOCK.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_EMPLOYEE_TYPE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_EXCEPTION_LOG.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_GENDER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_GENERAL_LEDGER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_INVOICE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_LOCATION.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_MENU.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_MENU_RIGHTS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PAYMENT_DETAIL.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PAYMENT_TYPE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PRODUCT.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PRODUCT_CATEGORY.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PRODUCT_PROMOTIONS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PRODUCT_TYPE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PROMOTIONS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PROMOTION_LUCKDRAW_COUPON.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PROMOTION_LUCKYDRAW.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PURCHASE_ORDER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_PURCHASE_ORDER_LOG.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_REFUND_PRODUCTS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_REPORTS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_REPORT_RIGHTS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_RFQ.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_RFQ_DETAIL.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_RFQ_LOG.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_RIDER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SALES.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SALES_DETAIL.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SECTIONS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SHIFT.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_STATE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SUPERVISOR.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SYS_APP_MODULE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_SYS_TRANSACTION_LOG.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_USER.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_USER_DATA_SECURITY.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_USER_LOG.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_USER_SESSION.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_VENDOR.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_VENDOR_SHIPPMENT.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_VENDOR_SHIPPMENT_DETAIL.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_FLOOR.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_INVENTORY_TRACKING.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_PRODUCTS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_RAGS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_RAGS_FLOOR.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_SECTIONS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_SHIPPMENT.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_SHIPPMENT_DETAIL.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\POS_WEARHOUSE_STOCK.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetAllMenus_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetCompanyBranch_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetCompanyInfo_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetFormRights_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetLoginLevel_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetPOSUser_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\spGetUserMenuRights_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\sp_helpdiagrams_Result.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataModel\sysdiagram.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartialClasses\POS_BRANCH.cs" />
+    <Compile Include="PartialClasses\POS_MENU.cs" />
+    <Compile Include="PartialClasses\POS_MENU_RIGHTS.cs" />
+    <Compile Include="PartialClasses\POS_REPORT_RIGHTS.cs" />
+    <Compile Include="PartialClasses\POS_USER.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POS.CommonProject\POS.CommonProject.csproj">
+      <Project>{6bddd281-bb35-4136-80c0-a9b0986674c9}</Project>
+      <Name>POS.CommonProject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="EntityDataModel\POSDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>POSDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityDataModel\POSDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>POSDataModel.edmx</DependentUpon>
+      <LastGenOutput>POSDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityDataModel\POSDataModel.edmx.diagram">
+      <DependentUpon>POSDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityDataModel\POSDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>POSDataModel.edmx</DependentUpon>
+      <LastGenOutput>POSDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

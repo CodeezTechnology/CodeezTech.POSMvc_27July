@@ -1,0 +1,138 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_USER
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;" >
+                <a href="/User/IndexUser"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Users</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Users</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-validation">
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 style="display:inline-block;">Edit</h4>
+                                            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
+                                        </div>
+                                       
+                                    </div>
+                                   
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.USER_ID)
+
+                                    @*<div class="form-group row">
+                                            @Html.LabelFor(model => model.USER_ID, new { @class = "col-md-4 col-form-label" })
+                                            <span class="text-danger">*</span>
+                                            <div class="col-md-6">
+                                                @Html.EditorFor(model => model.USER_ID)
+                                                @Html.ValidationMessageFor(model => model.USER_ID)
+                                            </div>
+                                        </div>*@
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">User Code</label>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(x=>x.CODE,new { @style = "font-weight:Bold;", @class = "col-form-label" ,@readonly="readonly"})
+                                            @Html.ValidationMessageFor(model => model.CODE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Username</label>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.USERNAME, new { @class = "form-control", @autofocus = "True", @maxlength = "30" })
+                                            @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+
+                                        <label class="col-md-2 col-form-label">Password</label>
+                                        <div class="col-md-6">
+                                            @Html.PasswordFor(model => model.PASSWORD, new { @class = "form-control", @required = "True", @Value = @Model.PASSWORD, @maxlength = "30" })
+                                            @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Confirm Password</label>
+                                        <div class="col-md-6">
+                                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", @required = "True", @Value = @Model.ConfirmPassword, @maxlength = "30" })
+                                            @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Email</label>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control", @required = "True", @maxlength = "30" })
+                                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Is Active</label>
+                                        <div class="col-md-6">
+                                            @Html.CheckBoxFor(model => model.ISACTIVE_FLAG, new { @class = "css-control-input css-control css-control-primary css-checkbox" })
+                                            @Html.ValidationMessageFor(model => model.ISACTIVE_FLAG, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Login Type</label>
+                                        <div class="col-md-6">
+                                            @Html.DropDownListFor(model => model.LOGIN_TYPE, new List<SelectListItem>
+                                   {
+                                            new  SelectListItem{ Text="Select Level", Value="-1"},
+                                            new  SelectListItem{ Text="User", Value="1"},
+                                            new  SelectListItem{ Text="Admin", Value="2"},
+                                            new  SelectListItem{ Text="Super Admin", Value="3"}
+                                   }, new { @class = "form-control", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.LOGIN_TYPE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Master Password</label>
+                                        <div class="col-md-6">
+                                            @Html.PasswordFor(model => model.MASTER_PASSWORD, new { @class = "form-control", @required = "True", @Value = @Model.MASTER_PASSWORD, @maxlength = "30" })
+                                            @Html.ValidationMessageFor(model => model.MASTER_PASSWORD, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.Label("Company Branch", new { @class = "col-lg-2 col-form-label" })
+                                        <div class="col-md-6">
+                                            @Html.DropDownListFor(model => model.BranchId, (IEnumerable<SelectListItem>)TempData["CompanyBranchList"], "Please Select", new { @class = "form-control", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.BranchId)
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

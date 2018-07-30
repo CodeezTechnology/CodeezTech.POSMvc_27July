@@ -1,0 +1,283 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_USER
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   // Model.CODE = @ViewBag.MaxId;
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/User/Index"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Users</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Users</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-validation">
+                            @using (Html.BeginForm())
+                            {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 style="display: inline-block; font-weight: bold;">Create</h4>
+                                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
+                                    </div>
+
+                                </div>
+                                <hr />
+                                @Html.ValidationSummary(true,"",new { @class = "text-danger" })
+
+                                @*<div class="form-group row">
+                                        @Html.LabelFor(model => model.USER_ID, new { @class = "col-lg-4 col-form-label" })
+                                        <span class="text-danger">*</span>
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.USER_ID)
+                                            @Html.ValidationMessageFor(model => model.USER_ID)
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">User Code</label>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(x => x.CODE, new { @style = "font-weight:Bold;", @class = "col-form-label", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.CODE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">Username</label>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.USERNAME, new { @class = "form-control", @required = "True", @autofocus = "True" ,@maxlength="30" })
+                                        @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+
+                                    <label class="col-md-2 col-form-label">Password</label>
+                                    <div class="col-md-6">
+                                        @Html.PasswordFor(model => model.PASSWORD, new { @class = "form-control", @required = "True", @Value = @Model.PASSWORD, @maxlength = "30" })
+                                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">Confirm Password</label>
+                                    <div class="col-md-6">
+                                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", @required = "True", @Value = @Model.ConfirmPassword, @maxlength = "30" })
+                                        @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">Email</label>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control", @required = "True", @maxlength = "30" })
+                                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">Is Active</label>
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.ISACTIVE_FLAG, new { @class = "css-control-input css-control css-control-primary css-checkbox" })
+                                        @Html.ValidationMessageFor(model => model.ISACTIVE_FLAG, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">Login Type</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.LOGIN_TYPE, new List<SelectListItem>
+                                   {
+                                            new  SelectListItem{ Text="Select Level", Value="-1"},
+                                            new  SelectListItem{ Text="User", Value="1"},
+                                            new  SelectListItem{ Text="Admin", Value="2"},
+                                            new  SelectListItem{ Text="Super Admin", Value="3"}
+                                   }, new { @class = "form-control", @required = "True" })
+                                        @Html.ValidationMessageFor(model => model.LOGIN_TYPE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-2 col-form-label">Master Password</label>
+                                    <div class="col-md-6">
+                                        @Html.PasswordFor(model => model.MASTER_PASSWORD, new { @class = "form-control", @required = "True", @Value = @Model.MASTER_PASSWORD, @maxlength = "30" })
+                                        @Html.ValidationMessageFor(model => model.MASTER_PASSWORD, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                        @Html.Label("Company Branch" , new { @class = "col-lg-2 col-form-label" })
+                                        <div class="col-md-6">
+                                            @Html.DropDownListFor(model => model.BranchId,(IEnumerable<SelectListItem>)TempData["CompanyBranchList"],"Please Select", new { @class = "form-control", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.BranchId)
+                                        </div>
+                                    </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover table-condensed" id="table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Parameter Detail</th>
+                                    <th>Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>'
+                                    
+                                   @*<td><select><option value='1'>Codeez techg North Nazimabad</option></select></td>*@
+                                    <td>@Html.DropDownListFor(model => model.BranchId, (IEnumerable<SelectListItem>)TempData["CompanyBranchList"],"Please Select", new { @class = "form-control", @required = "True" })</td>
+                                    <td>@Html.TextBox("Parameter", "", new { @class = "form-control", @required = "True", @maxlength = "30" })</td>
+                                    @*<td>@Html.TextBox("Reason", "", new { @class = "form-control", @required = "True", @maxlength = "30" })</td>*@
+                                    <td><input type="button" class="btn btn-primary" id="btnAdd" value="Add"></td>
+                                    <td><input type="button" class="btn btn-danger" id="btnDelete" value="Delete" /></td>
+                                  
+                                </tr>
+                            </tbody>
+                            @*<tfoot>
+                                <tr>
+                                    <td>@Html.DropDownListFor(model => model.BranchId, (IEnumerable<SelectListItem>)TempData["CompanyBranchList"], "Please Select", new { @class = "form-control", @required = "True" })</td>
+                                    <td>@Html.TextBox("ParameterFooter", "", new { @class = "form-control", @required = "True", @maxlength = "30" })</td>
+                                    @*<td>@Html.TextBox("Reason", new { @class = "form-control", @required = "True", @maxlength = "30" })</td>
+                                    <td><button type="button" class="btn btn-danger" id="btnAdd"><i class="fa fa-plus"></i> Add</button></td>
+                                </tr>
+                            </tfoot>*@
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        function AddRow() {
+            debugger;
+        @{
+            var ddl = "";
+
+            foreach (var item in (IEnumerable<SelectListItem>)TempData["CompanyBranchList"])
+        {
+        ddl  = "<select>";
+            ddl += "<option value='" + item.Value + "'>" + item.Text + "</option>";
+            ddl += "</select>";
+        }
+        }
+        var html = '<tr>';
+        html += "'<td>@ddl</td>'";
+        html += '<td><input type="text" id="ParameterDetail" class="form-control"/></td>';
+        html += '<td><input type="button" class="btn btn-primary" id="btnAdd" value="Add"></td>';
+        html += '<td><input type="button" class="btn btn-danger" id="btnDelete" value="Delete" /></td>';
+        html += '</tr>';
+        $(html).appendTo($("tbody"))
+        };
+        $("#btnAdd").click(AddRow);
+        $("#table").on('click', 'btnAdd', AddRow);
+        function deleteRow() {
+            var rowDel = $(this).parent().parent();
+            rowDel.remove();
+        };
+        $("#btnDelete").on('click', 'btnDelete', deleteRow);
+    });
+
+
+
+
+    //$("body").on("click", "#btnAdd", function () {
+    //    debugger;
+    //    //Reference the Name and Country TextBoxes.
+    //    var txtName = $("#BranchId");
+    //    var txtCountry = $("#Parameter");
+
+    //    //Get the reference of the Table's TBODY element.
+    //    var tBody = $("#table > TBODY")[0];
+
+    //    //Add Row.
+    //    var row = tBody.insertRow(-1);
+
+    //    //Add Name cell.
+    //    var cell = $(row.insertCell(-1));
+    //    cell.html(txtName.val());
+
+    //    //Add Country cell.
+    //    cell = $(row.insertCell(-1));
+    //    cell.html(txtCountry.val());
+
+    //    //Add Button cell.
+    //    cell = $(row.insertCell(-1));
+    //    var btnRemove = $("<input />");
+    //    btnRemove.attr("type", "button");
+    //    btnRemove.attr("onclick", "Remove(this);");
+    //    btnRemove.val("Remove");
+    //    cell.append(btnRemove);
+
+    //    //Clear the TextBoxes.
+    //    txtName.val("");
+    //    txtCountry.val("");
+    //});
+
+    //function Remove(button) {
+    //    //Determine the reference of the Row using the Button.
+    //    var row = $(button).closest("TR");
+    //    var name = $("TD", row).eq(0).html();
+    //    if (confirm("Do you want to delete: " + name)) {
+    //        //Get the reference of the Table.
+    //        var table = $("#table")[0];
+
+    //        //Delete the Table row using it's Index.
+    //        table.deleteRow(row[0].rowIndex);
+    //    }
+    //};
+
+    //$("body").on("click", "#btnSav11e", function () {
+    //    //Loop through the Table rows and build a JSON array.
+    //    var customers = new Array();
+    //    $("#tblCustomers TBODY TR").each(function () {
+    //        var row = $(this);
+    //        var customer = {};
+    //        customer.Name = row.find("TD").eq(0).html();
+    //        customer.Country = row.find("TD").eq(1).html();
+    //        customers.push(customer);
+    //    });
+
+    //    //Send the JSON array to Controller using AJAX.
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Home/InsertCustomers",
+    //        data: JSON.stringify(customers),
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: function (r) {
+    //            alert(r + " record(s) inserted.");
+    //        }
+    //    });
+    //});
+</script>
+
+
+

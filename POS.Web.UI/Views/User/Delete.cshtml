@@ -1,0 +1,132 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_USER
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/User/Index"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Users</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Delete</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+@using (Html.BeginForm("Delete","User",FormMethod.Post))
+                            {
+    @Html.AntiForgeryToken()
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 style="display: inline-block; color: red;">Are you sure you want to delete this?</h3>
+                                    @*<a href="/User/Delete/@Model.USER_ID" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Delete</a>*@
+                                    <button type="submit" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Delete</button>
+                                </div>
+                            </div>
+                            <hr />
+                            <table class="  table-condensed">
+                                <tr>
+                                    <td style="font-weight:bold;">User Code:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.CODE)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Username:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.USERNAME)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Password:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.PASSWORD)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Email:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.EMAIL)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Is Active:</td>
+                                    <td class="pull-left">
+                                        @if (Model.ISACTIVE_FLAG == true)
+                                        {
+                                            <span class="badge badge-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-danger">Not Active</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Login Type:</td>
+                                    <td class="pull-left">
+                                        @if (Model.LOGIN_TYPE == 1)
+                                        {
+                                            <span class="badge badge-primary">User</span>
+                                        }
+                                        else if (Model.LOGIN_TYPE == 2)
+                                        {
+                                            <span class="badge badge-primary">Admin</span>
+                                        }
+                                        else if (Model.LOGIN_TYPE == 3)
+                                        {
+                                            <span class="badge badge-primary">Master Admin</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Master Password:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.MASTER_PASSWORD)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Branch Name:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.BRANCH_ID)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Is Posted:</td>
+                                    <td class="pull-left">
+                                        @if (Model.ISPOSTED_FLAG == true)
+                                        {
+                                            <span class="badge badge-success">Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-danger">No</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Created By:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.CREATEDBY)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Created When:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.CREATEDWHEN)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Modified By:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.MODIFIEDBY)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Modified When:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.MODIFIEDWHEN)</td>
+                                </tr>
+                            </table>
+
+                        </div>
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

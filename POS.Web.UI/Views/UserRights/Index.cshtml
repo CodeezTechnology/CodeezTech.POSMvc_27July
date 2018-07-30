@@ -1,0 +1,170 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_MENU
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/UserRights/UserList"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Rights Management</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item">Users Management</li>
+                    <li class="breadcrumb-item active">Rights Management</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-validation">
+                            @using (Html.BeginForm("Create","UserRights",FormMethod.Post))
+                            {
+                               @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 style="display: inline-block; font-weight: bold;">RIGHTS</h4>
+                                            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
+                                            <hr />
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-body p-b-0">
+
+                                                        <!-- Nav tabs -->
+                                                        <ul class="nav nav-tabs customtab2" role="tablist">
+                                                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#FormRights" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Forms</span></a> </li>
+                                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#ReportRights" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Reports</span></a> </li>
+
+                                                        </ul>
+                                                        <!-- Tab panes -->
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="FormRights" role="tabpanel">
+                                                                
+                                                                <div class="p-20">
+                                                                    <h4 class="card-title">Form Rights</h4>
+                                                                    <div class="table-responsive ">
+
+                                                                        <table id="myTable" class="table table-hover table-condensed" style="font-family:Consolas;">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th class="">
+                                                                                        @Html.DisplayNameFor(model => model.MENU_ID)
+                                                                                    </th>
+                                                                                    <th>
+
+                                                                                        @Html.DisplayName("FORM NAME")
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        @Html.CheckBox("chkAllInsertion", htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                        @Html.DisplayName("INSERTION")
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        @Html.CheckBox("chkAllUpdation", htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                        @Html.DisplayName("UPDATION")
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        @Html.CheckBox("chkAllDeletion", htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                        @Html.DisplayName("DELETION")
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        @Html.CheckBox("chkAllView", htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                        @Html.DisplayName("VIEW")
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            @for (int i = 0; i < @Model.MenuRightsList.Count(); i++)
+                                                                            {
+                                                                                <tr>
+                                                                                    <td class="">
+                                                                                        @Html.DisplayFor(x => x.MenuRightsList[i].MENU_ID)
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.DisplayFor(x => x.MenuRightsList[i].MenuName)
+                                                                                    </td>
+                                                                                    <td >
+                                                                                        @Html.CheckBoxFor(x => x.MenuRightsList[i].INSERTION_FLAG, htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.CheckBoxFor(x => x.MenuRightsList[i].UPDATION_FLAG, htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.CheckBoxFor(x => x.MenuRightsList[i].DELETION_FLAG, htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.CheckBoxFor(x => x.MenuRightsList[i].SELECTION_FLAG, htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                    </td>
+                                                                                </tr>
+                                                                            }
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane  p-20" id="ReportRights" role="tabpanel">
+                                                            
+                                                                <div>
+                                                                    <h4 class="card-title">Report Rights</h4>
+                                                                    <div class="table-responsive">
+                                                                        <table id="myTable1" class="table table-hover table-condensed" style="font-family: Consolas;">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th class="">
+                                                                                        @Html.DisplayName("REPORT_ID")
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        @Html.DisplayName("REPORT NAME")
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        @Html.DisplayName("VIEW")
+                                                                                    </th>
+
+                                                                                </tr>
+                                                                            </thead>
+                                                                            @for (int i = 0; i < @Model.ReportRightsList.Count(); i++)
+                                                                            {
+                                                                                <tr>
+                                                                                    <td class="">
+                                                                                        @Html.DisplayFor(x => x.ReportRightsList[i].REPORT_ID)
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.DisplayFor(x => x.ReportRightsList[i].ReportName)
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.CheckBoxFor(x => x.ReportRightsList[i].Selection, htmlAttributes: new { @style = "height:30px;width:30px;" })
+                                                                                    </td>
+                                                                                </tr>
+                                                                            }
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+      //  $("#myTable1").css('width', "1225px");
+    });
+</script>

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_USER>
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-primary">User Selection</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item">Users Management</li>
+                    <li class="breadcrumb-item active">Users List</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="display:inline-block;font-weight:bold;">Selection</h4>
+                            </div>
+                        </div>
+                        <div class="table-responsive ">
+                            <table id="myTable" class="table table-hover table-condensed" style="font-family:Consolas;">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CODE)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.USERNAME)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ISACTIVE_FLAG)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LOGIN_TYPE)
+                                        </th>
+                                        <th>SELECT</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CODE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.USERNAME)
+                                        </td>
+                                        <td>
+                                            @if (item.ISACTIVE_FLAG == true)
+                                            {
+                                                <span class="badge badge-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Not Active</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.LOGIN_TYPE == 1)
+                                            {
+                                                <span class="badge badge-primary">User</span>
+                                            }
+                                            else if (item.LOGIN_TYPE == 2)
+                                            {
+                                                <span class="badge badge-primary">Admin</span>
+                                            }
+                                            else if (item.LOGIN_TYPE == 3)
+                                            {
+                                                <span class="badge badge-primary">Master Admin</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Index", new { id = item.USER_ID }, new { @class = "fa fa-pencil" })
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿Format of the initialization string does not conform to specification starting at index 115.
+Format of the initialization string does not conform to specification starting at index 115.
+'<', hexadecimal value 0x3C, is an invalid attribute character. Line 17, position 3.
+'<', hexadecimal value 0x3C, is an invalid attribute character. Line 17, position 3.
+'<', hexadecimal value 0x3C, is an invalid attribute character. Line 17, position 3.
+'<', hexadecimal value 0x3C, is an invalid attribute character. Line 16, position 227.
+Format of the initialization string does not conform to specification starting at index 117.
+Format of the initialization string does not conform to specification starting at index 117.
+Format of the initialization string does not conform to specification starting at index 115.
+The 'connection string' keyword is not supported.

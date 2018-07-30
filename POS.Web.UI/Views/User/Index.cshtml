@@ -1,0 +1,160 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_USER>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="~/Home/IndexUser"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Users</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item">Users Management</li>
+                    <li class="breadcrumb-item active">Users</li>
+                </ol>
+            </div>
+        </div>
+        <p class="card-title">
+        @*    @Html.ActionLink("Create New", "Create")*@
+           
+        </p>
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        @*<h4 class="card-title">User View</h4>
+                        <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                        <a href="/User/Create" class="btn btn-primary pull-right"><span class="fa fa-plus"></span> Create New</a>*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="display:inline-block;font-weight:bold;">List</h4>
+                                <a href="/User/Create" class="btn btn-primary pull-right"><i class="fa fa-plus" ></i> Create New</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive ">
+                            <table id="myTable" class="table table-hover table-condensed" style="font-family:Consolas;" >
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            @Html.DisplayName("CODE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("USERNAME")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("PASSWORD")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("EMAIL")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("ISACTIVE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("LOGIN TYPE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("MASTER PASSWORD")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("BRANCH NAME")
+                                        </th>
+                                        <th style="width: 150.25px;">ACTIONS</th>
+
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CODE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.USERNAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PASSWORD)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EMAIL)
+                                        </td>
+                                        <td>
+                                            @if (item.ISACTIVE_FLAG == true)
+                                            {
+                                                <span class="badge badge-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Not Active</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.LOGIN_TYPE == 1)
+                                            {
+                                                <span class="badge badge-primary">User</span>
+                                            }
+                                            else if (item.LOGIN_TYPE == 2)
+                                            {
+                                                <span class="badge badge-primary">Admin</span>
+                                            }
+                                            else if (item.LOGIN_TYPE == 3)
+                                            {
+                                                <span class="badge badge-primary">Master Admin</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MASTER_PASSWORD)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BranchName)
+                                        </td>
+                                        <td style="width: 150.25px;">
+                                            @*@Html.ActionLink(" ", "Edit", new { id = item.USER_ID }, new { @class = "fa fa-pencil" ,@title="Edit"})  &nbsp;
+            @Html.ActionLink(" ", "Details", new { id = item.USER_ID }, new { @class = "fa fa-search" , @title="Details"}) &nbsp;
+            @Html.ActionLink(" ", "Delete", new { id = item.USER_ID }, new { @class = "fa fa-trash" , @title="Delete"})*@
+
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Edit", new { id = item.USER_ID }, new { @class = "fa fa-pencil" })
+                                            </button>
+
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Details", new { id = item.USER_ID }, new { @class = "fa fa-search" })
+                                            </button>
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Delete", new { id = item.USER_ID }, new { @class = "fa fa-trash", @style = "color:red;" })
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        // $('#myTable').prepend($("<thead></thead>").append(
+        //$('#myTable').find("tr:first"))).dataTable(
+        // {
+        //     "stateSave": true,
+        //     "sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-12'i><'col-md-12 center-block'p>>",
+        //     "aLengthMenu": [[3, 5, 10, -1], [3, 5, 10, "All"]],
+
+        // });
+    });
+</script>
