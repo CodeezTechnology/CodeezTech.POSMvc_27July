@@ -8,3 +8,17 @@ Format of the initialization string does not conform to specification starting a
 Format of the initialization string does not conform to specification starting at index 117.
 Format of the initialization string does not conform to specification starting at index 115.
 The 'connection string' keyword is not supported.
+The 'connection string' keyword is not supported.
+The 'connection string' keyword is not supported.
+The 'connection string' keyword is not supported.
+Format of the initialization string does not conform to specification starting at index 115.
+Format of the initialization string does not conform to specification starting at index 115.
+Format of the initialization string does not conform to specification starting at index 115.
+Format of the initialization string does not conform to specification starting at index 115.
+Format of the initialization string does not conform to specification starting at index 115.
+The 'connectionStrings' start tag on line 11 position 4 does not match the end tag of 'configuration'. Line 74, position 3.
+The 'connectionStrings' start tag on line 11 position 4 does not match the end tag of 'configuration'. Line 74, position 3.
+An item with the same key has already been added.
+The 'configuration' start tag on line 6 position 2 does not match the end tag of 'connectionStrings'. Line 19, position 5.
+An item with the same key has already been added.
+Format of the initialization string does not conform to specification starting at index 126.
