@@ -14,6 +14,7 @@ namespace POS.Web.UI.Controllers
 {
     public class UserController : MasterController
     {
+        //Testing Danish Iqbal
         private Entities db = new Entities();
         BALUser _objBALUser = new BALUser();
         POS_USER _objUserEntity = new POS_USER();
