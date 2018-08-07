@@ -10,6 +10,7 @@ using CodeezTech.POS.Web.DAL.EntityDataModel;
 
 namespace POS.Web.UI.Controllers
 {
+    //Commit Testing by Danish Iqbal
     public class CompanyController : Controller
     {
         private Entities db = new Entities();
