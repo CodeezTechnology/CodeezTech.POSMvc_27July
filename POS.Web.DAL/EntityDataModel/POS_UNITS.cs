@@ -12,21 +12,10 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class POS_PRODUCT
+    public partial class POS_UNITS
     {
-        public long PRODUCT_ID { get; set; }
-        public string PRODUCT_CODE { get; set; }
-        public string PRODUCT_DESC { get; set; }
-        public long PROFIT_MARGIN_RATE { get; set; }
-        public decimal PAYBLE_PRICE { get; set; }
-        public bool IS_TAX_APPLIED_FLAG { get; set; }
-        public Nullable<int> TAX_PER { get; set; }
-        public Nullable<decimal> TAX_RS { get; set; }
-        public long TYPE_ID { get; set; }
-        public long CATEGORY_ID { get; set; }
         public long UNIT_ID { get; set; }
-        public Nullable<System.DateTime> EXPIRY_FROM { get; set; }
-        public Nullable<System.DateTime> EXPIRY_TO { get; set; }
+        public string UNIT { get; set; }
         public bool ISACTIVE_FLAG { get; set; }
         public bool ISPOSTED_FLAG { get; set; }
         public string CREATEDBY { get; set; }

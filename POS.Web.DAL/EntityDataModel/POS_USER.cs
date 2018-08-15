@@ -22,7 +22,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public bool ISACTIVE_FLAG { get; set; }
         public short LOGIN_TYPE { get; set; }
         public string MASTER_PASSWORD { get; set; }
-        public long? BRANCH_ID { get; set; }
+        public long BRANCH_ID { get; set; }
         public Nullable<bool> ISPOSTED_FLAG { get; set; }
         public string CREATEDBY { get; set; }
         public string MODIFIEDBY { get; set; }

@@ -54,6 +54,10 @@
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALCompanyBranch.cs" />
     <Compile Include="DALMenu.cs" />
+    <Compile Include="DALProduct.cs" />
+    <Compile Include="DALProductCategory.cs" />
+    <Compile Include="DALProductType.cs" />
+    <Compile Include="DALUnits.cs" />
     <Compile Include="DALUser.cs" />
     <Compile Include="EntityDataModel\POSDataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -232,6 +236,9 @@
     <Compile Include="EntityDataModel\POS_SYS_TRANSACTION_LOG.cs">
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\POS_UNITS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\POS_USER.cs">
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
@@ -316,6 +323,7 @@
     <Compile Include="PartialClasses\POS_BRANCH.cs" />
     <Compile Include="PartialClasses\POS_MENU.cs" />
     <Compile Include="PartialClasses\POS_MENU_RIGHTS.cs" />
+    <Compile Include="PartialClasses\POS_PRODUCT.cs" />
     <Compile Include="PartialClasses\POS_REPORT_RIGHTS.cs" />
     <Compile Include="PartialClasses\POS_USER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

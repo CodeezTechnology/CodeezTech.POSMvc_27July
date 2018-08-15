@@ -43,6 +43,10 @@
     <Compile Include="BALCompany.cs" />
     <Compile Include="BALCompanyBranch.cs" />
     <Compile Include="BALMenu.cs" />
+    <Compile Include="BALProduct.cs" />
+    <Compile Include="BALProductCategory.cs" />
+    <Compile Include="BALProductType.cs" />
+    <Compile Include="BALUnits.cs" />
     <Compile Include="BALUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,82 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_PRODUCT_CATEGORY
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/ProductCategory/Index"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Product Category</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Detail</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+
+
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 style="display: inline-block; font-weight: bold;">Detail</h4>
+                                    <a href="/User/Edit/@Model.CATEGORY_ID" class="btn btn-primary pull-right"><i class="fa fa-Edit"></i> Edit</a>
+                                </div>
+                            </div>
+                            <hr />
+                            <table class="table-condensed">
+                                <tr>
+                                    <td style="font-weight:bold;">User Code:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.CATOEGORY_CODE)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Username:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.PRODUCT_CATEGORY)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Is Active:</td>
+                                    <td class="pull-left">
+                                        @if (Model.ISACTIVE_FLAG == true)
+                                        {
+                                            <span class="badge badge-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-danger">Not Active</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Created By:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.CREATEDBY)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Created When:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.CREATEDWHEN)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Modified By:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.MODIFIEDBY)</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Modified When:</td>
+                                    <td class="pull-left">@Html.DisplayFor(model => model.MODIFIEDWHEN)</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_PRODUCT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="~/Home/IndexUser"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Product </h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item">POINT OF SALE (POS)</li>
+                    <li class="breadcrumb-item active">Product </li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="display:inline-block;font-weight:bold;">List</h4>
+                                <a href="/Product/Create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create New</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="myTable" class="table table-hover table-condensed"  >
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayName("PRODUCT CODE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("PRODUCT NAME")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("MARGIN RATE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("PAYBLE PRICE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("PRODUCT TYPE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("PRODUCT CATEGORY")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("UNIT_ID")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("ISACTIVE")
+                                        </th>
+                                        <th style="width: 150.25px;">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                    
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PRODUCT_DESC)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PROFIT_MARGIN_RATE)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PAYBLE_PRICE)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TypeDesc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CategoryDesc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UnitDesc)
+                                            </td>
+                                            <td>
+                                                @if (item.ISACTIVE_FLAG == true)
+                                                {
+                                                    <span class="badge badge-success">Active</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">Not Active</span>
+                                                }
+                                            </td>
+                                            <td style="width: 150.25px;">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    @Html.ActionLink(" ", "Edit", new { id = item.PRODUCT_ID }, new { @class = "fa fa-pencil" })
+                                                </button>
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    @Html.ActionLink(" ", "Details", new { id = item.PRODUCT_ID }, new { @class = "fa fa-search" })
+                                                </button>
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    @Html.ActionLink(" ", "Delete", new { id = item.PRODUCT_ID }, new { @class = "fa fa-trash", @style = "color:red;" })
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

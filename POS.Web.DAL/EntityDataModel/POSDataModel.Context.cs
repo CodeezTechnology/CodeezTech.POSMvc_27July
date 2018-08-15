@@ -56,10 +56,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<POS_MENU_RIGHTS> POS_MENU_RIGHTS { get; set; }
         public virtual DbSet<POS_PAYMENT_DETAIL> POS_PAYMENT_DETAIL { get; set; }
         public virtual DbSet<POS_PAYMENT_TYPE> POS_PAYMENT_TYPE { get; set; }
-        public virtual DbSet<POS_PRODUCT> POS_PRODUCT { get; set; }
-        public virtual DbSet<POS_PRODUCT_CATEGORY> POS_PRODUCT_CATEGORY { get; set; }
         public virtual DbSet<POS_PRODUCT_PROMOTIONS> POS_PRODUCT_PROMOTIONS { get; set; }
-        public virtual DbSet<POS_PRODUCT_TYPE> POS_PRODUCT_TYPE { get; set; }
         public virtual DbSet<POS_PROMOTION_LUCKDRAW_COUPON> POS_PROMOTION_LUCKDRAW_COUPON { get; set; }
         public virtual DbSet<POS_PROMOTION_LUCKYDRAW> POS_PROMOTION_LUCKYDRAW { get; set; }
         public virtual DbSet<POS_PROMOTIONS> POS_PROMOTIONS { get; set; }
@@ -72,7 +69,6 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<POS_RFQ_DETAIL> POS_RFQ_DETAIL { get; set; }
         public virtual DbSet<POS_RFQ_LOG> POS_RFQ_LOG { get; set; }
         public virtual DbSet<POS_RIDER> POS_RIDER { get; set; }
-        public virtual DbSet<POS_SALES> POS_SALES { get; set; }
         public virtual DbSet<POS_SECTIONS> POS_SECTIONS { get; set; }
         public virtual DbSet<POS_SHIFT> POS_SHIFT { get; set; }
         public virtual DbSet<POS_STATE> POS_STATE { get; set; }
@@ -97,8 +93,13 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<POS_WEARHOUSE_STOCK> POS_WEARHOUSE_STOCK { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<POS_CUSTOMER_PROMOTION_DETAIL> POS_CUSTOMER_PROMOTION_DETAIL { get; set; }
-        public virtual DbSet<POS_SALES_DETAIL> POS_SALES_DETAIL { get; set; }
         public virtual DbSet<POS_USER_LOG> POS_USER_LOG { get; set; }
+        public virtual DbSet<POS_PRODUCT_CATEGORY> POS_PRODUCT_CATEGORY { get; set; }
+        public virtual DbSet<POS_PRODUCT_TYPE> POS_PRODUCT_TYPE { get; set; }
+        public virtual DbSet<POS_SALES> POS_SALES { get; set; }
+        public virtual DbSet<POS_SALES_DETAIL> POS_SALES_DETAIL { get; set; }
+        public virtual DbSet<POS_UNITS> POS_UNITS { get; set; }
+        public virtual DbSet<POS_PRODUCT> POS_PRODUCT { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -516,49 +517,49 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spIsActiveUser", uSER_IDParameter, pU_ISACTIVE_FLAGParameter);
         }
     
-        public virtual int spSysExceptionLog(string pEL_EXCEPTION_LAYER, string pEL_SOURCE_LAYER, string pEL_STACKTRACE, string pEL_ERROR_MESSAGE, string pEL_MEMBER_TYPE, string pEL_METHOD, string pEL_FORM, Nullable<System.DateTime> pEL_EXCEPTION_DATETIME, string pEL_CLIENT_IP, string pEL_EXCEPTION_TYPE)
+        public virtual int spSysExceptionLog(string eXCEPTION_LAYER, string sOURCE_LAYER, string sTACKTRACE, string eRROR_MESSAGE, string mEMBER_TYPE, string mETHOD, string fORM, Nullable<System.DateTime> eXCEPTION_DATETIME, string cLIENT_IP, string eXCEPTION_TYPE)
         {
-            var pEL_EXCEPTION_LAYERParameter = pEL_EXCEPTION_LAYER != null ?
-                new ObjectParameter("PEL_EXCEPTION_LAYER", pEL_EXCEPTION_LAYER) :
-                new ObjectParameter("PEL_EXCEPTION_LAYER", typeof(string));
+            var eXCEPTION_LAYERParameter = eXCEPTION_LAYER != null ?
+                new ObjectParameter("EXCEPTION_LAYER", eXCEPTION_LAYER) :
+                new ObjectParameter("EXCEPTION_LAYER", typeof(string));
     
-            var pEL_SOURCE_LAYERParameter = pEL_SOURCE_LAYER != null ?
-                new ObjectParameter("PEL_SOURCE_LAYER", pEL_SOURCE_LAYER) :
-                new ObjectParameter("PEL_SOURCE_LAYER", typeof(string));
+            var sOURCE_LAYERParameter = sOURCE_LAYER != null ?
+                new ObjectParameter("SOURCE_LAYER", sOURCE_LAYER) :
+                new ObjectParameter("SOURCE_LAYER", typeof(string));
     
-            var pEL_STACKTRACEParameter = pEL_STACKTRACE != null ?
-                new ObjectParameter("PEL_STACKTRACE", pEL_STACKTRACE) :
-                new ObjectParameter("PEL_STACKTRACE", typeof(string));
+            var sTACKTRACEParameter = sTACKTRACE != null ?
+                new ObjectParameter("STACKTRACE", sTACKTRACE) :
+                new ObjectParameter("STACKTRACE", typeof(string));
     
-            var pEL_ERROR_MESSAGEParameter = pEL_ERROR_MESSAGE != null ?
-                new ObjectParameter("PEL_ERROR_MESSAGE", pEL_ERROR_MESSAGE) :
-                new ObjectParameter("PEL_ERROR_MESSAGE", typeof(string));
+            var eRROR_MESSAGEParameter = eRROR_MESSAGE != null ?
+                new ObjectParameter("ERROR_MESSAGE", eRROR_MESSAGE) :
+                new ObjectParameter("ERROR_MESSAGE", typeof(string));
     
-            var pEL_MEMBER_TYPEParameter = pEL_MEMBER_TYPE != null ?
-                new ObjectParameter("PEL_MEMBER_TYPE", pEL_MEMBER_TYPE) :
-                new ObjectParameter("PEL_MEMBER_TYPE", typeof(string));
+            var mEMBER_TYPEParameter = mEMBER_TYPE != null ?
+                new ObjectParameter("MEMBER_TYPE", mEMBER_TYPE) :
+                new ObjectParameter("MEMBER_TYPE", typeof(string));
     
-            var pEL_METHODParameter = pEL_METHOD != null ?
-                new ObjectParameter("PEL_METHOD", pEL_METHOD) :
-                new ObjectParameter("PEL_METHOD", typeof(string));
+            var mETHODParameter = mETHOD != null ?
+                new ObjectParameter("METHOD", mETHOD) :
+                new ObjectParameter("METHOD", typeof(string));
     
-            var pEL_FORMParameter = pEL_FORM != null ?
-                new ObjectParameter("PEL_FORM", pEL_FORM) :
-                new ObjectParameter("PEL_FORM", typeof(string));
+            var fORMParameter = fORM != null ?
+                new ObjectParameter("FORM", fORM) :
+                new ObjectParameter("FORM", typeof(string));
     
-            var pEL_EXCEPTION_DATETIMEParameter = pEL_EXCEPTION_DATETIME.HasValue ?
-                new ObjectParameter("PEL_EXCEPTION_DATETIME", pEL_EXCEPTION_DATETIME) :
-                new ObjectParameter("PEL_EXCEPTION_DATETIME", typeof(System.DateTime));
+            var eXCEPTION_DATETIMEParameter = eXCEPTION_DATETIME.HasValue ?
+                new ObjectParameter("EXCEPTION_DATETIME", eXCEPTION_DATETIME) :
+                new ObjectParameter("EXCEPTION_DATETIME", typeof(System.DateTime));
     
-            var pEL_CLIENT_IPParameter = pEL_CLIENT_IP != null ?
-                new ObjectParameter("PEL_CLIENT_IP", pEL_CLIENT_IP) :
-                new ObjectParameter("PEL_CLIENT_IP", typeof(string));
+            var cLIENT_IPParameter = cLIENT_IP != null ?
+                new ObjectParameter("CLIENT_IP", cLIENT_IP) :
+                new ObjectParameter("CLIENT_IP", typeof(string));
     
-            var pEL_EXCEPTION_TYPEParameter = pEL_EXCEPTION_TYPE != null ?
-                new ObjectParameter("PEL_EXCEPTION_TYPE", pEL_EXCEPTION_TYPE) :
-                new ObjectParameter("PEL_EXCEPTION_TYPE", typeof(string));
+            var eXCEPTION_TYPEParameter = eXCEPTION_TYPE != null ?
+                new ObjectParameter("EXCEPTION_TYPE", eXCEPTION_TYPE) :
+                new ObjectParameter("EXCEPTION_TYPE", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSysExceptionLog", pEL_EXCEPTION_LAYERParameter, pEL_SOURCE_LAYERParameter, pEL_STACKTRACEParameter, pEL_ERROR_MESSAGEParameter, pEL_MEMBER_TYPEParameter, pEL_METHODParameter, pEL_FORMParameter, pEL_EXCEPTION_DATETIMEParameter, pEL_CLIENT_IPParameter, pEL_EXCEPTION_TYPEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSysExceptionLog", eXCEPTION_LAYERParameter, sOURCE_LAYERParameter, sTACKTRACEParameter, eRROR_MESSAGEParameter, mEMBER_TYPEParameter, mETHODParameter, fORMParameter, eXCEPTION_DATETIMEParameter, cLIENT_IPParameter, eXCEPTION_TYPEParameter);
         }
     
         public virtual int spTruncateDeveloperTable()

@@ -76,6 +76,42 @@ namespace POS.Web.UI.Controllers
            
             return new SelectList(result, "BRANCH_ID", "BRANCH_DESC");
         }
+        public SelectList GetProductCategoryList(List<POS_PRODUCT_CATEGORY> lstProductCategory)
+        {
+            var result = (from u in lstProductCategory
+                          select new
+                          {
+                              u.CATEGORY_ID,
+                              u.PRODUCT_CATEGORY
+                          }).AsEnumerable().ToList();
+
+
+            return new SelectList(result, "CATEGORY_ID", "PRODUCT_CATEGORY");
+        }
+        public SelectList GetProductTypeList(List<POS_PRODUCT_TYPE> lstProductType)
+        {
+            var result = (from u in lstProductType
+                          select new
+                          {
+                              u.TYPE_ID,
+                              u.PRODUCT_TYPE
+                          }).AsEnumerable().ToList();
+
+
+            return new SelectList(result, "TYPE_ID", "PRODUCT_TYPE");
+        }
+        public SelectList GetUnitList(List<POS_UNITS> lstUnits)
+        {
+            var result = (from u in lstUnits
+                          select new
+                          {
+                              u.UNIT_ID,
+                              u.UNIT
+                          }).AsEnumerable().ToList();
+
+
+            return new SelectList(result, "UNIT_ID", "UNIT");
+        }
         #endregion
     }
 }

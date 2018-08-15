@@ -34,10 +34,7 @@
         <EntityTypeShape EntityType="POSDataModel.POS_MENU_RIGHTS" Width="1.5" PointX="10.75" PointY="14.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_PAYMENT_DETAIL" Width="1.5" PointX="12.75" PointY="14.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_PAYMENT_TYPE" Width="1.5" PointX="14.75" PointY="13.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT" Width="1.5" PointX="2.75" PointY="15.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_CATEGORY" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_PROMOTIONS" Width="1.5" PointX="16.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_TYPE" Width="1.5" PointX="16.75" PointY="8.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_PROMOTION_LUCKDRAW_COUPON" Width="1.5" PointX="16.75" PointY="12.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_PROMOTION_LUCKYDRAW" Width="1.5" PointX="16.75" PointY="16.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_PROMOTIONS" Width="1.5" PointX="4.75" PointY="17.75" />
@@ -50,7 +47,6 @@
         <EntityTypeShape EntityType="POSDataModel.POS_RFQ_DETAIL" Width="1.5" PointX="18.75" PointY="19.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_RFQ_LOG" Width="1.5" PointX="20.75" PointY="0.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_RIDER" Width="1.5" PointX="20.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SALES" Width="1.5" PointX="20.75" PointY="10.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_SECTIONS" Width="1.5" PointX="10.75" PointY="20.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_SHIFT" Width="1.5" PointX="12.75" PointY="20.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_STATE" Width="1.5" PointX="14.75" PointY="20.75" />
@@ -75,8 +71,13 @@
         <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_STOCK" Width="1.5" PointX="24.75" PointY="12.75" />
         <EntityTypeShape EntityType="POSDataModel.sysdiagram" Width="1.5" PointX="12.75" PointY="24.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_CUSTOMER_PROMOTION_DETAIL" Width="1.5" PointX="24.75" PointY="17.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SALES_DETAIL" Width="1.5" PointX="24.75" PointY="21.75" />
         <EntityTypeShape EntityType="POSDataModel.POS_USER_LOG" Width="1.5" PointX="26.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_CATEGORY" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_TYPE" Width="1.5" PointX="25.75" PointY="26.75" />
+        <EntityTypeShape EntityType="POSDataModel.POS_SALES" Width="1.5" PointX="25.75" PointY="21.75" />
+        <EntityTypeShape EntityType="POSDataModel.POS_SALES_DETAIL" Width="1.5" PointX="0.75" PointY="27.75" />
+        <EntityTypeShape EntityType="POSDataModel.POS_UNITS" Width="1.5" PointX="3.375" PointY="27.75" />
+        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT" Width="1.5" PointX="19.375" PointY="26.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,8 +12,9 @@
     <title>@ViewBag.Title - POS</title>
   
     @Styles.Render("~/Content/css");
+    <link href="~/Content/css/lib/select2/select2.min.css" rel="stylesheet" />
     <link href="~/Content/toastr.css" rel="stylesheet" />
-
+    <link href="~/Content/css/lib/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" />
 
     <!-- All Jquery -->
     <script src="~/Scripts/js/lib/jquery/jquery.min.js"></script>
@@ -36,13 +37,29 @@
     @*@Scripts.Render("~/Scripts/js");*@
     @Scripts.Render("~/Scripts/datatable");
     <script src="~/Scripts/toastr.js"></script>
-  
+    <style type="text/css">
+        .cardColor {
+            background-color: #ececec;
+        }
+        .table {
+            font-family: monospace;
+            font-size: 15px;
+            color:black;
+        }
+        .txtboxRadius{
+            border-radius:4px;
+        }
+    </style>
     <script type="text/javascript">
         $(document).ready(function () {
             //debugger;
             $("#myTable").DataTable();
             $("#myTable1").DataTable();
-            
+            $(".card").addClass('cardColor');
+            $(".page-titles").addClass('cardColor');
+            $("table").addClass('table');
+            $(".form-control").addClass('txtboxRadius');
+          //  $("body").removeCss("font-family: 'Open Sans', sans-serif;");
             ShowAlert();
         });
 
