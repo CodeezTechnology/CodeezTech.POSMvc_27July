@@ -15,6 +15,8 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     public partial class POS_WEARHOUSE_STOCK
     {
         public long WSTOCK_ID { get; set; }
+        public string WSTOCK_CODE { get; set; }
+        public long WEARHOUSE_ID { get; set; }
         public System.DateTime DATE { get; set; }
         public long PRODUCT_ID { get; set; }
         public int QUANTITY_IN { get; set; }

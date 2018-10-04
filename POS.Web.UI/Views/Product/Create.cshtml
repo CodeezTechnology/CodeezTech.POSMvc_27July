@@ -33,7 +33,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 style="display: inline-block; font-weight: bold;">Create</h4>
-                                            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
+                                            <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
                                         </div>
                                     </div>
                                     <hr />
@@ -144,8 +144,150 @@
 </div>
 <script>
     $(document).ready(function () {
-        $("#EXPIRY_FROM").datetimepicker();
+       // $("#EXPIRY_FROM").datetimepicker();
        
-   
+        $("#btnSave").click(function () {
+            debugger;
+            var Model = {};
+            Model.PRODUCT_DESC = $("#PRODUCT_DESC").val();
+            Model.PROFIT_MARGIN_RATE = $("#PROFIT_MARGIN_RATE").val();
+            Model.PAYBLE_PRICE = $("#PAYBLE_PRICE").val();
+            Model.IS_TAX_APPLIED_FLAG = $("#IS_TAX_APPLIED_FLAG").val();
+            Model.TAX_PER = $("#TAX_PER").val();
+            Model.TAX_RS = $("#TAX_RS").val();
+            Model.TYPE_ID = $("#TypeId").val();
+            Model.CATEGORY_ID = $("#CategoryId").val();
+            Model.UNIT_ID = $("#UnitId").val();
+            Model.EXPIRY_FROM = $("#EXPIRY_FROM").val();
+            Model.EXPIRY_TO = $("#EXPIRY_TO").val();
+            Model.ISACTIVE_FLAG = $("#ISACTIVE_FLAG").val();
+            Model.ISPOSTED_FLAG = 0;
+            var obj = new Array(Model);
+            if (Validation(obj) == true) {
+                $.ajax({
+                    url: '@Url.Action("Create","Product")',
+                    type: "POST",
+                    data:  Model,
+                    dataType: "json",
+                   // contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if (data.Result > 0) {
+                            window.location.href = '@Url.Action("Index","Product")';
+                            SuccessAlert("Product saved successfully");
+                        }
+                        else {
+                            ErrorAlert("Product not saved, Please contact to administrator.");
+                        }
+                    },
+                    error: function (jqXHR, exception, error) {
+                        if (jqXHR.status === 0) {
+                            return ('Not connected.\nPlease verify your network connection.');
+                        } else if (jqXHR.status == 404) {
+                            return ('The requested page not found. [404]');
+                        } else if (jqXHR.status == 500) {
+                            return ('Internal Server Error [500].');
+                        } else if (exception === 'parsererror') {
+                            return ('Requested JSON parse failed.');
+                        } else if (exception === 'timeout') {
+                            return ('Time out error.');
+                        } else if (exception === 'abort') {
+                            return ('Ajax request aborted.');
+                        } else {
+                            return ('Uncaught Error.\n' + jqXHR.responseText);
+                        }
+                        var responseTitle = $(xhr.responseText).filter('title').get(0);
+                    }
+                });
+            }
+            else {
+                WarningAlert("Please fill all mandantory fields.");
+            }
+        });
+        
     });
+    function Validation(arrayModel) {
+        var bTrue = true;
+        var bValidate = true;
+
+        if (arrayModel[0]["UNIT_ID"] == "") {
+            $("#UnitId").css("border-color", "red");
+            $("#UnitId").focus();
+            bTrue = false;
+            bValidate = bTrue;
+        }
+        else {
+            $("#UnitId").css('border-color', '#ced4da');
+            bTrue = true;
+        }
+        if (bTrue == false) {
+            bValidate = bTrue;
+        }
+        if (arrayModel[0]["CATEGORY_ID"] == "") {
+            $("#CategoryId").css("border-color", "red");
+            $("#CategoryId").focus();
+            bTrue = false;
+            bValidate = bTrue;
+        }
+        else {
+            $("#CategoryId").css('border-color', '#ced4da');
+            bTrue = true;
+        }
+        if (bTrue == false) {
+            bValidate = bTrue;
+        }
+        if (arrayModel[0]["TYPE_ID"] == "") {
+            $("#TypeId").css("border-color", "red");
+            $("#TypeId").focus();
+            bTrue = false;
+            bValidate = bTrue;
+        }
+        else {
+            $("#TypeId").css('border-color', '#ced4da');
+            bTrue = true;
+        }
+        if (bTrue == false) {
+            bValidate = bTrue;
+        }
+        if (arrayModel[0]["PAYBLE_PRICE"] == "0") {
+            $("#PAYBLE_PRICE").css("border-color", "red");
+            $("#PAYBLE_PRICE").focus();
+            bTrue = false;
+            bValidate = bTrue;
+        }
+        else {
+            $("#PAYBLE_PRICE").css('border-color', '#ced4da');
+            bTrue = true;
+        }
+        if (bTrue == false) {
+            bValidate = bTrue;
+        }
+        if (arrayModel[0]["PROFIT_MARGIN_RATE"] == "0") {
+            $("#PROFIT_MARGIN_RATE").css("border-color", "red");
+            $("#PROFIT_MARGIN_RATE").focus();
+            bTrue = false;
+            bValidate = bTrue;
+        }
+        else {
+            $("#PROFIT_MARGIN_RATE").css('border-color', '#ced4da');
+            bTrue = true;
+        }
+        if (bTrue == false) {
+            bValidate = bTrue;
+        }
+        if (arrayModel[0]["PRODUCT_DESC"] == "") {
+            $("#PRODUCT_DESC").css("border-color", "red");
+            $("#PRODUCT_DESC").focus();
+            bTrue = false;
+            bValidate = bTrue;
+        }
+        else {
+            $("#PRODUCT_DESC").css('border-color', '#ced4da');
+            bTrue = true;
+        }
+        if (bTrue == false) {
+            bValidate = bTrue;
+        }
+        return bValidate;
+
+    }
 </script>

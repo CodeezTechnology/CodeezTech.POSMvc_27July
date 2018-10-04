@@ -48,29 +48,37 @@ namespace POS.Web.UI.Controllers
              try
              {
                  POS_USER _objUser = _objBALUser.Login(userModel);
-                 objUser = _objUser;
-                 if (objUser.NotifyMessage == "user")
-                 {
-                     Session[SessionVariables.Session_UserInfo] = _objUser;
-                     SessionHandling.UserId = _objUser.USER_ID;
-                     SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
-                     
-                     ShowAlert(AlertType.Success, "Welcome " + SessionHandling.UserInformation.USERNAME);
-                     return RedirectToAction("IndexUser", "Home");
-                 }
-                 else if (objUser.NotifyMessage == "admin" || objUser.NotifyMessage == "superadmin")
-                 {
-                     Session[SessionVariables.Session_UserInfo] = _objUser;
-                     SessionHandling.UserId = _objUser.USER_ID;
-                     SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
-                 
-                     ShowAlert(AlertType.Success, "Welcome " + SessionHandling.UserInformation.USERNAME);
-                     return RedirectToAction("IndexAdmin", "Home");
-                 }
-                 else
-                 {
-                     ModelState.AddModelError("", userModel.NotifyMessage);
-                 }
+                if (_objUser != null)
+                {
+                    objUser = _objUser;
+
+                    if (objUser.NotifyMessage == "user")
+                    {
+                        Session[SessionVariables.Session_UserInfo] = _objUser;
+                        SessionHandling.UserId = _objUser.USER_ID;
+                        SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
+
+                        ShowAlert(AlertType.Success, "Welcome " + SessionHandling.UserInformation.USERNAME);
+                        return RedirectToAction("IndexUser", "Home");
+                    }
+                    else if (objUser.NotifyMessage == "admin" || objUser.NotifyMessage == "superadmin")
+                    {
+                        Session[SessionVariables.Session_UserInfo] = _objUser;
+                        SessionHandling.UserId = _objUser.USER_ID;
+                        SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
+
+                        ShowAlert(AlertType.Success, "Welcome " + SessionHandling.UserInformation.USERNAME);
+                        return RedirectToAction("IndexAdmin", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", userModel.NotifyMessage);
+                    }
+                }
+                else
+                {
+                    ShowAlert(AlertType.Error, "Invalid user or password.");
+                }
                  return View(userModel);
              }
              catch (Exception ex)

@@ -12,15 +12,17 @@
     <title>@ViewBag.Title - POS</title>
   
     @Styles.Render("~/Content/css");
-    <link href="~/Content/css/lib/select2/select2.min.css" rel="stylesheet" />
-    <link href="~/Content/toastr.css" rel="stylesheet" />
-    <link href="~/Content/css/lib/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" />
+  
 
     <!-- All Jquery -->
     <script src="~/Scripts/js/lib/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="~/Scripts/js/lib/bootstrap/js/popper.min.js"></script>
     <script src="~/Scripts/js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/lib/bootstrap/js/popper.min.js"></script>
+ 
+    <link href="~/Content/css/lib/select2/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    @*<link href="~/Content/css/lib/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" />*@
  
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="~/Scripts/js/jquery.slimscroll.js"></script>
@@ -68,7 +70,7 @@
             if (msg != null) {
                 var type = '@TempData["AlertType"]';
                 if (type == "Success") {
-                    SucccesAlert(msg);
+                    SuccessAlert(msg);
                 }
                 else if (type == "Error") {
                     ErrorAlert(msg);
@@ -81,7 +83,7 @@
                 }
             }
         }
-        function SucccesAlert(msg) {
+        function SuccessAlert(msg) {
             toastr.success(msg)
         }
         function ErrorAlert(msg) {
@@ -430,23 +432,7 @@
 
     <!--Custom JavaScript -->
     <!-- Amchart -->
-    <script src="~/Scripts/js/lib/morris-chart/raphael-min.js"></script>
-    @*<script src="~/Scripts/js/lib/morris-chart/morris.js"></script>
-    <script src="~/Scripts/js/lib/morris-chart/dashboard1-init.js"></script>*@
 
-
-    <script src="~/Scripts/js/lib/calendar-2/moment.latest.min.js"></script>
-    <!-- scripit init-->
-    <script src="~/Scripts/js/lib/calendar-2/semantic.ui.min.js"></script>
-    <!-- scripit init-->
-    <script src="~/Scripts/js/lib/calendar-2/prism.min.js"></script>
-    <!-- scripit init-->
-    <script src="~/Scripts/js/lib/calendar-2/pignose.calendar.min.js"></script>
-    <!-- scripit init-->
-    <script src="~/Scripts/js/lib/calendar-2/pignose.init.js"></script>
-
-    <script src="~/Scripts/js/lib/owl-carousel/owl.carousel.min.js"></script>
-    <script src="~/Scripts/js/lib/owl-carousel/owl.carousel-init.js"></script>
 </body>
 
 

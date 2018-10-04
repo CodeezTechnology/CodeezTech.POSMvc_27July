@@ -15,6 +15,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     public partial class POS_PURCHASE_ORDER
     {
         public long PURCHASE_ORDER_ID { get; set; }
+        public string DESCRIPTION { get; set; }
         public System.DateTime SHIPPMENT_DATE { get; set; }
         public int QUANTITY { get; set; }
         public decimal NET_AMOUNT { get; set; }

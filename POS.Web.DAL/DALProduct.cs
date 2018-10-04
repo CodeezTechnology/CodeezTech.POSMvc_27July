@@ -200,9 +200,9 @@ namespace CodeezTech.POS.Web.DAL
                 _objProductEntity.IS_TAX_APPLIED_FLAG = ProductModel.IS_TAX_APPLIED_FLAG;
                 _objProductEntity.TAX_PER = ProductModel.TAX_PER;
                 _objProductEntity.TAX_RS = ProductModel.TAX_RS;
-                _objProductEntity.TYPE_ID = ProductModel.TypeId;
-                _objProductEntity.CATEGORY_ID = ProductModel.CategoryId;
-                _objProductEntity.UNIT_ID = ProductModel.UnitId;
+                _objProductEntity.TYPE_ID = ProductModel.TYPE_ID;
+                _objProductEntity.CATEGORY_ID = ProductModel.CATEGORY_ID;
+                _objProductEntity.UNIT_ID = ProductModel.UNIT_ID;
                 _objProductEntity.EXPIRY_FROM = ProductModel.EXPIRY_FROM;
                 _objProductEntity.EXPIRY_TO = ProductModel.EXPIRY_TO;
                 _objProductEntity.ISACTIVE_FLAG = ProductModel.ISACTIVE_FLAG;

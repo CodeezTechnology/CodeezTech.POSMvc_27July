@@ -1,0 +1,117 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_DISPLAY_STOCK>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="~/Home/IndexUser"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Display Stock</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item">Inventory Management</li>
+                    <li class="breadcrumb-item active">Display Stock</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="display:inline-block;font-weight:bold;">Stock Transaction</h4>
+                                <a href="/ProductType/Create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Transaction</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive ">
+                            <table id="myTable" class="table table-hover table-condensed" style="font-family:Consolas;">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayName("BRANCH")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("PRODUCT")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("UNIT PRICE")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("TOTAL PRICE")
+                                        </th>
+                                        <th style="width: 150.25px;">ACTIONS</th>
+
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="hidden">
+                                            @Html.DisplayFor(modelItem => item.DSTOCK_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BRANCH_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PRODUCT_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UNIT_PRICE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TOTAL_PRICE)
+                                        </td>
+                                        <td style="width: 150.25px;">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Edit", new { id = item.DSTOCK_ID }, new { @class = "fa fa-pencil" })
+                                            </button>
+                                            <button type="button" class="btn btn-outline-secondary" style="display:none">
+                                                @Html.ActionLink(" ", "Edit", new { id = item.DSTOCK_ID }, new { @class = "fa fa-pencil" })
+                                            </button>
+                                            <a class="btn btn-outline-secondary" href="javascript:;" style="display:none">Cancel</a>
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Delete", new { id = item.DSTOCK_ID }, new { @class = "fa fa-trash", @style = "color:red;" })
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </table>
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="width: 150px">
+                                        BRANCH<br />
+                                        <input type="text" id="ddlBranch" style="width:140px" />
+                                    </td>
+                                    <td style="width: 150px">
+                                        PRODUCT:<br />
+                                        <input type="text" id="ddlProduct" style="width:140px" />
+                                    </td>
+                                    <td style="width: 150px">
+                                        UNIT PRICE:<br />
+                                        <input type="text" id="txtUnitPrice" style="width:140px" />
+                                    </td>
+                                    <td style="width: 150px">
+                                        TOTAL PRICE:<br />
+                                        <input type="text" id="txtTotalPrice" style="width:140px" />
+                                    </td>
+                                    <td style="width: 200px">
+                                        <br />
+                                        <input type="button" id="btnAdd" value="Add" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

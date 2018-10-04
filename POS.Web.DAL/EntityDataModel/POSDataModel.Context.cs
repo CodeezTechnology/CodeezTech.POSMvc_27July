@@ -56,7 +56,10 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<POS_MENU_RIGHTS> POS_MENU_RIGHTS { get; set; }
         public virtual DbSet<POS_PAYMENT_DETAIL> POS_PAYMENT_DETAIL { get; set; }
         public virtual DbSet<POS_PAYMENT_TYPE> POS_PAYMENT_TYPE { get; set; }
+        public virtual DbSet<POS_PRODUCT> POS_PRODUCT { get; set; }
+        public virtual DbSet<POS_PRODUCT_CATEGORY> POS_PRODUCT_CATEGORY { get; set; }
         public virtual DbSet<POS_PRODUCT_PROMOTIONS> POS_PRODUCT_PROMOTIONS { get; set; }
+        public virtual DbSet<POS_PRODUCT_TYPE> POS_PRODUCT_TYPE { get; set; }
         public virtual DbSet<POS_PROMOTION_LUCKDRAW_COUPON> POS_PROMOTION_LUCKDRAW_COUPON { get; set; }
         public virtual DbSet<POS_PROMOTION_LUCKYDRAW> POS_PROMOTION_LUCKYDRAW { get; set; }
         public virtual DbSet<POS_PROMOTIONS> POS_PROMOTIONS { get; set; }
@@ -69,12 +72,15 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<POS_RFQ_DETAIL> POS_RFQ_DETAIL { get; set; }
         public virtual DbSet<POS_RFQ_LOG> POS_RFQ_LOG { get; set; }
         public virtual DbSet<POS_RIDER> POS_RIDER { get; set; }
+        public virtual DbSet<POS_SALES> POS_SALES { get; set; }
+        public virtual DbSet<POS_SALES_DETAIL> POS_SALES_DETAIL { get; set; }
         public virtual DbSet<POS_SECTIONS> POS_SECTIONS { get; set; }
         public virtual DbSet<POS_SHIFT> POS_SHIFT { get; set; }
         public virtual DbSet<POS_STATE> POS_STATE { get; set; }
         public virtual DbSet<POS_SUPERVISOR> POS_SUPERVISOR { get; set; }
         public virtual DbSet<POS_SYS_APP_MODULE> POS_SYS_APP_MODULE { get; set; }
         public virtual DbSet<POS_SYS_TRANSACTION_LOG> POS_SYS_TRANSACTION_LOG { get; set; }
+        public virtual DbSet<POS_UNITS> POS_UNITS { get; set; }
         public virtual DbSet<POS_USER> POS_USER { get; set; }
         public virtual DbSet<POS_USER_DATA_SECURITY> POS_USER_DATA_SECURITY { get; set; }
         public virtual DbSet<POS_USER_SESSION> POS_USER_SESSION { get; set; }
@@ -94,12 +100,6 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<POS_CUSTOMER_PROMOTION_DETAIL> POS_CUSTOMER_PROMOTION_DETAIL { get; set; }
         public virtual DbSet<POS_USER_LOG> POS_USER_LOG { get; set; }
-        public virtual DbSet<POS_PRODUCT_CATEGORY> POS_PRODUCT_CATEGORY { get; set; }
-        public virtual DbSet<POS_PRODUCT_TYPE> POS_PRODUCT_TYPE { get; set; }
-        public virtual DbSet<POS_SALES> POS_SALES { get; set; }
-        public virtual DbSet<POS_SALES_DETAIL> POS_SALES_DETAIL { get; set; }
-        public virtual DbSet<POS_UNITS> POS_UNITS { get; set; }
-        public virtual DbSet<POS_PRODUCT> POS_PRODUCT { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

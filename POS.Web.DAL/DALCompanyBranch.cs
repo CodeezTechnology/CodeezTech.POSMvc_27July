@@ -70,7 +70,7 @@ namespace CodeezTech.POS.Web.DAL
                 //                  MODIFIEDWHEN = x.ModifiedWhen
                 //              }).ToList();
                 var result = (from ctx in _dbContext.POS_BRANCH
-                              join company in _dbContext.POS_COMPANY on ctx.COMPANY_ID equals company.COMPANY_ID
+                              from company in _dbContext.POS_COMPANY //on ctx.COMPANY_ID equals company.COMPANY_ID
                               join city in _dbContext.POS_CITY on ctx.CITY_ID equals city.CITY_ID
                               join state in _dbContext.POS_STATE on ctx.STATE_ID equals state.STATE_ID
                               join country in _dbContext.POS_COUNTRY on ctx.COUNTRY_ID equals country.COUNTRY_ID
@@ -111,7 +111,7 @@ namespace CodeezTech.POS.Web.DAL
                                   entity.EMAIL = item.Email;
                                   entity.EMAIL_PASSWORD = item.EmailPassword;
                                   entity.ADDRESS = item.Address;
-                                  entity.COMPANY_ID = item.CompanyId;
+                                  entity.CompanyId = item.CompanyId;
                                   entity.CompanyName = item.CompanyName;
                                   entity.CITY_ID = item.CityId;
                                   entity.CityName = item.CityName;
@@ -138,7 +138,7 @@ namespace CodeezTech.POS.Web.DAL
             try
             {
                 var result = (from ctx in _dbContext.POS_BRANCH
-                              join company in _dbContext.POS_COMPANY on ctx.COMPANY_ID equals company.COMPANY_ID
+                              from company in _dbContext.POS_COMPANY
                               join city in _dbContext.POS_CITY on ctx.CITY_ID equals city.CITY_ID
                               join state in _dbContext.POS_STATE on ctx.STATE_ID equals state.STATE_ID
                               join country in _dbContext.POS_COUNTRY on ctx.COUNTRY_ID equals country.COUNTRY_ID
@@ -176,7 +176,7 @@ namespace CodeezTech.POS.Web.DAL
                                   EMAIL = x.Email,
                                   EMAIL_PASSWORD = x.EmailPassword,
                                   ADDRESS = x.Address,
-                                  COMPANY_ID = x.CompanyId,
+                                  CompanyId = x.CompanyId,
                                   CompanyName = x.CompanyName,
                                   CITY_ID = x.CityId,
                                   CityName = x.CityName,
@@ -251,7 +251,7 @@ namespace CodeezTech.POS.Web.DAL
                 entity.EMAIL = BranchModel.EMAIL;
                 entity.EMAIL_PASSWORD = BranchModel.EMAIL_PASSWORD;
                 entity.ADDRESS = BranchModel.ADDRESS;
-                entity.COMPANY_ID = BranchModel.COMPANY_ID;
+                entity.CompanyId = BranchModel.CompanyId;
                 entity.CompanyName = BranchModel.CompanyName;
                 entity.CITY_ID = BranchModel.CITY_ID;
                 entity.CityName = BranchModel.CityName;
@@ -288,7 +288,7 @@ namespace CodeezTech.POS.Web.DAL
                 entity.EMAIL = BranchModel.EMAIL;
                 entity.EMAIL_PASSWORD = BranchModel.EMAIL_PASSWORD;
                 entity.ADDRESS = BranchModel.ADDRESS;
-                entity.COMPANY_ID = BranchModel.COMPANY_ID;
+                entity.CompanyId = BranchModel.CompanyId;
                 entity.CompanyName = BranchModel.CompanyName;
                 entity.CITY_ID = BranchModel.CITY_ID;
                 entity.CityName = BranchModel.CityName;

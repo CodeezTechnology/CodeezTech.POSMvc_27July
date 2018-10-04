@@ -107,7 +107,6 @@
           <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EMAIL_PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ADDRESS" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="COMPANY_ID" Type="bigint" Nullable="false" />
           <Property Name="CITY_ID" Type="bigint" Nullable="false" />
           <Property Name="STATE_ID" Type="bigint" />
           <Property Name="COUNTRY_ID" Type="bigint" />
@@ -234,6 +233,11 @@ warning 6002: The table/view 'POS.dbo.POS_CUSTOMER_PROMOTION_DETAIL' does not ha
           <Property Name="CREATEDWHEN" Type="datetime" Nullable="false" />
           <Property Name="MODIFIEDWHEN" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'POS.dbo.POS_DEVELOPER' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="POS_DEVELOPER">
+          <Property Name="USER_ID" Type="bigint" />
+        </EntityType>-->
         <EntityType Name="POS_DISPLAY_FLOORS">
           <Key>
             <PropertyRef Name="DISPLAY_FLOOR_ID" />
@@ -311,19 +315,21 @@ warning 6002: The table/view 'POS.dbo.POS_CUSTOMER_PROMOTION_DETAIL' does not ha
           <Key>
             <PropertyRef Name="DSTOCK_ID" />
           </Key>
-          <Property Name="DSTOCK_ID" Type="bigint" Nullable="false" />
+          <Property Name="DSTOCK_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DSTOCK_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BRANCH_ID" Type="bigint" Nullable="false" />
+          <Property Name="SALE_CODE" Type="varchar" MaxLength="50" />
           <Property Name="DATE" Type="date" Nullable="false" />
           <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
-          <Property Name="QUANTITY_IN" Type="int" Nullable="false" />
-          <Property Name="QUANTITY_OUT" Type="int" Nullable="false" />
+          <Property Name="QUANTITY_IN" Type="int" />
+          <Property Name="QUANTITY_OUT" Type="int" />
           <Property Name="STOCK_TYPE" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UNIT_PRICE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TOTAL_PRICE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="SHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SHIPPMENT_FROM" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="WSTOCK_ID" Type="bigint" />
-          <Property Name="SALE_CODE" Type="varchar" MaxLength="50" />
-          <Property Name="BRANCH_ID" Type="bigint" Nullable="false" />
+          <Property Name="WV_SHIPPMENT_CODE" Type="varchar" MaxLength="50" />
+          <Property Name="SHIPPMENT_FROM" Type="varchar" MaxLength="50" />
+          <Property Name="WSTOCK_CODE" Type="bigint" />
+          <Property Name="ISMANUAL_ENTRY" Type="bit" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="bit" Nullable="false" />
           <Property Name="CREATEDBY" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="MODIFIEDBY" Type="varchar" MaxLength="60" />
@@ -613,6 +619,7 @@ warning 6002: The table/view 'POS.dbo.POS_CUSTOMER_PROMOTION_DETAIL' does not ha
             <PropertyRef Name="PURCHASE_ORDER_ID" />
           </Key>
           <Property Name="PURCHASE_ORDER_ID" Type="bigint" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="200" />
           <Property Name="SHIPPMENT_DATE" Type="date" Nullable="false" />
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -1005,9 +1012,12 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           </Key>
           <Property Name="VSHIPPMENT_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VSHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="200" />
           <Property Name="VSHIPPMENT_DATE" Type="date" Nullable="false" />
           <Property Name="PURCHASE_ORDER_ID" Type="bigint" Nullable="false" />
-          <Property Name="WEARHOUSE_ID" Type="bigint" Nullable="false" />
+          <Property Name="WEARHOUSE_ID" Type="bigint" />
+          <Property Name="BRANCH_ID" Type="bigint" />
+          <Property Name="STATUS" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="bit" Nullable="false" />
           <Property Name="CREATEDBY" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="MODIFIEDBY" Type="varchar" MaxLength="60" />
@@ -1019,7 +1029,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
             <PropertyRef Name="VSHIPPMENT_DETAIL_ID" />
           </Key>
           <Property Name="VSHIPPMENT_DETAIL_ID" Type="bigint" Nullable="false" />
-          <Property Name="SHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VSHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
           <Property Name="PRODUCT_DESC" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="QUANTITY" Type="int" Nullable="false" />
@@ -1151,10 +1161,10 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           </Key>
           <Property Name="WSHIPPMENT_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="WSHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="200" />
           <Property Name="WSHIPPMENT_DATE" Type="date" Nullable="false" />
-          <Property Name="VSHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VSHIPPMENT_CODE" Type="varchar" MaxLength="50" />
           <Property Name="WEARHOUSE_ID" Type="bigint" Nullable="false" />
-          <Property Name="COMPANY_ID" Type="bigint" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="smallint" Nullable="false" />
           <Property Name="CREATEDBY" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="MODIFIEDBY" Type="varchar" MaxLength="60" />
@@ -1180,7 +1190,9 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Key>
             <PropertyRef Name="WSTOCK_ID" />
           </Key>
-          <Property Name="WSTOCK_ID" Type="bigint" Nullable="false" />
+          <Property Name="WSTOCK_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WSTOCK_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="WEARHOUSE_ID" Type="bigint" Nullable="false" />
           <Property Name="DATE" Type="date" Nullable="false" />
           <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
           <Property Name="QUANTITY_IN" Type="int" Nullable="false" />
@@ -1188,7 +1200,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="STOCK_TYPE" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UNIT_PRICE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TOTAL_PRICE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VSHIPPMENT_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VSHIPPMENT_CODE" Type="varchar" MaxLength="50" />
           <Property Name="COMPANY_ID" Type="bigint" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="smallint" Nullable="false" />
           <Property Name="CREATEDBY" Type="varchar" MaxLength="60" Nullable="false" />
@@ -1655,7 +1667,10 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <EntitySet Name="POS_MENU_RIGHTS" EntityType="POSDataModel.POS_MENU_RIGHTS" />
           <EntitySet Name="POS_PAYMENT_DETAIL" EntityType="POSDataModel.POS_PAYMENT_DETAIL" />
           <EntitySet Name="POS_PAYMENT_TYPE" EntityType="POSDataModel.POS_PAYMENT_TYPE" />
+          <EntitySet Name="POS_PRODUCT" EntityType="POSDataModel.POS_PRODUCT" />
+          <EntitySet Name="POS_PRODUCT_CATEGORY" EntityType="POSDataModel.POS_PRODUCT_CATEGORY" />
           <EntitySet Name="POS_PRODUCT_PROMOTIONS" EntityType="POSDataModel.POS_PRODUCT_PROMOTIONS" />
+          <EntitySet Name="POS_PRODUCT_TYPE" EntityType="POSDataModel.POS_PRODUCT_TYPE" />
           <EntitySet Name="POS_PROMOTION_LUCKDRAW_COUPON" EntityType="POSDataModel.POS_PROMOTION_LUCKDRAW_COUPON" />
           <EntitySet Name="POS_PROMOTION_LUCKYDRAW" EntityType="POSDataModel.POS_PROMOTION_LUCKYDRAW" />
           <EntitySet Name="POS_PROMOTIONS" EntityType="POSDataModel.POS_PROMOTIONS" />
@@ -1668,12 +1683,15 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <EntitySet Name="POS_RFQ_DETAIL" EntityType="POSDataModel.POS_RFQ_DETAIL" />
           <EntitySet Name="POS_RFQ_LOG" EntityType="POSDataModel.POS_RFQ_LOG" />
           <EntitySet Name="POS_RIDER" EntityType="POSDataModel.POS_RIDER" />
+          <EntitySet Name="POS_SALES" EntityType="POSDataModel.POS_SALES" />
+          <EntitySet Name="POS_SALES_DETAIL" EntityType="POSDataModel.POS_SALES_DETAIL" />
           <EntitySet Name="POS_SECTIONS" EntityType="POSDataModel.POS_SECTIONS" />
           <EntitySet Name="POS_SHIFT" EntityType="POSDataModel.POS_SHIFT" />
           <EntitySet Name="POS_STATE" EntityType="POSDataModel.POS_STATE" />
           <EntitySet Name="POS_SUPERVISOR" EntityType="POSDataModel.POS_SUPERVISOR" />
           <EntitySet Name="POS_SYS_APP_MODULE" EntityType="POSDataModel.POS_SYS_APP_MODULE" />
           <EntitySet Name="POS_SYS_TRANSACTION_LOG" EntityType="POSDataModel.POS_SYS_TRANSACTION_LOG" />
+          <EntitySet Name="POS_UNITS" EntityType="POSDataModel.POS_UNITS" />
           <EntitySet Name="POS_USER" EntityType="POSDataModel.POS_USER" />
           <EntitySet Name="POS_USER_DATA_SECURITY" EntityType="POSDataModel.POS_USER_DATA_SECURITY" />
           <EntitySet Name="POS_USER_SESSION" EntityType="POSDataModel.POS_USER_SESSION" />
@@ -1693,12 +1711,6 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <EntitySet Name="sysdiagrams" EntityType="POSDataModel.sysdiagram" />
           <EntitySet Name="POS_CUSTOMER_PROMOTION_DETAIL" EntityType="POSDataModel.POS_CUSTOMER_PROMOTION_DETAIL" />
           <EntitySet Name="POS_USER_LOG" EntityType="POSDataModel.POS_USER_LOG" />
-          <EntitySet Name="POS_PRODUCT_CATEGORY" EntityType="POSDataModel.POS_PRODUCT_CATEGORY" />
-          <EntitySet Name="POS_PRODUCT_TYPE" EntityType="POSDataModel.POS_PRODUCT_TYPE" />
-          <EntitySet Name="POS_SALES" EntityType="POSDataModel.POS_SALES" />
-          <EntitySet Name="POS_SALES_DETAIL" EntityType="POSDataModel.POS_SALES_DETAIL" />
-          <EntitySet Name="POS_UNITS" EntityType="POSDataModel.POS_UNITS" />
-          <EntitySet Name="POS_PRODUCT" EntityType="POSDataModel.POS_PRODUCT" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1921,7 +1933,6 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL_PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESS" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="COMPANY_ID" Type="Int64" Nullable="false" />
           <Property Name="CITY_ID" Type="Int64" Nullable="false" />
           <Property Name="STATE_ID" Type="Int64" />
           <Property Name="COUNTRY_ID" Type="Int64" />
@@ -2105,19 +2116,21 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Key>
             <PropertyRef Name="DSTOCK_ID" />
           </Key>
-          <Property Name="DSTOCK_ID" Type="Int64" Nullable="false" />
+          <Property Name="DSTOCK_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DSTOCK_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH_ID" Type="Int64" Nullable="false" />
+          <Property Name="SALE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" />
-          <Property Name="QUANTITY_IN" Type="Int32" Nullable="false" />
-          <Property Name="QUANTITY_OUT" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY_IN" Type="Int32" />
+          <Property Name="QUANTITY_OUT" Type="Int32" />
           <Property Name="STOCK_TYPE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UNIT_PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="TOTAL_PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="SHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SHIPPMENT_FROM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="WSTOCK_ID" Type="Int64" />
-          <Property Name="SALE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BRANCH_ID" Type="Int64" Nullable="false" />
+          <Property Name="WV_SHIPPMENT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHIPPMENT_FROM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WSTOCK_CODE" Type="Int64" />
+          <Property Name="ISMANUAL_ENTRY" Type="Boolean" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
           <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
@@ -2286,6 +2299,44 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="POS_PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCT_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_DESC" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PROFIT_MARGIN_RATE" Type="Int64" Nullable="false" />
+          <Property Name="PAYBLE_PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IS_TAX_APPLIED_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="TAX_PER" Type="Int32" />
+          <Property Name="TAX_RS" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TYPE_ID" Type="Int64" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="Int64" Nullable="false" />
+          <Property Name="UNIT_ID" Type="Int64" Nullable="false" />
+          <Property Name="EXPIRY_FROM" Type="DateTime" Precision="0" />
+          <Property Name="EXPIRY_TO" Type="DateTime" Precision="0" />
+          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="POS_PRODUCT_CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATOEGORY_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_CATEGORY" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="POS_PRODUCT_PROMOTIONS">
           <Key>
             <PropertyRef Name="PROMOTION_PRODUCT_ID" />
@@ -2297,6 +2348,20 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="DISCOUNT_TYPE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="DISCOUNT_VALUE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ISPOSTED_FLAG" Type="Int16" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="POS_PRODUCT_TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_TYPE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
           <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
@@ -2355,6 +2420,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
             <PropertyRef Name="PURCHASE_ORDER_ID" />
           </Key>
           <Property Name="PURCHASE_ORDER_ID" Type="Int64" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="SHIPPMENT_DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
           <Property Name="NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
@@ -2499,6 +2565,45 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="POS_SALES">
+          <Key>
+            <PropertyRef Name="SALE_ID" />
+            <PropertyRef Name="CUSTOMER_CODE" />
+          </Key>
+          <Property Name="SALE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMER_CODE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SALE_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SALE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GRAND_TOTAL" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CASH_RECIEVE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CASH_RETURN" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="EXTRA_DISCOUNT" Type="Int32" />
+          <Property Name="BRANCH_ID" Type="Int64" Nullable="false" />
+          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="POS_SALES_DETAIL">
+          <Key>
+            <PropertyRef Name="SALE_DETAIL_ID" />
+          </Key>
+          <Property Name="SALE_DETAIL_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SALE_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_CODE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="DISCOUNT_PER" Type="Int32" Nullable="false" />
+          <Property Name="DISCOUNT_AMOUNT" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="POS_SECTIONS">
           <Key>
             <PropertyRef Name="SECTION_ID" />
@@ -2599,6 +2704,19 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="UPDATE_PREVIOUS_DATETIME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CHANGES_IN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="POS_UNITS">
+          <Key>
+            <PropertyRef Name="UNIT_ID" />
+          </Key>
+          <Property Name="UNIT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNIT" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="POS_USER">
           <Key>
             <PropertyRef Name="USER_ID" />
@@ -2676,9 +2794,12 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           </Key>
           <Property Name="VSHIPPMENT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VSHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="VSHIPPMENT_DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PURCHASE_ORDER_ID" Type="Int64" Nullable="false" />
-          <Property Name="WEARHOUSE_ID" Type="Int64" Nullable="false" />
+          <Property Name="WEARHOUSE_ID" Type="Int64" />
+          <Property Name="BRANCH_ID" Type="Int64" />
+          <Property Name="STATUS" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
           <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
@@ -2690,7 +2811,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
             <PropertyRef Name="VSHIPPMENT_DETAIL_ID" />
           </Key>
           <Property Name="VSHIPPMENT_DETAIL_ID" Type="Int64" Nullable="false" />
-          <Property Name="SHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VSHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" />
           <Property Name="PRODUCT_DESC" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
@@ -2822,10 +2943,10 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           </Key>
           <Property Name="WSHIPPMENT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="WSHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="WSHIPPMENT_DATE" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="VSHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VSHIPPMENT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="WEARHOUSE_ID" Type="Int64" Nullable="false" />
-          <Property Name="COMPANY_ID" Type="Int64" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="Int16" Nullable="false" />
           <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
@@ -2851,7 +2972,9 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Key>
             <PropertyRef Name="WSTOCK_ID" />
           </Key>
-          <Property Name="WSTOCK_ID" Type="Int64" Nullable="false" />
+          <Property Name="WSTOCK_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WSTOCK_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WEARHOUSE_ID" Type="Int64" Nullable="false" />
           <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" />
           <Property Name="QUANTITY_IN" Type="Int32" Nullable="false" />
@@ -2859,7 +2982,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="STOCK_TYPE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UNIT_PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="TOTAL_PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="VSHIPPMENT_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VSHIPPMENT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="COMPANY_ID" Type="Int64" Nullable="false" />
           <Property Name="ISPOSTED_FLAG" Type="Int16" Nullable="false" />
           <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
@@ -2911,110 +3034,6 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="ISPOSTED_FLAG" Type="Int16" Nullable="false" />
           <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="POS_PRODUCT_CATEGORY">
-          <Key>
-            <PropertyRef Name="CATEGORY_ID" />
-          </Key>
-          <Property Name="CATEGORY_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CATOEGORY_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PRODUCT_CATEGORY" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="POS_PRODUCT_TYPE">
-          <Key>
-            <PropertyRef Name="TYPE_ID" />
-          </Key>
-          <Property Name="TYPE_ID" Type="Int64" Nullable="false" />
-          <Property Name="TYPE_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PRODUCT_TYPE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="POS_SALES">
-          <Key>
-            <PropertyRef Name="SALE_ID" />
-            <PropertyRef Name="CUSTOMER_CODE" />
-          </Key>
-          <Property Name="SALE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CUSTOMER_CODE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="SALE_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SALE_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="GRAND_TOTAL" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="CASH_RECIEVE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="CASH_RETURN" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="EXTRA_DISCOUNT" Type="Int32" />
-          <Property Name="BRANCH_ID" Type="Int64" Nullable="false" />
-          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="POS_SALES_DETAIL">
-          <Key>
-            <PropertyRef Name="SALE_DETAIL_ID" />
-          </Key>
-          <Property Name="SALE_DETAIL_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SALE_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CUSTOMER_CODE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" />
-          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-          <Property Name="DISCOUNT_PER" Type="Int32" Nullable="false" />
-          <Property Name="DISCOUNT_AMOUNT" Type="Int32" Nullable="false" />
-          <Property Name="TOTAL_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="POS_UNITS">
-          <Key>
-            <PropertyRef Name="UNIT_ID" />
-          </Key>
-          <Property Name="UNIT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UNIT" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="POS_PRODUCT">
-          <Key>
-            <PropertyRef Name="PRODUCT_ID" />
-          </Key>
-          <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PRODUCT_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PRODUCT_DESC" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PROFIT_MARGIN_RATE" Type="Int64" Nullable="false" />
-          <Property Name="PAYBLE_PRICE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="IS_TAX_APPLIED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="TAX_PER" Type="Int32" />
-          <Property Name="TAX_RS" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="TYPE_ID" Type="Int64" Nullable="false" />
-          <Property Name="CATEGORY_ID" Type="Int64" Nullable="false" />
-          <Property Name="UNIT_ID" Type="Int64" Nullable="false" />
-          <Property Name="EXPIRY_FROM" Type="DateTime" Precision="0" />
-          <Property Name="EXPIRY_TO" Type="DateTime" Precision="0" />
-          <Property Name="ISACTIVE_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="ISPOSTED_FLAG" Type="Boolean" Nullable="false" />
-          <Property Name="CREATEDBY" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3304,7 +3323,6 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
                 <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
                 <ScalarProperty Name="CITY_ID" ColumnName="CITY_ID" />
-                <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="EMAIL_PASSWORD" ColumnName="EMAIL_PASSWORD" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -3505,11 +3523,10 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
                 <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
                 <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
-                <ScalarProperty Name="SALE_CODE" ColumnName="SALE_CODE" />
-                <ScalarProperty Name="WSTOCK_ID" ColumnName="WSTOCK_ID" />
+                <ScalarProperty Name="ISMANUAL_ENTRY" ColumnName="ISMANUAL_ENTRY" />
+                <ScalarProperty Name="WSTOCK_CODE" ColumnName="WSTOCK_CODE" />
                 <ScalarProperty Name="SHIPPMENT_FROM" ColumnName="SHIPPMENT_FROM" />
-                <ScalarProperty Name="SHIPPMENT_CODE" ColumnName="SHIPPMENT_CODE" />
+                <ScalarProperty Name="WV_SHIPPMENT_CODE" ColumnName="WV_SHIPPMENT_CODE" />
                 <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
                 <ScalarProperty Name="UNIT_PRICE" ColumnName="UNIT_PRICE" />
                 <ScalarProperty Name="STOCK_TYPE" ColumnName="STOCK_TYPE" />
@@ -3517,6 +3534,9 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="QUANTITY_IN" ColumnName="QUANTITY_IN" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="SALE_CODE" ColumnName="SALE_CODE" />
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+                <ScalarProperty Name="DSTOCK_CODE" ColumnName="DSTOCK_CODE" />
                 <ScalarProperty Name="DSTOCK_ID" ColumnName="DSTOCK_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3693,6 +3713,46 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="POS_PRODUCT">
+            <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT">
+              <MappingFragment StoreEntitySet="POS_PRODUCT">
+                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
+                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
+                <ScalarProperty Name="EXPIRY_TO" ColumnName="EXPIRY_TO" />
+                <ScalarProperty Name="EXPIRY_FROM" ColumnName="EXPIRY_FROM" />
+                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="TAX_RS" ColumnName="TAX_RS" />
+                <ScalarProperty Name="TAX_PER" ColumnName="TAX_PER" />
+                <ScalarProperty Name="IS_TAX_APPLIED_FLAG" ColumnName="IS_TAX_APPLIED_FLAG" />
+                <ScalarProperty Name="PAYBLE_PRICE" ColumnName="PAYBLE_PRICE" />
+                <ScalarProperty Name="PROFIT_MARGIN_RATE" ColumnName="PROFIT_MARGIN_RATE" />
+                <ScalarProperty Name="PRODUCT_DESC" ColumnName="PRODUCT_DESC" />
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_PRODUCT_CATEGORY">
+            <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT_CATEGORY">
+              <MappingFragment StoreEntitySet="POS_PRODUCT_CATEGORY">
+                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
+                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
+                <ScalarProperty Name="PRODUCT_CATEGORY" ColumnName="PRODUCT_CATEGORY" />
+                <ScalarProperty Name="CATOEGORY_CODE" ColumnName="CATOEGORY_CODE" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="POS_PRODUCT_PROMOTIONS">
             <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT_PROMOTIONS">
               <MappingFragment StoreEntitySet="POS_PRODUCT_PROMOTIONS">
@@ -3707,6 +3767,21 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="MAIN_PRODUCT_ID" ColumnName="MAIN_PRODUCT_ID" />
                 <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
                 <ScalarProperty Name="PROMOTION_PRODUCT_ID" ColumnName="PROMOTION_PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_PRODUCT_TYPE">
+            <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT_TYPE">
+              <MappingFragment StoreEntitySet="POS_PRODUCT_TYPE">
+                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
+                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
+                <ScalarProperty Name="PRODUCT_TYPE" ColumnName="PRODUCT_TYPE" />
+                <ScalarProperty Name="TYPE_CODE" ColumnName="TYPE_CODE" />
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3778,6 +3853,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="SHIPPMENT_DATE" ColumnName="SHIPPMENT_DATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="PURCHASE_ORDER_ID" ColumnName="PURCHASE_ORDER_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3919,6 +3995,46 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="POS_SALES">
+            <EntityTypeMapping TypeName="POSDataModel.POS_SALES">
+              <MappingFragment StoreEntitySet="POS_SALES">
+                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
+                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
+                <ScalarProperty Name="EXTRA_DISCOUNT" ColumnName="EXTRA_DISCOUNT" />
+                <ScalarProperty Name="CASH_RETURN" ColumnName="CASH_RETURN" />
+                <ScalarProperty Name="CASH_RECIEVE" ColumnName="CASH_RECIEVE" />
+                <ScalarProperty Name="GRAND_TOTAL" ColumnName="GRAND_TOTAL" />
+                <ScalarProperty Name="SALE_DATE" ColumnName="SALE_DATE" />
+                <ScalarProperty Name="SALE_CODE" ColumnName="SALE_CODE" />
+                <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
+                <ScalarProperty Name="SALE_ID" ColumnName="SALE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_SALES_DETAIL">
+            <EntityTypeMapping TypeName="POSDataModel.POS_SALES_DETAIL">
+              <MappingFragment StoreEntitySet="POS_SALES_DETAIL">
+                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
+                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
+                <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
+                <ScalarProperty Name="DISCOUNT_PER" ColumnName="DISCOUNT_PER" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
+                <ScalarProperty Name="SALE_CODE" ColumnName="SALE_CODE" />
+                <ScalarProperty Name="SALE_DETAIL_ID" ColumnName="SALE_DETAIL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="POS_SECTIONS">
             <EntityTypeMapping TypeName="POSDataModel.POS_SECTIONS">
               <MappingFragment StoreEntitySet="POS_SECTIONS">
@@ -4025,6 +4141,20 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="POS_UNITS">
+            <EntityTypeMapping TypeName="POSDataModel.POS_UNITS">
+              <MappingFragment StoreEntitySet="POS_UNITS">
+                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
+                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="POS_USER">
             <EntityTypeMapping TypeName="POSDataModel.POS_USER">
               <MappingFragment StoreEntitySet="POS_USER">
@@ -4107,9 +4237,12 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
                 <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
                 <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
                 <ScalarProperty Name="WEARHOUSE_ID" ColumnName="WEARHOUSE_ID" />
                 <ScalarProperty Name="PURCHASE_ORDER_ID" ColumnName="PURCHASE_ORDER_ID" />
                 <ScalarProperty Name="VSHIPPMENT_DATE" ColumnName="VSHIPPMENT_DATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="VSHIPPMENT_CODE" ColumnName="VSHIPPMENT_CODE" />
                 <ScalarProperty Name="VSHIPPMENT_ID" ColumnName="VSHIPPMENT_ID" />
               </MappingFragment>
@@ -4127,7 +4260,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="PRODUCT_DESC" ColumnName="PRODUCT_DESC" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-                <ScalarProperty Name="SHIPPMENT_CODE" ColumnName="SHIPPMENT_CODE" />
+                <ScalarProperty Name="VSHIPPMENT_CODE" ColumnName="VSHIPPMENT_CODE" />
                 <ScalarProperty Name="VSHIPPMENT_DETAIL_ID" ColumnName="VSHIPPMENT_DETAIL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4260,10 +4393,10 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
                 <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
                 <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
                 <ScalarProperty Name="WEARHOUSE_ID" ColumnName="WEARHOUSE_ID" />
                 <ScalarProperty Name="VSHIPPMENT_CODE" ColumnName="VSHIPPMENT_CODE" />
                 <ScalarProperty Name="WSHIPPMENT_DATE" ColumnName="WSHIPPMENT_DATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="WSHIPPMENT_CODE" ColumnName="WSHIPPMENT_CODE" />
                 <ScalarProperty Name="WSHIPPMENT_ID" ColumnName="WSHIPPMENT_ID" />
               </MappingFragment>
@@ -4302,6 +4435,8 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="QUANTITY_IN" ColumnName="QUANTITY_IN" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="WEARHOUSE_ID" ColumnName="WEARHOUSE_ID" />
+                <ScalarProperty Name="WSTOCK_CODE" ColumnName="WSTOCK_CODE" />
                 <ScalarProperty Name="WSTOCK_ID" ColumnName="WSTOCK_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4341,115 +4476,6 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
                 <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
                 <ScalarProperty Name="SYS_APP_MODULE_ID" ColumnName="SYS_APP_MODULE_ID" />
                 <ScalarProperty Name="USER_SESSION_ID" ColumnName="USER_SESSION_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POS_PRODUCT_CATEGORY">
-            <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT_CATEGORY">
-              <MappingFragment StoreEntitySet="POS_PRODUCT_CATEGORY">
-                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
-                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
-                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
-                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
-                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
-                <ScalarProperty Name="PRODUCT_CATEGORY" ColumnName="PRODUCT_CATEGORY" />
-                <ScalarProperty Name="CATOEGORY_CODE" ColumnName="CATOEGORY_CODE" />
-                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POS_PRODUCT_TYPE">
-            <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT_TYPE">
-              <MappingFragment StoreEntitySet="POS_PRODUCT_TYPE">
-                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
-                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
-                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
-                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
-                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
-                <ScalarProperty Name="PRODUCT_TYPE" ColumnName="PRODUCT_TYPE" />
-                <ScalarProperty Name="TYPE_CODE" ColumnName="TYPE_CODE" />
-                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POS_SALES">
-            <EntityTypeMapping TypeName="POSDataModel.POS_SALES">
-              <MappingFragment StoreEntitySet="POS_SALES">
-                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
-                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
-                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
-                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
-                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="BRANCH_ID" ColumnName="BRANCH_ID" />
-                <ScalarProperty Name="EXTRA_DISCOUNT" ColumnName="EXTRA_DISCOUNT" />
-                <ScalarProperty Name="CASH_RETURN" ColumnName="CASH_RETURN" />
-                <ScalarProperty Name="CASH_RECIEVE" ColumnName="CASH_RECIEVE" />
-                <ScalarProperty Name="GRAND_TOTAL" ColumnName="GRAND_TOTAL" />
-                <ScalarProperty Name="SALE_DATE" ColumnName="SALE_DATE" />
-                <ScalarProperty Name="SALE_CODE" ColumnName="SALE_CODE" />
-                <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
-                <ScalarProperty Name="SALE_ID" ColumnName="SALE_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POS_SALES_DETAIL">
-            <EntityTypeMapping TypeName="POSDataModel.POS_SALES_DETAIL">
-              <MappingFragment StoreEntitySet="POS_SALES_DETAIL">
-                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
-                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
-                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
-                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
-                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
-                <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
-                <ScalarProperty Name="DISCOUNT_PER" ColumnName="DISCOUNT_PER" />
-                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-                <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
-                <ScalarProperty Name="SALE_CODE" ColumnName="SALE_CODE" />
-                <ScalarProperty Name="SALE_DETAIL_ID" ColumnName="SALE_DETAIL_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POS_UNITS">
-            <EntityTypeMapping TypeName="POSDataModel.POS_UNITS">
-              <MappingFragment StoreEntitySet="POS_UNITS">
-                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
-                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
-                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
-                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
-                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
-                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
-                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="POS_PRODUCT">
-            <EntityTypeMapping TypeName="POSDataModel.POS_PRODUCT">
-              <MappingFragment StoreEntitySet="POS_PRODUCT">
-                <ScalarProperty Name="MODIFIEDWHEN" ColumnName="MODIFIEDWHEN" />
-                <ScalarProperty Name="CREATEDWHEN" ColumnName="CREATEDWHEN" />
-                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
-                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
-                <ScalarProperty Name="ISPOSTED_FLAG" ColumnName="ISPOSTED_FLAG" />
-                <ScalarProperty Name="ISACTIVE_FLAG" ColumnName="ISACTIVE_FLAG" />
-                <ScalarProperty Name="EXPIRY_TO" ColumnName="EXPIRY_TO" />
-                <ScalarProperty Name="EXPIRY_FROM" ColumnName="EXPIRY_FROM" />
-                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
-                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
-                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
-                <ScalarProperty Name="TAX_RS" ColumnName="TAX_RS" />
-                <ScalarProperty Name="TAX_PER" ColumnName="TAX_PER" />
-                <ScalarProperty Name="IS_TAX_APPLIED_FLAG" ColumnName="IS_TAX_APPLIED_FLAG" />
-                <ScalarProperty Name="PAYBLE_PRICE" ColumnName="PAYBLE_PRICE" />
-                <ScalarProperty Name="PROFIT_MARGIN_RATE" ColumnName="PROFIT_MARGIN_RATE" />
-                <ScalarProperty Name="PRODUCT_DESC" ColumnName="PRODUCT_DESC" />
-                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
-                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -20,6 +20,36 @@
             </div>
         </div>
         <!-- Start Page Content -->
+        <div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="ModelContent">
+                            @*@{
+                                foreach (var item in Model)
+                                {
+                                    Html.RenderPartial("_StockDetail", item.DisplayStock);
+                                    break;
+                                }
+                            }*@
+                            @Url.Action("GetStockDetail","Product")
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -31,7 +61,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table id="myTable" class="table table-hover table-condensed"  >
+                            <table id="myTable" class="table table-hover table-condensed">
                                 <thead>
                                     <tr>
                                         <th>
@@ -53,67 +83,112 @@
                                             @Html.DisplayName("PRODUCT CATEGORY")
                                         </th>
                                         <th>
-                                            @Html.DisplayName("UNIT_ID")
+                                            @Html.DisplayName("UNIT")
                                         </th>
                                         <th>
                                             @Html.DisplayName("ISACTIVE")
                                         </th>
                                         <th style="width: 150.25px;">ACTIONS</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
-                                    
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PRODUCT_DESC)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PROFIT_MARGIN_RATE)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PAYBLE_PRICE)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TypeDesc)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.CategoryDesc)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.UnitDesc)
-                                            </td>
-                                            <td>
-                                                @if (item.ISACTIVE_FLAG == true)
-                                                {
-                                                    <span class="badge badge-success">Active</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="badge badge-danger">Not Active</span>
-                                                }
-                                            </td>
-                                            <td style="width: 150.25px;">
-                                                <button type="button" class="btn btn-outline-secondary">
-                                                    @Html.ActionLink(" ", "Edit", new { id = item.PRODUCT_ID }, new { @class = "fa fa-pencil" })
-                                                </button>
-                                                <button type="button" class="btn btn-outline-secondary">
-                                                    @Html.ActionLink(" ", "Details", new { id = item.PRODUCT_ID }, new { @class = "fa fa-search" })
-                                                </button>
-                                                <button type="button" class="btn btn-outline-secondary">
-                                                    @Html.ActionLink(" ", "Delete", new { id = item.PRODUCT_ID }, new { @class = "fa fa-trash", @style = "color:red;" })
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    }
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PRODUCT_DESC)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PROFIT_MARGIN_RATE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PAYBLE_PRICE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TypeDesc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoryDesc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UnitDesc)
+                                        </td>
+                                        <td>
+                                            @if (item.ISACTIVE_FLAG == true)
+                                            {
+                                                <span class="badge badge-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Not Active</span>
+                                            }
+                                        </td>
+                                        <td style="width: 150.25px;">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Edit", new { id = item.PRODUCT_ID }, new { @class = "fa fa-pencil" })
+                                            </button>
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Details", new { id = item.PRODUCT_ID }, new { @class = "fa fa-search" })
+                                            </button>
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                @Html.ActionLink(" ", "Delete", new { id = item.PRODUCT_ID }, new { @class = "fa fa-trash", @style = "color:red;" })
+                                            </button>
+                                        </td>
+                                        <td>
+                                            @*<button type="button" class="btn btn-default">
+                                                @Html.ActionLink("Add To Stock", "GetStockDetail", new { id = item.PRODUCT_ID }, new { @class = "fa fa-plus"})
+                                            </button>*@
+                                            @*<button class="btn btn-default" type="button" id="btnAddToStock" dataproductid="@item.PRODUCT_ID">
+                                                <span class="fa fa-plus"></span> Add To Stock
+                                            </button>*@
+                                            <button class="btn btn-default" type="button" id="btnAdToStock"  data-toggle="modal" data-target="#myModal" dataproductid="@item.PRODUCT_ID">
+            <span class="fa fa-plus"></span> Add To Stock
+        </button>
+
+                                        </td>
+
+                                    </tr>
+                                }
                             </table>
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[id='btnAddToStock']").click(function () {
+            debugger;
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                url: '@Url.Action("GetStockDetail", "Product")',
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                //    data: Model,
+                dataType: "json",
+                success: function () {
+                    debugger;
+                    $('#ModalContent').html();
+                    $('#myModal').modal(options);
+                    $('#myModal').modal('show');
+
+                },
+                error: function (jqXHR, exception, error) {
+                    alert("Dynamic content load failed.");
+                }
+            });
+        });
+        $("#btnClose").click(function () {
+            $('#myModal').modal('hide')
+        });
+        $("#modal .close").click()
+    });
+</script>

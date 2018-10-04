@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALCompanyBranch.cs" />
+    <Compile Include="DALDisplayStock.cs" />
     <Compile Include="DALMenu.cs" />
     <Compile Include="DALProduct.cs" />
     <Compile Include="DALProductCategory.cs" />

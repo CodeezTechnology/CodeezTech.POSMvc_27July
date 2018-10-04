@@ -15,18 +15,20 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     public partial class POS_DISPLAY_STOCK
     {
         public long DSTOCK_ID { get; set; }
+        public string DSTOCK_CODE { get; set; }
+        public long BRANCH_ID { get; set; }
+        public string SALE_CODE { get; set; }
         public System.DateTime DATE { get; set; }
         public long PRODUCT_ID { get; set; }
-        public int QUANTITY_IN { get; set; }
-        public int QUANTITY_OUT { get; set; }
+        public Nullable<int> QUANTITY_IN { get; set; }
+        public Nullable<int> QUANTITY_OUT { get; set; }
         public string STOCK_TYPE { get; set; }
         public decimal UNIT_PRICE { get; set; }
         public decimal TOTAL_PRICE { get; set; }
-        public string SHIPPMENT_CODE { get; set; }
+        public string WV_SHIPPMENT_CODE { get; set; }
         public string SHIPPMENT_FROM { get; set; }
-        public Nullable<long> WSTOCK_ID { get; set; }
-        public string SALE_CODE { get; set; }
-        public long BRANCH_ID { get; set; }
+        public Nullable<long> WSTOCK_CODE { get; set; }
+        public bool ISMANUAL_ENTRY { get; set; }
         public bool ISPOSTED_FLAG { get; set; }
         public string CREATEDBY { get; set; }
         public string MODIFIEDBY { get; set; }

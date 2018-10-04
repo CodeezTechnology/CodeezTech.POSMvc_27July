@@ -23,7 +23,6 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public string EMAIL { get; set; }
         public string EMAIL_PASSWORD { get; set; }
         public string ADDRESS { get; set; }
-        public long COMPANY_ID { get; set; }
         public long CITY_ID { get; set; }
         public Nullable<long> STATE_ID { get; set; }
         public Nullable<long> COUNTRY_ID { get; set; }

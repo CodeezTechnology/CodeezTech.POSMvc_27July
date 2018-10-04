@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BALCompany.cs" />
     <Compile Include="BALCompanyBranch.cs" />
+    <Compile Include="BALDisplayStock.cs" />
     <Compile Include="BALMenu.cs" />
     <Compile Include="BALProduct.cs" />
     <Compile Include="BALProductCategory.cs" />

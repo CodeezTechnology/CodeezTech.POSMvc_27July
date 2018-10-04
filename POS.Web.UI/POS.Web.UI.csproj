@@ -163,6 +163,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\DisplayStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
@@ -1018,6 +1019,12 @@
     <Content Include="Views\Units\Details.cshtml" />
     <Content Include="Views\Units\Edit.cshtml" />
     <Content Include="Views\Units\Index.cshtml" />
+    <Content Include="Views\Product\_StockDetail.cshtml" />
+    <Content Include="Views\DisplayStock\Create.cshtml" />
+    <Content Include="Views\DisplayStock\Delete.cshtml" />
+    <Content Include="Views\DisplayStock\Details.cshtml" />
+    <Content Include="Views\DisplayStock\Edit.cshtml" />
+    <Content Include="Views\DisplayStock\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

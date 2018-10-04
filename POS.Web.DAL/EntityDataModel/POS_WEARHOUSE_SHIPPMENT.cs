@@ -16,10 +16,10 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     {
         public long WSHIPPMENT_ID { get; set; }
         public string WSHIPPMENT_CODE { get; set; }
+        public string DESCRIPTION { get; set; }
         public System.DateTime WSHIPPMENT_DATE { get; set; }
         public string VSHIPPMENT_CODE { get; set; }
         public long WEARHOUSE_ID { get; set; }
-        public long COMPANY_ID { get; set; }
         public short ISPOSTED_FLAG { get; set; }
         public string CREATEDBY { get; set; }
         public string MODIFIEDBY { get; set; }
