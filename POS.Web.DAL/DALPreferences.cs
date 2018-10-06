@@ -64,6 +64,7 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException("User Info not completed in Data Layer");
             }
         }
+
         public POS_USER GetById(long? id)
         {
             try
