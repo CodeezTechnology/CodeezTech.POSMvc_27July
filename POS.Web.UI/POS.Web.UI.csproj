@@ -165,6 +165,7 @@
     <Compile Include="Controllers\CashierCounterController.cs" />
     <Compile Include="Controllers\CashierStatusController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\DisplayStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />

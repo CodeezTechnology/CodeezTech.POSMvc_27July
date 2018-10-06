@@ -46,16 +46,13 @@ namespace POS.Web.UI.Controllers
         public ActionResult Login(POS_USER userModel)
         {
              POS_USER objUser = new POS_USER();
-        
              try
              {
                  POS_USER _objUser = _objBALUser.Login(userModel);
-                POS_BRANCH objBranchDetail = _objBALCompBranch.GetBranchInfo(Convert.ToInt32(_objUser.BRANCH_ID));
                  objUser = _objUser;
                  if (objUser.NotifyMessage == "user")
                  {
                      Session[SessionVariables.Session_UserInfo] = _objUser;
-                    Session[SessionVariables.Session_BranchInfo] = objBranchDetail;
                      SessionHandling.UserId = _objUser.USER_ID;
                      SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
                      
@@ -65,8 +62,7 @@ namespace POS.Web.UI.Controllers
                  else if (objUser.NotifyMessage == "admin" || objUser.NotifyMessage == "superadmin")
                  {
                      Session[SessionVariables.Session_UserInfo] = _objUser;
-                    Session[SessionVariables.Session_BranchInfo] = objBranchDetail;
-                    SessionHandling.UserId = _objUser.USER_ID;
+                     SessionHandling.UserId = _objUser.USER_ID;
                      SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
                  
                      ShowAlert(AlertType.Success, "Welcome " + SessionHandling.UserInformation.USERNAME);

@@ -54,6 +54,7 @@
     <Compile Include="DALCashierCounter.cs" />
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALCompanyBranch.cs" />
+    <Compile Include="DALDisplayStock.cs" />
     <Compile Include="DALMenu.cs" />
     <Compile Include="DALPreferences.cs" />
     <Compile Include="DALUser.cs" />
@@ -234,6 +235,9 @@
     <Compile Include="EntityDataModel\POS_SYS_TRANSACTION_LOG.cs">
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataModel\POS_UNITS.cs">
+      <DependentUpon>POSDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataModel\POS_USER.cs">
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
@@ -302,6 +306,7 @@
     <Compile Include="PartialClasses\POS_COMPANY.cs" />
     <Compile Include="PartialClasses\POS_MENU.cs" />
     <Compile Include="PartialClasses\POS_MENU_RIGHTS.cs" />
+    <Compile Include="PartialClasses\POS_PRODUCT.cs" />
     <Compile Include="PartialClasses\POS_REPORT_RIGHTS.cs" />
     <Compile Include="PartialClasses\POS_USER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
