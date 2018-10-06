@@ -15,7 +15,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     public partial class POS_VENDOR_SHIPPMENT_DETAIL
     {
         public long VSHIPPMENT_DETAIL_ID { get; set; }
-        public string SHIPPMENT_CODE { get; set; }
+        public string VSHIPPMENT_CODE { get; set; }
         public long PRODUCT_ID { get; set; }
         public string PRODUCT_DESC { get; set; }
         public int QUANTITY { get; set; }

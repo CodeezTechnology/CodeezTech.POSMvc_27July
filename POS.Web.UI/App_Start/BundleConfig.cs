@@ -40,7 +40,7 @@ namespace POS.Web.UI
                                "~/Scripts/js/lib/morris-chart/morris.js",
                                  "~/Scripts/js/lib/morris-chart/dashboard1-init.js",
                                    "~/Scripts/js/lib/calendar-2/moment.latest.min.js",
-                                     "~/Scripts/js/lib/calendar-2/semantic.ui.min.js",
+                                     //"~/Scripts/js/lib/calendar-2/semantic.ui.min.js",
                                      "~/Scripts/js/lib/calendar-2/prism.min.js",
                                      "~/Scripts/js/lib/calendar-2/pignose.calendar.min.js",
                                         "~/Scripts/js/lib/calendar-2/pignose.init.js",

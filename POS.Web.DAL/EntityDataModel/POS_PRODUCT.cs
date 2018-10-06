@@ -19,7 +19,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public string PRODUCT_DESC { get; set; }
         public long PROFIT_MARGIN_RATE { get; set; }
         public decimal PAYBLE_PRICE { get; set; }
-        public short IS_TAX_APPLIED_FLAG { get; set; }
+        public bool IS_TAX_APPLIED_FLAG { get; set; }
         public Nullable<int> TAX_PER { get; set; }
         public Nullable<decimal> TAX_RS { get; set; }
         public long TYPE_ID { get; set; }
@@ -32,6 +32,6 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public string CREATEDBY { get; set; }
         public string MODIFIEDBY { get; set; }
         public System.DateTime CREATEDWHEN { get; set; }
-        public System.DateTime MODIFIEDWHEN { get; set; }
+        public Nullable<System.DateTime> MODIFIEDWHEN { get; set; }
     }
 }

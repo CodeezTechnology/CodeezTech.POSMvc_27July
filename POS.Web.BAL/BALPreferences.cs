@@ -16,6 +16,7 @@ namespace CodeezTech.POS.Web.BAL
         Notify objNotify = new Notify();
        
 
+
         public List<POS_USER> List()
         {
             List<POS_USER> lst = new List<POS_USER>();

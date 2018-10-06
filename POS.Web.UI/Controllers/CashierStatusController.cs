@@ -14,6 +14,7 @@ namespace POS.Web.UI.Controllers
     {
         private Entities db = new Entities();
 
+
         // GET: CashierStatus
         public ActionResult Index()
         {

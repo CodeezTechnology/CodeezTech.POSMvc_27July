@@ -1,0 +1,143 @@
+﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_PRODUCT
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/Product/Index"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class=""> &nbsp; Product </h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Product </li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-validation">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 style="display: inline-block; font-weight: bold;">Edit</h4>
+                                            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.PRODUCT_ID)
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label class="col-md-3 col-form-label " >Product Code</label>
+                                            @Html.TextBoxFor(x => x.PRODUCT_CODE, new { @style = "font-weight:Bold;", @class = "form-control input-rounded", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.PRODUCT_CODE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label class="col-md-3 col-form-label " >Product Name</label>
+                                            @Html.TextBoxFor(model => model.PRODUCT_DESC, new { @class = "form-control input-rounded", @required = "True", @maxlength = "30" })
+                                            @Html.ValidationMessageFor(model => model.PRODUCT_DESC, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label class="col-md-6 col-form-label text-dark" >Profit Margin Rate</label>
+                                            @Html.TextBoxFor(model => model.PROFIT_MARGIN_RATE, new { @class = "form-control input-rounded", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.PROFIT_MARGIN_RATE, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="col-md-6 col-form-label text-dark" >Payble Price</label>
+                                            @Html.TextBoxFor(model => model.PAYBLE_PRICE, new { @class = "form-control input-rounded", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.PAYBLE_PRICE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Product Category</label>
+                                            @Html.DropDownListFor(model => model.CategoryId, (IEnumerable<SelectListItem>)TempData["ProductCategoryList"], "Please Select", new { @class = "form-control input-default ", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Product Type</label>
+                                            @Html.DropDownListFor(model => model.TypeId, (IEnumerable<SelectListItem>)TempData["ProductTypeList"], "Please Select", new { @class = "form-control input-rounded", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Unit Type</label>
+                                            @Html.DropDownListFor(model => model.UnitId, (IEnumerable<SelectListItem>)TempData["UnitList"], "Please Select", new { @class = "form-control input-rounded", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.UNIT_ID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Is Tax Applied?</label>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(model => model.IS_TAX_APPLIED_FLAG, new { @class = "custom-control-input", @id = "IS_TAX_APPLIED_FLAG" })
+                                                @Html.ValidationMessageFor(model => model.IS_TAX_APPLIED_FLAG)
+                                                <label class="custom-control-label" for="IS_TAX_APPLIED_FLAG"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Tax(Rs)</label>
+                                            @Html.TextBoxFor(model => model.TAX_RS, new { @class = "form-control input-rounded", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.TAX_RS)
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Tax(%)</label>
+                                            @Html.TextBoxFor(model => model.TAX_PER, new { @class = "form-control input-rounded", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.TAX_PER)
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Expiry From</label>
+
+                                            @Html.TextBoxFor(model => model.EXPIRY_FROM, new { @class = "form-control input-rounded", @required = "True", @Type = "date", @Value= Convert.ToDateTime(Model.EXPIRY_FROM).ToString("yyyy-MM-dd") })
+                                            @Html.ValidationMessageFor(model => model.EXPIRY_FROM)
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Expiry To</label>
+                                            @Html.TextBoxFor(model => model.EXPIRY_TO, new { @class = " form-control input-rounded", @required = "True", @Type = "date", @Value = Convert.ToDateTime(Model.EXPIRY_TO).ToString("yyyy-MM-dd") })
+                                            @Html.ValidationMessageFor(model => model.EXPIRY_TO)
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-md-6 col-form-label text-dark" >Is Active</label>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(model => model.ISACTIVE_FLAG, new { @class = "custom-control-input", @id = "defaultUnchecked" })
+                                                @Html.ValidationMessageFor(model => model.ISACTIVE_FLAG)
+                                                <label class="custom-control-label" for="defaultUnchecked"></label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+</div>

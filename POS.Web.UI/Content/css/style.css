@@ -1916,7 +1916,7 @@ textarea {
   margin-bottom: 0;
 }
 .page-titles {
-  background: #ffffff;
+  background:  #ececec;/*#ffffff;*/
   margin: 0 0 30px;
   padding: 15px 10px;
   position: relative;
@@ -2256,7 +2256,7 @@ textarea {
   padding: 0;
 }
 .card {
-  background: #ffffff none repeat scroll 0 0;
+  background:  #ececec;/*#ffffff none repeat scroll 0 0;*/
   margin: 15px 0;
   padding: 20px;
   border: 0 solid #e7e7e7;

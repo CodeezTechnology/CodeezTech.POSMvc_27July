@@ -171,6 +171,7 @@ namespace POS.Web.UI.Controllers
                     return RedirectToAction("Login", "Home");
                 }
             }
+
             catch (Exception ex)
             {
                 error.Breadcrum = "Home > Cashier Counter > List > Create";

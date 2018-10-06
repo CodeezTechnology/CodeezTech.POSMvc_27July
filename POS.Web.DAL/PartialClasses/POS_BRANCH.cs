@@ -51,6 +51,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             get { return Country.COUNTRY_ID; }
             set { Country.COUNTRY_ID = value; }
         }
+     
         [NotMapped]
         public string CompanyName { get; set; }
         [NotMapped]
