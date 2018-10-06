@@ -14,19 +14,18 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     public partial class spGetLoginLevel_Result
     {
         public long USER_ID { get; set; }
-        public string PU_CODE { get; set; }
-        public string PU_USERNAME { get; set; }
-        public string PU_PASSWORD { get; set; }
-        public string PU_EMAIL { get; set; }
-        public short PU_ISACTIVE_FLAG { get; set; }
-        public short PU_LOGIN_TYPE { get; set; }
-        public string PU_MASTER_PASSWORD { get; set; }
-        public Nullable<long> BRANCH_ID { get; set; }
-        public Nullable<short> PU_ISPOSTED_FLAG { get; set; }
+        public string CODE { get; set; }
+        public string USERNAME { get; set; }
+        public string PASSWORD { get; set; }
+        public string EMAIL { get; set; }
+        public bool ISACTIVE_FLAG { get; set; }
+        public short LOGIN_TYPE { get; set; }
+        public string MASTER_PASSWORD { get; set; }
+        public long BRANCH_ID { get; set; }
+        public Nullable<bool> ISPOSTED_FLAG { get; set; }
         public string CREATEDBY { get; set; }
         public string MODIFIEDBY { get; set; }
         public Nullable<System.DateTime> CREATEDWHEN { get; set; }
         public Nullable<System.DateTime> MODIFIEDWHEN { get; set; }
-        public Nullable<long> ACCESS_GROUP_ID { get; set; }
     }
 }

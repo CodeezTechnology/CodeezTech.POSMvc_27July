@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BALCashierCounter.cs" />
     <Compile Include="BALCompany.cs" />
     <Compile Include="BALCompanyBranch.cs" />
     <Compile Include="BALMenu.cs" />

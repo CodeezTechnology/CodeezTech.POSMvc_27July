@@ -4,79 +4,79 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="103bff2016e2431c9e753832245119df" Name="Diagram1">
-        <EntityTypeShape EntityType="POSDataModel.POS_ACCESS_GROUP" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_ACCOUNTS_LEVEL_I" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_ACCOUNTS_LEVEL_II" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_ACCOUNTS_LEVEL_III" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_BANK" Width="1.5" PointX="2.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_BANK_BRANCH" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_BRANCH" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_CASHIER_COUNTER" Width="1.5" PointX="6.75" PointY="6.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_CITY" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_COMPANY" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_COUNTRY" Width="1.5" PointX="2.75" PointY="8.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_CUSTOMER" Width="1.5" PointX="8.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_CUSTOMER_PROMOTIONS" Width="1.5" PointX="8.75" PointY="8.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_DISPLAY_FLOORS" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_DISPLAY_INVENTORY_TRACKING" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_DISPLAY_RAGS" Width="1.5" PointX="10.75" PointY="8.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_DISPLAY_RAGS_FLOOR" Width="1.5" PointX="4.75" PointY="11.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_DISPLAY_SECTIONS" Width="1.5" PointX="12.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_DISPLAY_STOCK" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_EMPLOYEE_TYPE" Width="1.5" PointX="12.75" PointY="10.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_EXCEPTION_LOG" Width="1.5" PointX="0.75" PointY="13.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_GENDER" Width="1.5" PointX="6.75" PointY="13.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_GENERAL_LEDGER" Width="1.5" PointX="8.75" PointY="13.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_INVOICE" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_LOCATION" Width="1.5" PointX="14.75" PointY="5.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_MENU" Width="1.5" PointX="14.75" PointY="9.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_MENU_RIGHTS" Width="1.5" PointX="10.75" PointY="14.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PAYMENT_DETAIL" Width="1.5" PointX="12.75" PointY="14.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PAYMENT_TYPE" Width="1.5" PointX="14.75" PointY="13.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT" Width="1.5" PointX="2.75" PointY="15.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_CATEGORY" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_PROMOTIONS" Width="1.5" PointX="16.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PRODUCT_TYPE" Width="1.5" PointX="16.75" PointY="8.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PROMOTION_LUCKDRAW_COUPON" Width="1.5" PointX="16.75" PointY="12.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PROMOTION_LUCKYDRAW" Width="1.5" PointX="16.75" PointY="16.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PROMOTIONS" Width="1.5" PointX="4.75" PointY="17.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PURCHASE_ORDER" Width="1.5" PointX="18.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_PURCHASE_ORDER_LOG" Width="1.5" PointX="18.75" PointY="5.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_REFUND_PRODUCTS" Width="1.5" PointX="6.75" PointY="18.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_REPORT_RIGHTS" Width="1.5" PointX="8.75" PointY="18.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_REPORTS" Width="1.5" PointX="18.75" PointY="9.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_RFQ" Width="1.5" PointX="18.75" PointY="14.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_RFQ_DETAIL" Width="1.5" PointX="18.75" PointY="19.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_RFQ_LOG" Width="1.5" PointX="20.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_RIDER" Width="1.5" PointX="20.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SALES" Width="1.5" PointX="20.75" PointY="10.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SECTIONS" Width="1.5" PointX="10.75" PointY="20.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SHIFT" Width="1.5" PointX="12.75" PointY="20.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_STATE" Width="1.5" PointX="14.75" PointY="20.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SUPERVISOR" Width="1.5" PointX="20.75" PointY="15.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SYS_APP_MODULE" Width="1.5" PointX="0.75" PointY="21.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SYS_TRANSACTION_LOG" Width="1.5" PointX="20.75" PointY="21.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_USER" Width="1.5" PointX="22.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_USER_DATA_SECURITY" Width="1.5" PointX="2.75" PointY="22.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_USER_SESSION" Width="1.5" PointX="22.75" PointY="5.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_VENDOR" Width="1.5" PointX="22.75" PointY="9.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_VENDOR_SHIPPMENT" Width="1.5" PointX="22.75" PointY="14.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_VENDOR_SHIPPMENT_DETAIL" Width="1.5" PointX="22.75" PointY="18.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE" Width="1.5" PointX="22.75" PointY="22.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_FLOOR" Width="1.5" PointX="4.75" PointY="23.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_INVENTORY_TRACKING" Width="1.5" PointX="6.75" PointY="23.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_PRODUCTS" Width="1.5" PointX="16.75" PointY="23.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_RAGS" Width="1.5" PointX="24.75" PointY="0.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_RAGS_FLOOR" Width="1.5" PointX="24.75" PointY="4.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_SECTIONS" Width="1.5" PointX="24.75" PointY="8.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_SHIPPMENT" Width="1.5" PointX="8.75" PointY="24.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_SHIPPMENT_DETAIL" Width="1.5" PointX="10.75" PointY="24.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_WEARHOUSE_STOCK" Width="1.5" PointX="24.75" PointY="12.75" />
-        <EntityTypeShape EntityType="POSDataModel.sysdiagram" Width="1.5" PointX="12.75" PointY="24.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_CUSTOMER_PROMOTION_DETAIL" Width="1.5" PointX="24.75" PointY="17.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_SALES_DETAIL" Width="1.5" PointX="24.75" PointY="21.75" />
-        <EntityTypeShape EntityType="POSDataModel.POS_USER_LOG" Width="1.5" PointX="26.75" PointY="0.75" />
+      <Diagram DiagramId="1f22044d9edd4197853a66fa16f35299" Name="Diagram1">
+        <EntityTypeShape EntityType="POSModel.POS_ACCESS_GROUP" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_ACCOUNTS_LEVEL_I" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_ACCOUNTS_LEVEL_II" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_ACCOUNTS_LEVEL_III" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_BANK" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_BANK_BRANCH" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_BRANCH" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_CASHIER_COUNTER" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_CITY" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_COMPANY" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_COUNTRY" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_CUSTOMER" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_CUSTOMER_PROMOTIONS" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_DISPLAY_FLOORS" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_DISPLAY_INVENTORY_TRACKING" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_DISPLAY_RAGS" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_DISPLAY_RAGS_FLOOR" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_DISPLAY_SECTIONS" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_DISPLAY_STOCK" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_EMPLOYEE_TYPE" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_EXCEPTION_LOG" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_GENDER" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_GENERAL_LEDGER" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_INVOICE" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_LOCATION" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_MENU" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_MENU_RIGHTS" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PAYMENT_DETAIL" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PAYMENT_TYPE" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PRODUCT" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PRODUCT_CATEGORY" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PRODUCT_PROMOTIONS" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PRODUCT_TYPE" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PROMOTION_LUCKDRAW_COUPON" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PROMOTION_LUCKYDRAW" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PROMOTIONS" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PURCHASE_ORDER" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_PURCHASE_ORDER_LOG" Width="1.5" PointX="18.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_REFUND_PRODUCTS" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_REPORT_RIGHTS" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_REPORTS" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_RFQ" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_RFQ_DETAIL" Width="1.5" PointX="18.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_RFQ_LOG" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_RIDER" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SALES" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SECTIONS" Width="1.5" PointX="10.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SHIFT" Width="1.5" PointX="12.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_STATE" Width="1.5" PointX="14.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SUPERVISOR" Width="1.5" PointX="20.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SYS_APP_MODULE" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SYS_TRANSACTION_LOG" Width="1.5" PointX="20.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_USER" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_USER_DATA_SECURITY" Width="1.5" PointX="2.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_USER_SESSION" Width="1.5" PointX="22.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_VENDOR" Width="1.5" PointX="22.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_VENDOR_SHIPPMENT" Width="1.5" PointX="22.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_VENDOR_SHIPPMENT_DETAIL" Width="1.5" PointX="22.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE" Width="1.5" PointX="22.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_FLOOR" Width="1.5" PointX="4.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_INVENTORY_TRACKING" Width="1.5" PointX="6.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_PRODUCTS" Width="1.5" PointX="16.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_RAGS" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_RAGS_FLOOR" Width="1.5" PointX="24.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_SECTIONS" Width="1.5" PointX="24.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_SHIPPMENT" Width="1.5" PointX="8.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_SHIPPMENT_DETAIL" Width="1.5" PointX="10.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_WEARHOUSE_STOCK" Width="1.5" PointX="24.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.sysdiagram" Width="1.5" PointX="12.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_CUSTOMER_PROMOTION_DETAIL" Width="1.5" PointX="24.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_SALES_DETAIL" Width="1.5" PointX="24.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.POS_USER_LOG" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

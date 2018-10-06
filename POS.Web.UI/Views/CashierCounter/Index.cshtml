@@ -1,0 +1,101 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_CASHIER_COUNTER>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.COUNTER_DESC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PC_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IP_ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MAC_ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BRANCH_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISACTIVE_FLAG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISPOSTED_FLAG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATEDBY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MODIFIEDBY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATEDWHEN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MODIFIEDWHEN)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.COUNTER_DESC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PC_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IP_ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAC_ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BRANCH_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISACTIVE_FLAG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISPOSTED_FLAG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CREATEDBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CREATEDWHEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MODIFIEDWHEN)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.COUNTER_ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.COUNTER_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.COUNTER_ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

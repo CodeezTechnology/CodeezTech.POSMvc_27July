@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALCashierCounter.cs" />
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALCompanyBranch.cs" />
     <Compile Include="DALMenu.cs" />
@@ -61,8 +62,8 @@
       <DependentUpon>POSDataModel.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\POSDataModel.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\POSDataModel.Designer.cs">
@@ -283,25 +284,7 @@
     <Compile Include="EntityDataModel\POS_WEARHOUSE_STOCK.cs">
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataModel\spGetAllMenus_Result.cs">
-      <DependentUpon>POSDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\spGetCompanyBranch_Result.cs">
-      <DependentUpon>POSDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\spGetCompanyInfo_Result.cs">
-      <DependentUpon>POSDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\spGetFormRights_Result.cs">
-      <DependentUpon>POSDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataModel\spGetLoginLevel_Result.cs">
-      <DependentUpon>POSDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\spGetPOSUser_Result.cs">
-      <DependentUpon>POSDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDataModel\spGetUserMenuRights_Result.cs">
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityDataModel\sp_helpdiagramdefinition_Result.cs">
@@ -314,6 +297,7 @@
       <DependentUpon>POSDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PartialClasses\POS_BRANCH.cs" />
+    <Compile Include="PartialClasses\POS_CASHIER_COUNTER.cs" />
     <Compile Include="PartialClasses\POS_MENU.cs" />
     <Compile Include="PartialClasses\POS_MENU_RIGHTS.cs" />
     <Compile Include="PartialClasses\POS_REPORT_RIGHTS.cs" />
@@ -330,25 +314,30 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="EntityDataModel\POSDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>POSDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EntityDataModel\POSDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>POSDataModel.edmx</DependentUpon>
-      <LastGenOutput>POSDataModel.Context.cs</LastGenOutput>
-    </None>
     <None Include="EntityDataModel\POSDataModel.edmx.diagram">
       <DependentUpon>POSDataModel.edmx</DependentUpon>
     </None>
-    <None Include="EntityDataModel\POSDataModel.tt">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="EntityDataModel\POSDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>POSDataModel.edmx</DependentUpon>
+      <LastGenOutput>POSDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityDataModel\POSDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>POSDataModel.edmx</DependentUpon>
       <LastGenOutput>POSDataModel.cs</LastGenOutput>
-    </None>
-    <None Include="packages.config" />
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

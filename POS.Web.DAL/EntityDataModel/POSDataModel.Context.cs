@@ -278,32 +278,32 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDeletePOSUser", uSER_IDParameter);
         }
     
-        public virtual ObjectResult<spGetAllMenus_Result> spGetAllMenus()
+        public virtual int spGetAllMenus()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllMenus_Result>("spGetAllMenus");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetAllMenus");
         }
     
-        public virtual ObjectResult<spGetCompanyBranch_Result> spGetCompanyBranch()
+        public virtual int spGetCompanyBranch()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCompanyBranch_Result>("spGetCompanyBranch");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetCompanyBranch");
         }
     
-        public virtual ObjectResult<spGetCompanyInfo_Result> spGetCompanyInfo(Nullable<long> bRANCH_ID)
+        public virtual int spGetCompanyInfo(Nullable<long> bRANCH_ID)
         {
             var bRANCH_IDParameter = bRANCH_ID.HasValue ?
                 new ObjectParameter("BRANCH_ID", bRANCH_ID) :
                 new ObjectParameter("BRANCH_ID", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCompanyInfo_Result>("spGetCompanyInfo", bRANCH_IDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetCompanyInfo", bRANCH_IDParameter);
         }
     
-        public virtual ObjectResult<Nullable<long>> spGetCounterByIpAddress(string pCC_IP_ADDRESS)
+        public virtual int spGetCounterByIpAddress(string pCC_IP_ADDRESS)
         {
             var pCC_IP_ADDRESSParameter = pCC_IP_ADDRESS != null ?
                 new ObjectParameter("PCC_IP_ADDRESS", pCC_IP_ADDRESS) :
                 new ObjectParameter("PCC_IP_ADDRESS", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("spGetCounterByIpAddress", pCC_IP_ADDRESSParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetCounterByIpAddress", pCC_IP_ADDRESSParameter);
         }
     
         public virtual ObjectResult<Nullable<long>> spGetDeveloperUserId()
@@ -311,7 +311,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("spGetDeveloperUserId");
         }
     
-        public virtual ObjectResult<spGetFormRights_Result> spGetFormRights(Nullable<long> uSER_ID, string fORMNAME)
+        public virtual int spGetFormRights(Nullable<long> uSER_ID, string fORMNAME)
         {
             var uSER_IDParameter = uSER_ID.HasValue ?
                 new ObjectParameter("USER_ID", uSER_ID) :
@@ -321,7 +321,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
                 new ObjectParameter("FORMNAME", fORMNAME) :
                 new ObjectParameter("FORMNAME", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetFormRights_Result>("spGetFormRights", uSER_IDParameter, fORMNAMEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetFormRights", uSER_IDParameter, fORMNAMEParameter);
         }
     
         public virtual ObjectResult<spGetLoginLevel_Result> spGetLoginLevel(Nullable<long> uSER_ID)
@@ -346,18 +346,18 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetMaxID", cOLUMN_NAMEParameter, tABLE_NAMEParameter);
         }
     
-        public virtual ObjectResult<spGetPOSUser_Result> spGetPOSUser()
+        public virtual int spGetPOSUser()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetPOSUser_Result>("spGetPOSUser");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetPOSUser");
         }
     
-        public virtual ObjectResult<spGetUserMenuRights_Result> spGetUserMenuRights(Nullable<long> uSER_ID)
+        public virtual int spGetUserMenuRights(Nullable<long> uSER_ID)
         {
             var uSER_IDParameter = uSER_ID.HasValue ?
                 new ObjectParameter("USER_ID", uSER_ID) :
                 new ObjectParameter("USER_ID", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserMenuRights_Result>("spGetUserMenuRights", uSER_IDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetUserMenuRights", uSER_IDParameter);
         }
     
         public virtual int spInsertPOSUser(Nullable<long> uSER_ID, string pU_CODE, string pU_USERNAME, string pU_PASSWORD, string pU_EMAIL, Nullable<short> pU_ISACTIVE_FLAG, Nullable<short> pU_LOGIN_TYPE, string pU_MASTER_PASSWORD, Nullable<long> bRANCH_ID, Nullable<short> pU_ISPOSTED_FLAG, string cREATEDBY, Nullable<System.DateTime> cREATEDWHEN)
@@ -516,49 +516,49 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spIsActiveUser", uSER_IDParameter, pU_ISACTIVE_FLAGParameter);
         }
     
-        public virtual int spSysExceptionLog(string pEL_EXCEPTION_LAYER, string pEL_SOURCE_LAYER, string pEL_STACKTRACE, string pEL_ERROR_MESSAGE, string pEL_MEMBER_TYPE, string pEL_METHOD, string pEL_FORM, Nullable<System.DateTime> pEL_EXCEPTION_DATETIME, string pEL_CLIENT_IP, string pEL_EXCEPTION_TYPE)
+        public virtual int spSysExceptionLog(string eXCEPTION_LAYER, string sOURCE_LAYER, string sTACKTRACE, string eRROR_MESSAGE, string mEMBER_TYPE, string mETHOD, string fORM, Nullable<System.DateTime> eXCEPTION_DATETIME, string cLIENT_IP, string eXCEPTION_TYPE)
         {
-            var pEL_EXCEPTION_LAYERParameter = pEL_EXCEPTION_LAYER != null ?
-                new ObjectParameter("PEL_EXCEPTION_LAYER", pEL_EXCEPTION_LAYER) :
-                new ObjectParameter("PEL_EXCEPTION_LAYER", typeof(string));
+            var eXCEPTION_LAYERParameter = eXCEPTION_LAYER != null ?
+                new ObjectParameter("EXCEPTION_LAYER", eXCEPTION_LAYER) :
+                new ObjectParameter("EXCEPTION_LAYER", typeof(string));
     
-            var pEL_SOURCE_LAYERParameter = pEL_SOURCE_LAYER != null ?
-                new ObjectParameter("PEL_SOURCE_LAYER", pEL_SOURCE_LAYER) :
-                new ObjectParameter("PEL_SOURCE_LAYER", typeof(string));
+            var sOURCE_LAYERParameter = sOURCE_LAYER != null ?
+                new ObjectParameter("SOURCE_LAYER", sOURCE_LAYER) :
+                new ObjectParameter("SOURCE_LAYER", typeof(string));
     
-            var pEL_STACKTRACEParameter = pEL_STACKTRACE != null ?
-                new ObjectParameter("PEL_STACKTRACE", pEL_STACKTRACE) :
-                new ObjectParameter("PEL_STACKTRACE", typeof(string));
+            var sTACKTRACEParameter = sTACKTRACE != null ?
+                new ObjectParameter("STACKTRACE", sTACKTRACE) :
+                new ObjectParameter("STACKTRACE", typeof(string));
     
-            var pEL_ERROR_MESSAGEParameter = pEL_ERROR_MESSAGE != null ?
-                new ObjectParameter("PEL_ERROR_MESSAGE", pEL_ERROR_MESSAGE) :
-                new ObjectParameter("PEL_ERROR_MESSAGE", typeof(string));
+            var eRROR_MESSAGEParameter = eRROR_MESSAGE != null ?
+                new ObjectParameter("ERROR_MESSAGE", eRROR_MESSAGE) :
+                new ObjectParameter("ERROR_MESSAGE", typeof(string));
     
-            var pEL_MEMBER_TYPEParameter = pEL_MEMBER_TYPE != null ?
-                new ObjectParameter("PEL_MEMBER_TYPE", pEL_MEMBER_TYPE) :
-                new ObjectParameter("PEL_MEMBER_TYPE", typeof(string));
+            var mEMBER_TYPEParameter = mEMBER_TYPE != null ?
+                new ObjectParameter("MEMBER_TYPE", mEMBER_TYPE) :
+                new ObjectParameter("MEMBER_TYPE", typeof(string));
     
-            var pEL_METHODParameter = pEL_METHOD != null ?
-                new ObjectParameter("PEL_METHOD", pEL_METHOD) :
-                new ObjectParameter("PEL_METHOD", typeof(string));
+            var mETHODParameter = mETHOD != null ?
+                new ObjectParameter("METHOD", mETHOD) :
+                new ObjectParameter("METHOD", typeof(string));
     
-            var pEL_FORMParameter = pEL_FORM != null ?
-                new ObjectParameter("PEL_FORM", pEL_FORM) :
-                new ObjectParameter("PEL_FORM", typeof(string));
+            var fORMParameter = fORM != null ?
+                new ObjectParameter("FORM", fORM) :
+                new ObjectParameter("FORM", typeof(string));
     
-            var pEL_EXCEPTION_DATETIMEParameter = pEL_EXCEPTION_DATETIME.HasValue ?
-                new ObjectParameter("PEL_EXCEPTION_DATETIME", pEL_EXCEPTION_DATETIME) :
-                new ObjectParameter("PEL_EXCEPTION_DATETIME", typeof(System.DateTime));
+            var eXCEPTION_DATETIMEParameter = eXCEPTION_DATETIME.HasValue ?
+                new ObjectParameter("EXCEPTION_DATETIME", eXCEPTION_DATETIME) :
+                new ObjectParameter("EXCEPTION_DATETIME", typeof(System.DateTime));
     
-            var pEL_CLIENT_IPParameter = pEL_CLIENT_IP != null ?
-                new ObjectParameter("PEL_CLIENT_IP", pEL_CLIENT_IP) :
-                new ObjectParameter("PEL_CLIENT_IP", typeof(string));
+            var cLIENT_IPParameter = cLIENT_IP != null ?
+                new ObjectParameter("CLIENT_IP", cLIENT_IP) :
+                new ObjectParameter("CLIENT_IP", typeof(string));
     
-            var pEL_EXCEPTION_TYPEParameter = pEL_EXCEPTION_TYPE != null ?
-                new ObjectParameter("PEL_EXCEPTION_TYPE", pEL_EXCEPTION_TYPE) :
-                new ObjectParameter("PEL_EXCEPTION_TYPE", typeof(string));
+            var eXCEPTION_TYPEParameter = eXCEPTION_TYPE != null ?
+                new ObjectParameter("EXCEPTION_TYPE", eXCEPTION_TYPE) :
+                new ObjectParameter("EXCEPTION_TYPE", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSysExceptionLog", pEL_EXCEPTION_LAYERParameter, pEL_SOURCE_LAYERParameter, pEL_STACKTRACEParameter, pEL_ERROR_MESSAGEParameter, pEL_MEMBER_TYPEParameter, pEL_METHODParameter, pEL_FORMParameter, pEL_EXCEPTION_DATETIMEParameter, pEL_CLIENT_IPParameter, pEL_EXCEPTION_TYPEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSysExceptionLog", eXCEPTION_LAYERParameter, sOURCE_LAYERParameter, sTACKTRACEParameter, eRROR_MESSAGEParameter, mEMBER_TYPEParameter, mETHODParameter, fORMParameter, eXCEPTION_DATETIMEParameter, cLIENT_IPParameter, eXCEPTION_TYPEParameter);
         }
     
         public virtual int spTruncateDeveloperTable()
@@ -654,7 +654,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spValidateMasterUser", pU_USERNAMEParameter, pU_MASTER_PASSWORDParameter);
         }
     
-        public virtual ObjectResult<Nullable<long>> spValidateUser(string pU_USERNAME, string pU_PASSWORD, string pU_MASTER_PASSWORD)
+        public virtual int spValidateUser(string pU_USERNAME, string pU_PASSWORD, string pU_MASTER_PASSWORD)
         {
             var pU_USERNAMEParameter = pU_USERNAME != null ?
                 new ObjectParameter("PU_USERNAME", pU_USERNAME) :
@@ -668,7 +668,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
                 new ObjectParameter("PU_MASTER_PASSWORD", pU_MASTER_PASSWORD) :
                 new ObjectParameter("PU_MASTER_PASSWORD", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("spValidateUser", pU_USERNAMEParameter, pU_PASSWORDParameter, pU_MASTER_PASSWORDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spValidateUser", pU_USERNAMEParameter, pU_PASSWORDParameter, pU_MASTER_PASSWORDParameter);
         }
     }
 }
