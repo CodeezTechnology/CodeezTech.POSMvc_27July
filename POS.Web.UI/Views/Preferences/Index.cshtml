@@ -1,0 +1,185 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_COMPANY>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANY_CODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANY_DESC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HTTP_HOST_ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NTN_NO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REGISTEREDBY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISACTIVE_FLAG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISPOSTED_FLAG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATEDBY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MODIFIEDBY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATEDWHEN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MODIFIEDWHEN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsMultipleBranch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsWarehouse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsWarehouseStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsWarehouseTracking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsWarehouseShipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVendorShipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDisplayTracking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRFQ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAccounting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCashierCounter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPromotion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPaymentSystem)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPANY_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPANY_DESC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOGO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HTTP_HOST_ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NTN_NO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REGISTEREDBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISACTIVE_FLAG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISPOSTED_FLAG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CREATEDBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CREATEDWHEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MODIFIEDWHEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsMultipleBranch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWarehouse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWarehouseStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWarehouseTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsWarehouseShipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsVendor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsVendorShipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDisplayTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRFQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAccounting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCashierCounter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPromotion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPaymentSystem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.COMPANY_ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.COMPANY_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.COMPANY_ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

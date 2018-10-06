@@ -55,6 +55,7 @@
     <Compile Include="DALCompany.cs" />
     <Compile Include="DALCompanyBranch.cs" />
     <Compile Include="DALMenu.cs" />
+    <Compile Include="DALPreferences.cs" />
     <Compile Include="DALUser.cs" />
     <Compile Include="EntityDataModel\POSDataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -298,6 +299,7 @@
     </Compile>
     <Compile Include="PartialClasses\POS_BRANCH.cs" />
     <Compile Include="PartialClasses\POS_CASHIER_COUNTER.cs" />
+    <Compile Include="PartialClasses\POS_COMPANY.cs" />
     <Compile Include="PartialClasses\POS_MENU.cs" />
     <Compile Include="PartialClasses\POS_MENU_RIGHTS.cs" />
     <Compile Include="PartialClasses\POS_REPORT_RIGHTS.cs" />

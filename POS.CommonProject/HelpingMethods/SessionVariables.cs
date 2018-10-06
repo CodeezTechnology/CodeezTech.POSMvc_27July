@@ -17,6 +17,10 @@ namespace CodeezTech.POS.CommonProject
         {
             get { return "Session_CompanyInfo"; }
         }
+        public static string Session_BranchInfo
+        {
+            get { return "Session_CompanyInfo"; }
+        }
         public static string Session_UserLoginSession
         {
             get { return "Session_UserLoginSession"; }

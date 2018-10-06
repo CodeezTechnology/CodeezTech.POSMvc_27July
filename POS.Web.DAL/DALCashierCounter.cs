@@ -71,61 +71,59 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException();
             }
         }
-        public long GetMaxId()
-        {
-            long id = 0;
-            try
-            {
-                _objCashierCounterEntity = _dbContext.POS_CASHIER_COUNTER.OrderByDescending(x => x.USER_ID).FirstOrDefault();
-                if (_objCashierCounterEntity.USER_ID.ToString() == null)
-                    id = 1;
-                else
-                    id = _objCashierCounterEntity.USER_ID + 1;
+        //public long GetMaxId()
+        //{
+        //    long id = 0;
+        //    try
+        //    {
+        //        _objCashierCounterEntity = _dbContext.POS_CASHIER_COUNTER.OrderByDescending(x => x.USER_ID).FirstOrDefault();
+        //        if (_objCashierCounterEntity.USER_ID.ToString() == null)
+        //            id = 1;
+        //        else
+        //            id = _objCashierCounterEntity.USER_ID + 1;
 
-                return id;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new DALException();
-            }
-        }
-        public string GetMaxCode()
-        {
-            string code = string.Empty;
-            int maxCode = 0;
-            try
-            {
-                _objCashierCounterEntity = _dbContext.POS_CASHIER_COUNTER.OrderByDescending(x => x.CODE).FirstOrDefault();
-                if (_objCashierCounterEntity.CODE.ToString() == null)
-                    code = "0001";
-                else
-                    maxCode = Formatter.SetValidValueToInt(_objCashierCounterEntity.CODE) + 1;
-                code = maxCode.ToString().PadLeft(4, '0');
+        //        return id;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+        //        throw new DALException();
+        //    }
+        //}
+        //public string GetMaxCode()
+        //{
+        //    string code = string.Empty;
+        //    int maxCode = 0;
+        //    try
+        //    {
+        //        _objCashierCounterEntity = _dbContext.POS_CASHIER_COUNTER.OrderByDescending(x => x.CODE).FirstOrDefault();
+        //        if (_objCashierCounterEntity.CODE.ToString() == null)
+        //            code = "0001";
+        //        else
+        //            maxCode = Formatter.SetValidValueToInt(_objCashierCounterEntity.CODE) + 1;
+        //        code = maxCode.ToString().PadLeft(4, '0');
 
-                return code;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new DALException();
-            }
-        }
+        //        return code;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+        //        throw new DALException();
+        //    }
+        //}
         public int Create(POS_CASHIER_COUNTER userModel)
         {
             int rowAffected = 0;
             POS_CASHIER_COUNTER _objCashierCounterEntity = new POS_CASHIER_COUNTER();
             try
             {
-                _objCashierCounterEntity.USER_ID = GetMaxId();
-                _objCashierCounterEntity.CODE = userModel.CODE;
-                _objCashierCounterEntity.USERNAME = userModel.USERNAME;
-                _objCashierCounterEntity.PASSWORD = userModel.PASSWORD;
-                _objCashierCounterEntity.EMAIL = userModel.EMAIL;
+
+                                  
+                _objCashierCounterEntity.COUNTER_DESC = userModel.COUNTER_DESC;
+                _objCashierCounterEntity.PC_NAME = userModel.PC_NAME;
+                _objCashierCounterEntity.IP_ADDRESS = userModel.MAC_ADDRESS;
                 _objCashierCounterEntity.ISACTIVE_FLAG = userModel.ISACTIVE_FLAG;
-                _objCashierCounterEntity.LOGIN_TYPE = userModel.LOGIN_TYPE;
-                _objCashierCounterEntity.MASTER_PASSWORD = userModel.MASTER_PASSWORD;
-                _objCashierCounterEntity.BRANCH_ID = userModel.BranchId;
+                _objCashierCounterEntity.BRANCH_ID = userModel.BRANCH_ID;
                 _objCashierCounterEntity.ISPOSTED_FLAG = false;
                 _objCashierCounterEntity.CREATEDBY = userModel.CREATEDBY;
                 _objCashierCounterEntity.CREATEDWHEN = userModel.CREATEDWHEN;
@@ -148,20 +146,17 @@ namespace CodeezTech.POS.Web.DAL
             try
             {
                 //_dbContext.Entry(userModel).State = System.Data.Entity.EntityState.Modified;
-                entity = _dbContext.POS_CASHIER_COUNTER.Find(userModel.USER_ID);
+                entity = _dbContext.POS_CASHIER_COUNTER.Find(userModel.COUNTER_ID);
 
-                entity.USER_ID = userModel.USER_ID;
-                entity.CODE = userModel.CODE;
-                entity.USERNAME = userModel.USERNAME;
-                entity.PASSWORD = userModel.PASSWORD;
-                entity.EMAIL = userModel.EMAIL;
+                entity.COUNTER_DESC = userModel.COUNTER_DESC;
+                entity.PC_NAME = userModel.PC_NAME;
+                entity.IP_ADDRESS = userModel.MAC_ADDRESS;
                 entity.ISACTIVE_FLAG = userModel.ISACTIVE_FLAG;
-                entity.LOGIN_TYPE = userModel.LOGIN_TYPE;
-                entity.MASTER_PASSWORD = userModel.MASTER_PASSWORD;
-                entity.BRANCH_ID = userModel.BranchId;
+                entity.BRANCH_ID = userModel.BRANCH_ID;
                 entity.ISPOSTED_FLAG = false;
+                entity.CREATEDBY = userModel.CREATEDBY;
+                entity.CREATEDWHEN = userModel.CREATEDWHEN;
                 entity.MODIFIEDBY = userModel.MODIFIEDBY;
-                entity.MODIFIEDWHEN = userModel.MODIFIEDWHEN;
 
                 rowAffected = _dbContext.SaveChanges();
 
@@ -190,12 +185,12 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException();
             }
         }
-        public IEnumerable<POS_CASHIER_COUNTER> GetCompanyBranch()
+        public IEnumerable<POS_BRANCH> GetCompanyBranch()
         {
-            IEnumerable<POS_CASHIER_COUNTER> lst = null;
+            IEnumerable<POS_BRANCH> lst = null;
             try
             {
-                lst = _dbContext.POS_CASHIER_COUNTER.Select(x => new POS_CASHIER_COUNTER()
+                lst = _dbContext.POS_BRANCH.Select(x => new POS_BRANCH()
                 {
                     BRANCH_ID = x.BRANCH_ID,
                     BRANCH_DESC = x.BRANCH_DESC

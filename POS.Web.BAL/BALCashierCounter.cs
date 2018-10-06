@@ -126,20 +126,6 @@ namespace CodeezTech.POS.Web.BAL
                 throw new BALException(ex.Message.ToString());
             }
         }
-        public string GetMaxCode()
-        {
-            string code = string.Empty;
-            try
-            {
-                code = _objDALCashierCounter.GetMaxCode();
-
-                return code;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new DALException();
-            }
-        }
+     
     }
 }

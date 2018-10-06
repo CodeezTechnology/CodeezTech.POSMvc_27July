@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="POSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="POSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="POS_ACCESS_GROUP">
           <Key>
             <PropertyRef Name="ACCESS_GROUP_ID" />
@@ -164,6 +164,19 @@
           <Property Name="MODIFIEDBY" Type="varchar" MaxLength="60" />
           <Property Name="CREATEDWHEN" Type="datetime" Nullable="false" />
           <Property Name="MODIFIEDWHEN" Type="datetime" />
+          <Property Name="IsMultipleBranch" Type="bit" Nullable="false" />
+          <Property Name="IsWarehouse" Type="bit" Nullable="false" />
+          <Property Name="IsWarehouseStock" Type="bit" Nullable="false" />
+          <Property Name="IsWarehouseTracking" Type="bit" Nullable="false" />
+          <Property Name="IsWarehouseShipment" Type="bit" Nullable="false" />
+          <Property Name="IsVendor" Type="bit" Nullable="false" />
+          <Property Name="IsVendorShipment" Type="bit" Nullable="false" />
+          <Property Name="IsDisplayTracking" Type="bit" Nullable="false" />
+          <Property Name="IsRFQ" Type="bit" Nullable="false" />
+          <Property Name="IsAccounting" Type="bit" Nullable="false" />
+          <Property Name="IsCashierCounter" Type="bit" Nullable="false" />
+          <Property Name="IsPromotion" Type="bit" Nullable="false" />
+          <Property Name="IsPaymentSystem" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="POS_COUNTRY">
           <Key>
@@ -234,11 +247,6 @@ warning 6002: The table/view 'POS.dbo.POS_CUSTOMER_PROMOTION_DETAIL' does not ha
           <Property Name="CREATEDWHEN" Type="datetime" Nullable="false" />
           <Property Name="MODIFIEDWHEN" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'POS.dbo.POS_DEVELOPER' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="POS_DEVELOPER">
-          <Property Name="USER_ID" Type="bigint" />
-        </EntityType>-->
         <EntityType Name="POS_DISPLAY_FLOORS">
           <Key>
             <PropertyRef Name="DISPLAY_FLOOR_ID" />
@@ -1482,8 +1490,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
     FROM [dbo].[POS_USER_LOG] AS [POS_USER_LOG]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="POSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1646,6 +1653,19 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <Property Name="MODIFIEDBY" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="CREATEDWHEN" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MODIFIEDWHEN" Type="DateTime" Precision="3" />
+          <Property Name="IsMultipleBranch" Type="Boolean" Nullable="false" />
+          <Property Name="IsWarehouse" Type="Boolean" Nullable="false" />
+          <Property Name="IsWarehouseStock" Type="Boolean" Nullable="false" />
+          <Property Name="IsWarehouseTracking" Type="Boolean" Nullable="false" />
+          <Property Name="IsWarehouseShipment" Type="Boolean" Nullable="false" />
+          <Property Name="IsVendor" Type="Boolean" Nullable="false" />
+          <Property Name="IsVendorShipment" Type="Boolean" Nullable="false" />
+          <Property Name="IsDisplayTracking" Type="Boolean" Nullable="false" />
+          <Property Name="IsRFQ" Type="Boolean" Nullable="false" />
+          <Property Name="IsAccounting" Type="Boolean" Nullable="false" />
+          <Property Name="IsCashierCounter" Type="Boolean" Nullable="false" />
+          <Property Name="IsPromotion" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaymentSystem" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="POS_COUNTRY">
           <Key>
@@ -2803,15 +2823,15 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           </FunctionImport>
           <FunctionImport Name="spDBAutoUpdator" />
           <FunctionImport Name="spDeletePOSUser">
-            <Parameter Name="USER_ID" Mode="In" Type="Int64" />
+          <Parameter Name="USER_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetAllMenus" />
           <FunctionImport Name="spGetCompanyBranch" />
           <FunctionImport Name="spGetCompanyInfo">
-            <Parameter Name="BRANCH_ID" Mode="In" Type="Int64" />
+          <Parameter Name="BRANCH_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetCounterByIpAddress">
-            <Parameter Name="PCC_IP_ADDRESS" Mode="In" Type="String" />
+          <Parameter Name="PCC_IP_ADDRESS" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetDeveloperUserId" ReturnType="Collection(Int64)" />
           <FunctionImport Name="spGetFormRights">
@@ -2819,7 +2839,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
             <Parameter Name="FORMNAME" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetLoginLevel" ReturnType="Collection(POSModel.spGetLoginLevel_Result)">
-            <Parameter Name="USER_ID" Mode="In" Type="Int64" />
+          <Parameter Name="USER_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spGetMaxID">
             <Parameter Name="COLUMN_NAME" Mode="In" Type="String" />
@@ -2827,7 +2847,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           </FunctionImport>
           <FunctionImport Name="spGetPOSUser" />
           <FunctionImport Name="spGetUserMenuRights">
-            <Parameter Name="USER_ID" Mode="In" Type="Int64" />
+          <Parameter Name="USER_ID" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="spInsertPOSUser">
             <Parameter Name="USER_ID" Mode="In" Type="Int64" />
@@ -2903,7 +2923,7 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
             <Parameter Name="MODIFIEDWHEN" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="spUserSessionCashierCounter">
-            <Parameter Name="IsMultipleCashierCounter" Mode="In" Type="Boolean" />
+          <Parameter Name="IsMultipleCashierCounter" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="spValidateMasterUser">
             <Parameter Name="PU_USERNAME" Mode="In" Type="String" />
@@ -3102,6 +3122,19 @@ warning 6002: The table/view 'POS.dbo.POS_USER_LOG' does not have a primary key 
           <EntitySetMapping Name="POS_COMPANY">
             <EntityTypeMapping TypeName="POSModel.POS_COMPANY">
               <MappingFragment StoreEntitySet="POS_COMPANY">
+                <ScalarProperty Name="IsPaymentSystem" ColumnName="IsPaymentSystem" />
+                <ScalarProperty Name="IsPromotion" ColumnName="IsPromotion" />
+                <ScalarProperty Name="IsCashierCounter" ColumnName="IsCashierCounter" />
+                <ScalarProperty Name="IsAccounting" ColumnName="IsAccounting" />
+                <ScalarProperty Name="IsRFQ" ColumnName="IsRFQ" />
+                <ScalarProperty Name="IsDisplayTracking" ColumnName="IsDisplayTracking" />
+                <ScalarProperty Name="IsVendorShipment" ColumnName="IsVendorShipment" />
+                <ScalarProperty Name="IsVendor" ColumnName="IsVendor" />
+                <ScalarProperty Name="IsWarehouseShipment" ColumnName="IsWarehouseShipment" />
+                <ScalarProperty Name="IsWarehouseTracking" ColumnName="IsWarehouseTracking" />
+                <ScalarProperty Name="IsWarehouseStock" ColumnName="IsWarehouseStock" />
+                <ScalarProperty Name="IsWarehouse" ColumnName="IsWarehouse" />
+                <ScalarProperty Name="IsMultipleBranch" ColumnName="IsMultipleBranch" />
                 <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
                 <ScalarProperty Name="COMPANY_CODE" ColumnName="COMPANY_CODE" />
                 <ScalarProperty Name="COMPANY_DESC" ColumnName="COMPANY_DESC" />

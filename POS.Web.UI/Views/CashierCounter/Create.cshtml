@@ -1,132 +1,93 @@
 ﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_CASHIER_COUNTER
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>POS_CASHIER_COUNTER</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-            <div class="form-group">
-                @Html.LabelFor(model => model.COUNTER_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.COUNTER_ID)
-                    @Html.ValidationMessageFor(model => model.COUNTER_ID)
-                </div>
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/User/Index"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Cashier Counter</h3>
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.COUNTER_DESC, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.COUNTER_DESC)
-                    @Html.ValidationMessageFor(model => model.COUNTER_DESC)
-                </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Cashier Counter</li>
+                </ol>
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PC_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PC_NAME)
-                    @Html.ValidationMessageFor(model => model.PC_NAME)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.IP_ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IP_ADDRESS)
-                    @Html.ValidationMessageFor(model => model.IP_ADDRESS)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.MAC_ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MAC_ADDRESS)
-                    @Html.ValidationMessageFor(model => model.MAC_ADDRESS)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.BRANCH_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.BRANCH_ID)
-                    @Html.ValidationMessageFor(model => model.BRANCH_ID)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ISACTIVE_FLAG, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ISACTIVE_FLAG)
-                    @Html.ValidationMessageFor(model => model.ISACTIVE_FLAG)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ISPOSTED_FLAG, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ISPOSTED_FLAG)
-                    @Html.ValidationMessageFor(model => model.ISPOSTED_FLAG)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.CREATEDBY, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CREATEDBY)
-                    @Html.ValidationMessageFor(model => model.CREATEDBY)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.MODIFIEDBY, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MODIFIEDBY)
-                    @Html.ValidationMessageFor(model => model.MODIFIEDBY)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.CREATEDWHEN, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CREATEDWHEN)
-                    @Html.ValidationMessageFor(model => model.CREATEDWHEN)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.MODIFIEDWHEN, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MODIFIEDWHEN)
-                    @Html.ValidationMessageFor(model => model.MODIFIEDWHEN)
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-validation">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 style="display: inline-block; font-weight: bold;">Create</h4>
+                                            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-check"></i> Save</button>
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-form-label">Counter Description:</label>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.COUNTER_DESC)
+                                            @*   @Html.ValidationMessageFor(model => model.COUNTER_DESC)*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-form-label">Branch:</label>
+                                        <div class="col-md-6">
+                                            @Html.DropDownListFor(model => model.BRANCH_ID, (IEnumerable<SelectListItem>)TempData["CompanyBranchList"], "Please Select", new { @class = "form-control", @required = "True" })
+                                            @Html.ValidationMessageFor(model => model.BRANCH_ID)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-form-label">Active:</label>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ISACTIVE_FLAG)
+                                            @*@Html.ValidationMessageFor(model => model.ISACTIVE_FLAG)*@
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-form-label">Posted:</label>
+
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ISPOSTED_FLAG)
+                                            @*  @Html.ValidationMessageFor(model => model.ISPOSTED_FLAG)*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Create" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+</div>
+

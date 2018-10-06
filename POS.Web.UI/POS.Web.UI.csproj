@@ -163,9 +163,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CashierCounterController.cs" />
+    <Compile Include="Controllers\CashierStatusController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserRightsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1000,6 +1002,12 @@
     <Content Include="Views\CashierCounter\Create.cshtml" />
     <Content Include="Views\CashierCounter\Edit.cshtml" />
     <Content Include="Views\CashierCounter\Delete.cshtml" />
+    <Content Include="Views\CashierStatus\Index.cshtml" />
+    <Content Include="Views\Preferences\Create.cshtml" />
+    <Content Include="Views\Preferences\Delete.cshtml" />
+    <Content Include="Views\Preferences\Details.cshtml" />
+    <Content Include="Views\Preferences\Edit.cshtml" />
+    <Content Include="Views\Preferences\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

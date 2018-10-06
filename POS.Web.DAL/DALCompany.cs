@@ -80,6 +80,281 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException();
             }
         }
+
+        public bool IsMultipleBranch()
+        {
+            bool flag = false;
+           
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsMultipleBranch == true).FirstOrDefault();
+                if (_objCompanyEntity.IsMultipleBranch == false)
+                    flag = false;
+                else
+                    flag = true;
+                
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsWarehouse()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsWarehouse == true).FirstOrDefault();
+                if (_objCompanyEntity.IsWarehouse == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public POS_BRANCH CompBranchInfo(int BranchID)
+        {
+            try
+            {
+                var result = (from ctx in _dbContext.POS_BRANCH
+                              where ctx.BRANCH_ID == BranchID 
+                              select ctx).FirstOrDefault();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public bool IsWarehouseStock()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsWarehouseStock == true).FirstOrDefault();
+                if (_objCompanyEntity.IsWarehouseStock == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsWarehouseTracking()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsWarehouseTracking == true).FirstOrDefault();
+                if (_objCompanyEntity.IsWarehouseTracking == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsWarehouseShipment()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsWarehouseShipment == true).FirstOrDefault();
+                if (_objCompanyEntity.IsWarehouseShipment == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsVendor()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsVendor == true).FirstOrDefault();
+                if (_objCompanyEntity.IsVendor == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsVendorShipment()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsVendorShipment == true).FirstOrDefault();
+                if (_objCompanyEntity.IsVendorShipment == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsDisplayTracking()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsDisplayTracking == true).FirstOrDefault();
+                if (_objCompanyEntity.IsDisplayTracking == false)
+                    flag = false;
+                else
+                    flag = true;
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsRFQ()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsRFQ == true).FirstOrDefault();
+                if (_objCompanyEntity.IsRFQ == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsAccounting()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsAccounting == true).FirstOrDefault();
+                if (_objCompanyEntity.IsAccounting == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsCashierCounter()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsCashierCounter == true).FirstOrDefault();
+                if (_objCompanyEntity.IsCashierCounter == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsPromotion()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsPromotion == true).FirstOrDefault();
+                if (_objCompanyEntity.IsPromotion == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
+        public bool IsPaymentSystem()
+        {
+            bool flag = false;
+
+            try
+            {
+                _objCompanyEntity = _dbContext.POS_COMPANY.Where(m => m.IsPaymentSystem == true).FirstOrDefault();
+                if (_objCompanyEntity.IsPaymentSystem == false)
+                    flag = false;
+                else
+                    flag = true;
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
+                throw new DALException();
+            }
+        }
         public int Create(POS_COMPANY CompanyModel)
         {
             int rowAffected = 0;

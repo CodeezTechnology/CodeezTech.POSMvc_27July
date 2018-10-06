@@ -1,101 +1,92 @@
 ﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_CASHIER_COUNTER>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Cashier Counters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="~/Home/IndexUser"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Cashier Counters</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item">Users Management</li>
+                    <li class="breadcrumb-item active">Counter</li>
+                </ol>
+            </div>
+        </div>
+        <p class="card-title">
+            @*    @Html.ActionLink("Create New", "Create")*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.COUNTER_DESC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PC_NAME)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IP_ADDRESS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MAC_ADDRESS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BRANCH_ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISACTIVE_FLAG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISPOSTED_FLAG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CREATEDBY)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MODIFIEDBY)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CREATEDWHEN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MODIFIEDWHEN)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.COUNTER_DESC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PC_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IP_ADDRESS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MAC_ADDRESS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BRANCH_ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISACTIVE_FLAG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISPOSTED_FLAG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CREATEDBY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MODIFIEDBY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CREATEDWHEN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MODIFIEDWHEN)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.COUNTER_ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.COUNTER_ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.COUNTER_ID })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+        </p>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="display:inline-block;font-weight:bold;">List</h4>
+                                <a href="/CashierCounter/Create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create New</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive ">
+                            <table id="myTable" class="table table-hover table-condensed" style="font-family:Consolas;">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <label class="col-md-2 col-form-label">Counter Description</label>
+                                        </th>
+
+                                        <th>
+                                            <label class="col-md-2 col-form-label">Branch</label>
+
+                                        </th>
+                                        <th>
+                                            <label class="col-md-2 col-form-label">Active</label>
+
+                                        </th>
+                                        <th>
+                                            <label class="col-md-2 col-form-label">Posted</label>
+
+                                        </th>
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.COUNTER_DESC)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BRANCH_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ISACTIVE_FLAG)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ISPOSTED_FLAG)
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.COUNTER_ID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.COUNTER_ID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.COUNTER_ID })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

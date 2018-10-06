@@ -1,114 +1,124 @@
 ﻿@model CodeezTech.POS.Web.DAL.EntityDataModel.POS_CASHIER_COUNTER
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="/User/Index"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Cashier Counters</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item active">Detail</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Start Page Content -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>POS_CASHIER_COUNTER</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.COUNTER_DESC)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.COUNTER_DESC)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.PC_NAME)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.PC_NAME)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IP_ADDRESS)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IP_ADDRESS)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.MAC_ADDRESS)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.MAC_ADDRESS)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.BRANCH_ID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.BRANCH_ID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ISACTIVE_FLAG)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ISACTIVE_FLAG)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ISPOSTED_FLAG)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ISPOSTED_FLAG)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CREATEDBY)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CREATEDBY)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.MODIFIEDBY)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.MODIFIEDBY)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CREATEDWHEN)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CREATEDWHEN)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.MODIFIEDWHEN)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.MODIFIEDWHEN)
-            </dd>
-    
-        </dl>
+
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 style="display: inline-block; font-weight: bold;">Detail</h4>
+                                    <a href="/User/Edit/@Model.COUNTER_ID" class="btn btn-primary pull-right"><i class="fa fa-Edit"></i> Edit</a>
+                                </div>
+                            </div>
+                            <hr />
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">PC Name:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.PC_NAME)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">IP Address:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.IP_ADDRESS)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">MAC Address:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.MAC_ADDRESS)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Branch:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.BRANCH_ID)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Active:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ISACTIVE_FLAG)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Posted:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ISPOSTED_FLAG)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Created By:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.CREATEDBY)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Modified By:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.MODIFIEDBY)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Created On:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.CREATEDWHEN)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-md-2 col-form-label">Modified On:</label>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.MODIFIEDWHEN)
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.COUNTER_ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+</div>

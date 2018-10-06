@@ -1,0 +1,122 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_USER_SESSION>
+
+@{
+    ViewBag.Title = "Cashier Status";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-6" style="display:inherit;">
+                <a href="~/Home/IndexUser"><i class="fa fa-arrow-circle-o-left"></i></a><h3 class="text-primary"> &nbsp; Cashier IN/OUT</h3>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Home/IndexUser">Home</a></li>
+                    <li class="breadcrumb-item">Cashier Counter</li>
+                    <li class="breadcrumb-item active">Cashier</li>
+                </ol>
+            </div>
+        </div>
+        <p class="card-title">
+            @*    @Html.ActionLink("Create New", "Create")*@
+
+        </p>
+        <!-- Start Page Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="display:inline-block;font-weight:bold;">List</h4>
+
+                            </div>
+                        </div>
+                        <div class="table-responsive ">
+                            <table id="myTable" class="table table-hover table-condensed" style="font-family:Consolas;">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.USER_ID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.COUNTER_ID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LOGIN_DATETIME)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ISSUCCESS_LOGIN_FLAG)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IP_ADDRESS)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LOGOUT_DATETIME)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ISSUCCESS_LOGOUT_FLAG)
+                                        </th>
+                                    
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.USER_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.COUNTER_ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LOGIN_DATETIME)
+                                        </td>
+                                        <td>
+                                            @if (item.ISSUCCESS_LOGIN_FLAG == 1)
+                                            {
+                                                <span class="badge badge-success">True</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">False</span>
+                                            }
+                                         
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IP_ADDRESS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LOGOUT_DATETIME)
+                                        </td>
+                                        <td>
+                                            @if (item.ISSUCCESS_LOGOUT_FLAG == 1)
+                                            {
+                                                <span class="badge badge-success">True</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">False</span>
+                                            }
+                                        </td>
+                                      
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>

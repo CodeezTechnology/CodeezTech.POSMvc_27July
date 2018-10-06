@@ -9,18 +9,19 @@ using System.Threading.Tasks;
 
 namespace CodeezTech.POS.Web.BAL
 {
-    public class BALCompany
+    public class BALPreferences
     {
-        DALCompany _objDALCompany = new DALCompany();
-        POS_COMPANY _objCompanyEntity = new POS_COMPANY();
+        DALUser _objDALUser = new DALUser();
+        POS_USER _objUserEntity = new POS_USER();
         Notify objNotify = new Notify();
+       
 
-        public List<POS_COMPANY> List()
+        public List<POS_USER> List()
         {
-            List<POS_COMPANY> lst = new List<POS_COMPANY>();
+            List<POS_USER> lst = new List<POS_USER>();
             try
             {
-                lst = _objDALCompany.List();
+                lst = _objDALUser.List();
                 return lst;
             }
             catch (Exception ex)
@@ -29,17 +30,15 @@ namespace CodeezTech.POS.Web.BAL
                     throw ex;
                 else
                     ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new BALException(ex.Message.ToString());
+                throw new BALException("User Info not completed in Business Layer");
             }
         }
-        public POS_BRANCH GetBranchInfo(int BranchID)
+        public POS_USER GetById(long? id)
         {
-
             try
             {
-                POS_BRANCH _objBranchInfo = _objDALCompany.CompBranchInfo(BranchID);
-                
-                return _objBranchInfo;
+                _objUserEntity = _objDALUser.GetById(id);
+                return _objUserEntity;
             }
             catch (Exception ex)
             {
@@ -47,39 +46,22 @@ namespace CodeezTech.POS.Web.BAL
                     throw ex;
                 else
                     ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new BALException("User credentials not correct in Business Layer");
-            }
-
-        }
-        public POS_COMPANY GetById(long? id)
-        {
-            try
-            {
-                _objCompanyEntity = _objDALCompany.GetById(id);
-                return _objCompanyEntity;
-            }
-            catch (Exception ex)
-            {
-                if (ex is DALException)
-                    throw ex;
-                else
-                    ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new BALException(ex.Message.ToString());
+                throw new BALException("User Info not completed error occurred in Business Layer");
             }
         }
-        public Notify Create(POS_COMPANY CompanyModel)
+        public Notify Create(POS_USER userModel)
         {
 
             try
             {
-                int rowAffected = _objDALCompany.Create(CompanyModel);
-                if (rowAffected > 0)
+                objNotify.RowEffected = _objDALUser.Create(userModel);
+                if (objNotify.RowEffected > 0)
                 {
                     objNotify.NotifyMessage = "Record Created Successfully";
                 }
                 else
                 {
-                    objNotify.NotifyMessage = "Company Not Created";
+                    objNotify.NotifyMessage = "User Not Created";
                 }
                 return objNotify;
             }
@@ -89,23 +71,21 @@ namespace CodeezTech.POS.Web.BAL
                     throw ex;
                 else
                     ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new BALException(ex.Message.ToString());
+                throw new BALException("User not created error occurred in Business Layer");
             }
         }
-        public Notify Update(POS_COMPANY CompanyModel)
+        public Notify Update(POS_USER userModel)
         {
             try
             {
-                int rowAffected = _objDALCompany.Update(CompanyModel);
-                if (rowAffected > 0)
+                objNotify.RowEffected = _objDALUser.Update(userModel);
+                if (objNotify.RowEffected > 0)
                 {
-                    objNotify.RowEffected = 1;
                     objNotify.NotifyMessage = "Record Updated Successfully";
                 }
                 else
                 {
-                    objNotify.RowEffected = 0;
-                    objNotify.NotifyMessage = "Company Not Updated";
+                    objNotify.NotifyMessage = "User Not Updated";
                 }
                 return objNotify;
             }
@@ -115,7 +95,7 @@ namespace CodeezTech.POS.Web.BAL
                     throw ex;
                 else
                     ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new BALException(ex.Message.ToString());
+                throw new BALException("User not updated error occurred in Business Layer");
             }
         }
         public Notify Delete(long id)
@@ -123,7 +103,7 @@ namespace CodeezTech.POS.Web.BAL
             int rowAffected = 0;
             try
             {
-                rowAffected = _objDALCompany.Delete(id);
+                rowAffected = _objDALUser.Delete(id);
                 if (rowAffected > 0)
                 {
                     objNotify.RowEffected = 1;
@@ -132,7 +112,7 @@ namespace CodeezTech.POS.Web.BAL
                 else
                 {
                     objNotify.RowEffected = 0;
-                    objNotify.NotifyMessage = "Company Not Deleted";
+                    objNotify.NotifyMessage = "User Not Deleted";
                 }
                 return objNotify;
             }
@@ -142,15 +122,16 @@ namespace CodeezTech.POS.Web.BAL
                     throw ex;
                 else
                     ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
-                throw new BALException(ex.Message.ToString());
+                throw new BALException("User not deleted error occurred in Business Layer");
             }
         }
         public string GetMaxCode()
         {
             string code = string.Empty;
+            int maxCode = 0;
             try
             {
-                code = _objDALCompany.GetMaxCode();
+                code = _objDALUser.GetMaxCode();
 
                 return code;
             }
@@ -158,6 +139,19 @@ namespace CodeezTech.POS.Web.BAL
             {
                 ExceptionLogger.WriteExceptionInDB(ex, ExceptionLevel.DAL, ExceptionType.Error);
                 throw new DALException();
+            }
+        }
+        public IEnumerable<POS_BRANCH> GetCompanyBranch()
+        {
+            IEnumerable<POS_BRANCH> lst = null;
+            try
+            {
+                lst = _objDALUser.GetCompanyBranch();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

@@ -27,5 +27,18 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public string MODIFIEDBY { get; set; }
         public System.DateTime CREATEDWHEN { get; set; }
         public Nullable<System.DateTime> MODIFIEDWHEN { get; set; }
+        public bool IsMultipleBranch { get; set; }
+        public bool IsWarehouse { get; set; }
+        public bool IsWarehouseStock { get; set; }
+        public bool IsWarehouseTracking { get; set; }
+        public bool IsWarehouseShipment { get; set; }
+        public bool IsVendor { get; set; }
+        public bool IsVendorShipment { get; set; }
+        public bool IsDisplayTracking { get; set; }
+        public bool IsRFQ { get; set; }
+        public bool IsAccounting { get; set; }
+        public bool IsCashierCounter { get; set; }
+        public bool IsPromotion { get; set; }
+        public bool IsPaymentSystem { get; set; }
     }
 }

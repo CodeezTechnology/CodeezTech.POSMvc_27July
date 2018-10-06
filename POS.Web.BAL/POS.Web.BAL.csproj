@@ -44,6 +44,7 @@
     <Compile Include="BALCompany.cs" />
     <Compile Include="BALCompanyBranch.cs" />
     <Compile Include="BALMenu.cs" />
+    <Compile Include="BALPreferences.cs" />
     <Compile Include="BALUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
