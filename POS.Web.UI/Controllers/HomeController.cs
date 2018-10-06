@@ -49,11 +49,15 @@ namespace POS.Web.UI.Controllers
              try
              {
                  POS_USER _objUser = _objBALUser.Login(userModel);
+                POS_BRANCH _objBranchDetail = _objBALCompBranch.GetBranchInfo(Formatter.SetValidValueToInt(_objUser.BRANCH_ID));
                  objUser = _objUser;
                  if (objUser.NotifyMessage == "user")
                  {
                      Session[SessionVariables.Session_UserInfo] = _objUser;
-                     SessionHandling.UserId = _objUser.USER_ID;
+                    Session[SessionVariables.Session_BranchInfo] = _objBranchDetail;
+
+
+                    SessionHandling.UserId = _objUser.USER_ID;
                      SessionHandling.LoginLevel = _objUser.LOGIN_TYPE;
                      
                      ShowAlert(AlertType.Success, "Welcome " + SessionHandling.UserInformation.USERNAME);
