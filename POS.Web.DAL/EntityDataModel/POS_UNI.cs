@@ -12,7 +12,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class POS_UNITS
+    public partial class POS_UNI
     {
         public long UNIT_ID { get; set; }
         public string UNIT { get; set; }

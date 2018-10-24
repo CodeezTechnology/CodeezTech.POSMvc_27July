@@ -30,5 +30,6 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public string MODIFIEDBY { get; set; }
         public System.DateTime CREATEDWHEN { get; set; }
         public Nullable<System.DateTime> MODIFIEDWHEN { get; set; }
+        public int COMPANY_ID { get; set; }
     }
 }

@@ -13,12 +13,12 @@ namespace CodeezTech.POS.Web.BAL
     public class BALUnits
     {
         DALUnits _objDALUnits = new DALUnits();
-        POS_UNITS _objUnitsEntity = new POS_UNITS();
+        POS_UNI _objUnitsEntity = new POS_UNI();
         Notify objNotify = new Notify();
 
-        public List<POS_UNITS> List()
+        public List<POS_UNI> List()
         {
-            List<POS_UNITS> lst = new List<POS_UNITS>();
+            List<POS_UNI> lst = new List<POS_UNI>();
             try
             {
                 lst = _objDALUnits.GetUnits();
@@ -33,7 +33,7 @@ namespace CodeezTech.POS.Web.BAL
                 throw new BALException(ex.Message.ToString());
             }
         }
-        public POS_UNITS GetById(long? id)
+        public POS_UNI GetById(long? id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace CodeezTech.POS.Web.BAL
                 throw new BALException(ex.Message.ToString());
             }
         }
-        public Notify Create(POS_UNITS UnitsModel)
+        public Notify Create(POS_UNI UnitsModel)
         {
 
             try
@@ -74,7 +74,7 @@ namespace CodeezTech.POS.Web.BAL
                 throw new BALException(ex.Message.ToString());
             }
         }
-        public Notify Update(POS_UNITS UnitsModel)
+        public Notify Update(POS_UNI UnitsModel)
         {
             try
             {
@@ -126,9 +126,9 @@ namespace CodeezTech.POS.Web.BAL
             }
         }
       
-        public IEnumerable<POS_UNITS> UnitsSelectList()
+        public IEnumerable<POS_UNI> UnitsSelectList()
         {
-            IEnumerable<POS_UNITS> lst = null;
+            IEnumerable<POS_UNI> lst = null;
             try
             {
                 lst = _objDALUnits.UnitsSelectList();

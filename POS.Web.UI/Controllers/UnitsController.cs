@@ -14,7 +14,7 @@ namespace POS.Web.UI.Controllers
     {
         private Entities db = new Entities();
         BALUnits _objBALUnits = new BALUnits();
-        POS_UNITS _objUnitsEntity = new POS_UNITS();
+        POS_UNI _objUnitsEntity = new POS_UNI();
         Notify objNotify = new Notify();
         Error error = new Error();
 
@@ -64,12 +64,12 @@ namespace POS.Web.UI.Controllers
                     {
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
-                    POS_UNITS POS_UNITS = _objBALUnits.GetById(id);
-                    if (POS_UNITS == null)
+                    POS_UNI POS_UNI = _objBALUnits.GetById(id);
+                    if (POS_UNI == null)
                     {
                         return HttpNotFound();
                     }
-                    return View(POS_UNITS);
+                    return View(POS_UNI);
                 }
                 else
                 {
@@ -129,17 +129,17 @@ namespace POS.Web.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(POS_UNITS POS_UNITS)
+        public ActionResult Create(POS_UNI POS_UNI)
         {
             try
             {
                 if (Session[SessionVariables.Session_UserInfo] != null)
                 {
-                    POS_UNITS.CREATEDBY = SessionHandling.UserInformation.USERNAME;
-                    POS_UNITS.CREATEDWHEN = DateTime.Now;
+                    POS_UNI.CREATEDBY = SessionHandling.UserInformation.USERNAME;
+                    POS_UNI.CREATEDWHEN = DateTime.Now;
                     if (ModelState.IsValid)
                     {
-                        objNotify = _objBALUnits.Create(POS_UNITS);
+                        objNotify = _objBALUnits.Create(POS_UNI);
                         if (objNotify.RowEffected > 0)
                         {
                             ShowAlert(AlertType.Success, objNotify.NotifyMessage);
@@ -152,10 +152,10 @@ namespace POS.Web.UI.Controllers
                     }
                     else
                     {
-                        return View(POS_UNITS);
+                        return View(POS_UNI);
                     }
 
-                    return View(POS_UNITS);
+                    return View(POS_UNI);
                 }
                 else
                 {
@@ -189,12 +189,12 @@ namespace POS.Web.UI.Controllers
                     {
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
-                    POS_UNITS POS_UNITS = _objBALUnits.GetById(id);
-                    if (POS_UNITS == null)
+                    POS_UNI POS_UNI = _objBALUnits.GetById(id);
+                    if (POS_UNI == null)
                     {
                         return HttpNotFound();
                     }
-                    return View(POS_UNITS);
+                    return View(POS_UNI);
                 }
                 else
                 {
@@ -223,18 +223,18 @@ namespace POS.Web.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(POS_UNITS POS_UNITS)
+        public ActionResult Edit(POS_UNI POS_UNI)
         {
             try
             {
                 if (Session[SessionVariables.Session_UserInfo] != null)
                 {
 
-                    POS_UNITS.MODIFIEDBY = SessionHandling.UserInformation.USERNAME;
-                    POS_UNITS.MODIFIEDWHEN = DateTime.Now;
+                    POS_UNI.MODIFIEDBY = SessionHandling.UserInformation.USERNAME;
+                    POS_UNI.MODIFIEDWHEN = DateTime.Now;
                     if (ModelState.IsValid)
                     {
-                        objNotify = _objBALUnits.Update(POS_UNITS);
+                        objNotify = _objBALUnits.Update(POS_UNI);
                         if (objNotify.RowEffected > 0)
                         {
                             ShowAlert(AlertType.Success, objNotify.NotifyMessage);
@@ -247,10 +247,10 @@ namespace POS.Web.UI.Controllers
                     }
                     else
                     {
-                        return View(POS_UNITS);
+                        return View(POS_UNI);
                     }
 
-                    return View(POS_UNITS);
+                    return View(POS_UNI);
                 }
                 else
                 {
@@ -285,12 +285,12 @@ namespace POS.Web.UI.Controllers
                     {
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
-                    POS_UNITS POS_UNITS = _objBALUnits.GetById(id);
-                    if (POS_UNITS == null)
+                    POS_UNI POS_UNI = _objBALUnits.GetById(id);
+                    if (POS_UNI == null)
                     {
                         return HttpNotFound();
                     }
-                    return View(POS_UNITS);
+                    return View(POS_UNI);
                 }
                 else
                 {

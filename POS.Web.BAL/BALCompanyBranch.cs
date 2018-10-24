@@ -10,7 +10,7 @@ namespace CodeezTech.POS.Web.BAL
 {
     public class BALCompanyBranch
     {
-        DALCompanyBranch _objDALBranch = new DALCompanyBranch();
+      DALCompanyBranch _objDALBranch = new DALCompanyBranch();
         POS_BRANCH _objBranchEntity = new POS_BRANCH();
         Notify objNotify = new Notify();
      

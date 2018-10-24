@@ -145,9 +145,10 @@
                                             @*<button class="btn btn-default" type="button" id="btnAddToStock" dataproductid="@item.PRODUCT_ID">
                                                 <span class="fa fa-plus"></span> Add To Stock
                                             </button>*@
-                                            <button class="btn btn-default" type="button" id="btnAdToStock"  data-toggle="modal" data-target="#myModal" dataproductid="@item.PRODUCT_ID">
+                                            @*<button class="btn btn-default" type="button" id="btnAdToStock"  data-toggle="modal" data-target="#myModal" dataproductid="@item.PRODUCT_ID">
             <span class="fa fa-plus"></span> Add To Stock
-        </button>
+        </button>*@
+                                            <button id="btnAdToStock" type="button" class="btn btn-info" data-toggle="modal" value="@item.PRODUCT_ID" data-target="#modal-default" onclick="onactionclick(@item.PRODUCT_ID)">Add To Stock</button>
 
                                         </td>
 
@@ -163,8 +164,54 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" style="font-weight:bold; color:black">Product Detail</h4>
+            </div>
+            <div id="partialDiv" class="modal-body">
+                @Html.Partial("ProductDetailPartial")
+            </div>
+            <div class="modal-footer">
+                @*@Html.ActionLink("Reject", "Reject", new
+           {  }, htmlAttributes: new { @class = "btn btn-default pull-left btn btn-block btn-danger", style = "width: 20%;" })
+
+
+
+                @Html.ActionLink("Accept", "Accept", new
+           { }, htmlAttributes: new { @class = "btn btn-primary btn btn-block btn-success", style = "width: 20%;margin-left: 80%;margin-top: 0%;" })*@
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <script type="text/javascript">
-    $(document).ready(function () {
+    function onactionclick(id) {
+        var id = id;
+        $.ajax({
+            //type: "Post",
+            //url: "/Product/ProductDetailPartial",
+            ////data: '{id: "' + i + '" }',
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "json",
+            //success: function (response) {
+
+            //},
+            //failure: function (response) {
+            //    alert("Failed " + response.responseText);
+            //},
+
+        }).complete(function () {
+            $("#partialDiv").load('@Url.Action("CallDetail", "Product")?id=' + id);
+        });
+
+    }
+    @*$(document).ready(function () {
         $("[id='btnAddToStock']").click(function () {
             debugger;
             var options = { "backdrop": "static", keyboard: true };
@@ -190,5 +237,5 @@
             $('#myModal').modal('hide')
         });
         $("#modal .close").click()
-    });
+    });*@
 </script>

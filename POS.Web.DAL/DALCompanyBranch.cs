@@ -101,28 +101,28 @@ namespace CodeezTech.POS.Web.DAL
                 foreach (var item in result)
                 {
                     POS_BRANCH entity = new POS_BRANCH();
-                    
-                                  entity.BRANCH_ID = item.BranchId;
-                                  entity.BRANCH_CODE = item.BranchCode;
-                                  entity.BRANCH_DESC = item.BranchDesc;
-                                  entity.NAME = item.Name;
-                                  entity.MOBILE = item.Mobile;
-                                  entity.TELEPHONE = item.Telephone;
-                                  entity.EMAIL = item.Email;
-                                  entity.EMAIL_PASSWORD = item.EmailPassword;
-                                  entity.ADDRESS = item.Address;
-                                  entity.COMPANY_ID = item.CompanyId;
-                                  entity.CompanyName = item.CompanyName;
-                                  entity.CITY_ID = item.CityId;
-                                  entity.CityName = item.CityName;
-                                  entity.STATE_ID = item.StateId;
-                                  entity.CountryName = item.CountryName;
-                                  entity.COUNTRY_ID = item.CountryId;
-                                  entity.CREATEDBY = item.CreatedBy;
-                                  entity.MODIFIEDBY = item.ModifiedBy;
-                                  entity.CREATEDWHEN = item.CreatedWhen;
-                                  entity.MODIFIEDWHEN = item.ModifiedWhen;
-                                  lst.Add(entity);
+
+                    entity.BRANCH_ID = item.BranchId;
+                    entity.BRANCH_CODE = item.BranchCode;
+                    entity.BRANCH_DESC = item.BranchDesc;
+                    entity.NAME = item.Name;
+                    entity.MOBILE = item.Mobile;
+                    entity.TELEPHONE = item.Telephone;
+                    entity.EMAIL = item.Email;
+                    entity.EMAIL_PASSWORD = item.EmailPassword;
+                    entity.ADDRESS = item.Address;
+                    entity.COMPANY_ID = Convert.ToInt32(item.CompanyId);
+                    entity.CompanyName = item.CompanyName;
+                    entity.CITY_ID = item.CityId;
+                    entity.CityName = item.CityName;
+                    entity.STATE_ID = item.StateId;
+                    entity.CountryName = item.CountryName;
+                    entity.COUNTRY_ID = item.CountryId;
+                    entity.CREATEDBY = item.CreatedBy;
+                    entity.MODIFIEDBY = item.ModifiedBy;
+                    entity.CREATEDWHEN = item.CreatedWhen;
+                    entity.MODIFIEDWHEN = item.ModifiedWhen;
+                    lst.Add(entity);
                 }
                 return lst;
             }
@@ -176,7 +176,7 @@ namespace CodeezTech.POS.Web.DAL
                                   EMAIL = x.Email,
                                   EMAIL_PASSWORD = x.EmailPassword,
                                   ADDRESS = x.Address,
-                                  COMPANY_ID = x.CompanyId,
+                                  COMPANY_ID = Convert.ToInt32(x.CompanyId),
                                   CompanyName = x.CompanyName,
                                   CITY_ID = x.CityId,
                                   CityName = x.CityName,
@@ -325,6 +325,6 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException(ex.Message.ToString());
             }
         }
-        
+
     }
 }

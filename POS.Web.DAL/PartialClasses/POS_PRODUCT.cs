@@ -15,7 +15,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         {
             ProductCategory = new POS_PRODUCT_CATEGORY();
             ProductType = new POS_PRODUCT_TYPE();
-            Units = new POS_UNITS();
+            Units = new POS_UNI();
             DisplayStock = new POS_DISPLAY_STOCK();
         }
         [NotMapped]
@@ -41,7 +41,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
             set { ProductType.TYPE_ID = value; }
         }
         [NotMapped]
-        public POS_UNITS Units{ get; set; }
+        public POS_UNI Units{ get; set; }
         [NotMapped]
         public long UnitId
         {

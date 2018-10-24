@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CodeezTech.POS.Web.DAL.EntityDataModel.POS_PRODUCT>
+<div>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <fieldset style="align-content:center">
+
+                <div class="row">
+                    @Html.HiddenFor(modelItem => item.PRODUCT_ID)
+                    <div class="col-lg-3 col-xs-6">
+
+                        <div class="display-label" style="font-weight: 800; margin-left: 85%; width:301%; font-size: xx-large;">
+                            <h4 style="font-size: 16px; font-weight:bold; align-self: flex-start">Product Code:</h4>
+                            @Html.DisplayFor(modelItem => item.PRODUCT_CODE)
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="display-label" style="font-weight: 800; margin-left: 85%; width:301%; font-size: xx-large;">
+                            <h4 style="font-size: 16px; font-weight: bold; align-self: flex-start; ">Product Description:</h4>
+                            @Html.DisplayFor(model => item.PRODUCT_DESC)
+                        </div>
+
+                    </div>
+                </div>
+            </fieldset>
+        }
+    }
+</div>
+@*}*@
+
+

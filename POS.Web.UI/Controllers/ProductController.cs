@@ -360,20 +360,44 @@ namespace POS.Web.UI.Controllers
         }
         public void GetSelectList()
         {
-            BALProductCategory objBALProductCategory = new BALProductCategory();
-            var ProductCategoryList = GetProductCategoryList(objBALProductCategory.List());
-            TempData["ProductCategoryList"] = ProductCategoryList;
+            //BALProductCategory objBALProductCategory = new BALProductCategory();
+            //var ProductCategoryList = GetProductCategoryList(objBALProductCategory.List());
+            //TempData["ProductCategoryList"] = ProductCategoryList;
 
-            BALProductType objBALProductType = new BALProductType();
-            var ProductTypeList = GetProductTypeList(objBALProductType.List());
-            TempData["ProductTypeList"] = ProductTypeList;
+            //BALProductType objBALProductType = new BALProductType();
+            //var ProductTypeList = GetProductTypeList(objBALProductType.List());
+            //TempData["ProductTypeList"] = ProductTypeList;
 
-            BALUnits objBALUnits = new BALUnits();
-            var UnitsList = GetUnitList(objBALUnits.List());
-            TempData["UnitList"] = UnitsList;
+            //BALUnits objBALUnits = new BALUnits();
+            //var UnitsList = GetUnitList(objBALUnits.List());
+            //TempData["UnitList"] = UnitsList;
 
 
         }
+
+
+        [HttpGet]
+        public ActionResult ProductDetailPartial(long id)
+        {
+            Session["ProductID"] = id;
+            var Query = "";
+                //from tblprod in db.POS_PAYMENT_TYPE.tol
+                         //where tblprod.PRODUCT_ID == id
+                         //select new
+                         //{
+
+                         //}).AsEnumerable().Select(x => new POS_PRODUCT()
+                         //{
+
+                         //}).ToList();
+
+            return PartialView("ProductDetail", Query);
+        }
+        public ActionResult CallDetail(string id)
+        {
+            return ProductDetailPartial(Convert.ToInt32(id));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

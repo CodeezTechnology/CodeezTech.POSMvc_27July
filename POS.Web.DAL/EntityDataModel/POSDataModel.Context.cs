@@ -80,7 +80,6 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<POS_SUPERVISOR> POS_SUPERVISOR { get; set; }
         public virtual DbSet<POS_SYS_APP_MODULE> POS_SYS_APP_MODULE { get; set; }
         public virtual DbSet<POS_SYS_TRANSACTION_LOG> POS_SYS_TRANSACTION_LOG { get; set; }
-        public virtual DbSet<POS_UNITS> POS_UNITS { get; set; }
         public virtual DbSet<POS_USER> POS_USER { get; set; }
         public virtual DbSet<POS_USER_DATA_SECURITY> POS_USER_DATA_SECURITY { get; set; }
         public virtual DbSet<POS_USER_SESSION> POS_USER_SESSION { get; set; }
@@ -100,6 +99,7 @@ namespace CodeezTech.POS.Web.DAL.EntityDataModel
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<POS_CUSTOMER_PROMOTION_DETAIL> POS_CUSTOMER_PROMOTION_DETAIL { get; set; }
         public virtual DbSet<POS_USER_LOG> POS_USER_LOG { get; set; }
+        public virtual DbSet<POS_UNI> POS_UNI { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

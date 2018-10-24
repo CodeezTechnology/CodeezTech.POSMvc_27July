@@ -165,5 +165,5 @@ namespace CodeezTech.POS.Web.DAL
                 throw ex;
             }
         }
-    } 
+    }
 }

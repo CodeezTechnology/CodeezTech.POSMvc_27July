@@ -11,13 +11,13 @@ namespace CodeezTech.POS.Web.DAL
     public class DALUnits
     {
         Entities _dbContext = new Entities();
-        POS_UNITS _objUnitsEntity = new POS_UNITS();
-        public List<POS_UNITS> GetUnits()
+        POS_UNI _objUnitsEntity = new POS_UNI();
+        public List<POS_UNI> GetUnits()
         {
-            List<POS_UNITS> lst = new List<POS_UNITS>();
+            List<POS_UNI> lst = new List<POS_UNI>();
             try
             {
-                lst = _dbContext.POS_UNITS.ToList();
+                lst = _dbContext.POS_UNI.ToList();
                 return lst;
             }
             catch (Exception ex)
@@ -26,11 +26,11 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException(ex.Message.ToString());
             }
         }
-        public POS_UNITS GetById(long? id)
+        public POS_UNI GetById(long? id)
         {
             try
             {
-                _objUnitsEntity = _dbContext.POS_UNITS.Find(id);
+                _objUnitsEntity = _dbContext.POS_UNI.Find(id);
                 return _objUnitsEntity;
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace CodeezTech.POS.Web.DAL
             long id = 0;
             try
             {
-                _objUnitsEntity = _dbContext.POS_UNITS.OrderByDescending(x => x.UNIT_ID).FirstOrDefault();
+                _objUnitsEntity = _dbContext.POS_UNI.OrderByDescending(x => x.UNIT_ID).FirstOrDefault();
                 if (_objUnitsEntity.UNIT_ID.ToString() == null)
                     id = 1;
                 else
@@ -58,10 +58,10 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException(ex.Message.ToString());
             }
         }
-        public int CreateUnits(POS_UNITS UnitsModel)
+        public int CreateUnits(POS_UNI UnitsModel)
         {
             int rowAffected = 0;
-            POS_UNITS _objUnitsEntity = new POS_UNITS();
+            POS_UNI _objUnitsEntity = new POS_UNI();
             try
             {
                 _objUnitsEntity.UNIT = UnitsModel.UNIT;
@@ -70,7 +70,7 @@ namespace CodeezTech.POS.Web.DAL
                 _objUnitsEntity.CREATEDBY = UnitsModel.CREATEDBY;
                 _objUnitsEntity.CREATEDWHEN = UnitsModel.CREATEDWHEN;
 
-                _dbContext.POS_UNITS.Add(_objUnitsEntity);
+                _dbContext.POS_UNI.Add(_objUnitsEntity);
                 rowAffected = _dbContext.SaveChanges();
 
                 return rowAffected;
@@ -81,13 +81,13 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException(ex.Message.ToString());
             }
         }
-        public int UpdateUnits(POS_UNITS UnitsModel)
+        public int UpdateUnits(POS_UNI UnitsModel)
         {
             int rowAffected = 0;
-            POS_UNITS entity = new POS_UNITS();
+            POS_UNI entity = new POS_UNI();
             try
             {
-                entity = _dbContext.POS_UNITS.Find(UnitsModel.UNIT_ID);
+                entity = _dbContext.POS_UNI.Find(UnitsModel.UNIT_ID);
 
                 _objUnitsEntity.UNIT = UnitsModel.UNIT;
                 entity.ISACTIVE_FLAG = UnitsModel.ISACTIVE_FLAG;
@@ -110,8 +110,8 @@ namespace CodeezTech.POS.Web.DAL
             int rowAffected = 0;
             try
             {
-                _objUnitsEntity = _dbContext.POS_UNITS.Find(id);
-                _dbContext.POS_UNITS.Remove(_objUnitsEntity);
+                _objUnitsEntity = _dbContext.POS_UNI.Find(id);
+                _dbContext.POS_UNI.Remove(_objUnitsEntity);
                 rowAffected = _dbContext.SaveChanges();
 
                 return rowAffected;
@@ -122,12 +122,12 @@ namespace CodeezTech.POS.Web.DAL
                 throw new DALException(ex.Message.ToString());
             }
         }
-        public IEnumerable<POS_UNITS> UnitsSelectList()
+        public IEnumerable<POS_UNI> UnitsSelectList()
         {
-            IEnumerable<POS_UNITS> lst = null;
+            IEnumerable<POS_UNI> lst = null;
             try
             {
-                lst = _dbContext.POS_UNITS.Select(x => new POS_UNITS()
+                lst = _dbContext.POS_UNI.Select(x => new POS_UNI()
                 {
                     UNIT_ID = x.UNIT_ID,
                     UNIT = x.UNIT

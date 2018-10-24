@@ -19,11 +19,11 @@ namespace CodeezTech.POS.Web.DAL
             List<POS_PRODUCT> lst = new List<POS_PRODUCT>();
             try
             {
-                // lst = _dbContext.POS_PRODUCT.Include("POS_PRODUCT_CATEGORY").Include("POS_PRODUCT_TYPE").Include("POS_UNITS").ToList();
+                // lst = _dbContext.POS_PRODUCT.Include("POS_PRODUCT_CATEGORY").Include("POS_PRODUCT_TYPE").Include("POS_UNI").ToList();
                 var result = (from ctx in _dbContext.POS_PRODUCT
                               join c in _dbContext.POS_PRODUCT_CATEGORY on ctx.CATEGORY_ID equals c.CATEGORY_ID
                               join t in _dbContext.POS_PRODUCT_TYPE on ctx.TYPE_ID equals t.TYPE_ID
-                              join u in _dbContext.POS_UNITS on ctx.UNIT_ID equals u.UNIT_ID
+                            //  join u in _dbContext.POS_UNI on ctx.UNIT_ID equals u.UNIT_ID
                               select new
                               {
                                   ProductId = ctx.PRODUCT_ID,
@@ -41,7 +41,7 @@ namespace CodeezTech.POS.Web.DAL
                                   ExpiryTo = ctx.EXPIRY_TO,
                                   ProductCategory = c.PRODUCT_CATEGORY,
                                   ProductType = t.PRODUCT_TYPE,
-                                  Units = u.UNIT,
+                                //  Units = u.UNIT,
                                   IsActive = ctx.ISACTIVE_FLAG,
                                   CreatedBy = ctx.CREATEDBY,
                                   ModifiedBy = ctx.MODIFIEDBY,
@@ -49,8 +49,8 @@ namespace CodeezTech.POS.Web.DAL
                                   ModifiedWhen = ctx.MODIFIEDWHEN
                               }).AsEnumerable().Select((x, index) => new POS_PRODUCT
                               {
-                                 PRODUCT_ID = x.ProductId,
-                               PRODUCT_CODE = x.ProductCode,
+                                  PRODUCT_ID = x.ProductId,
+                                  PRODUCT_CODE = x.ProductCode,
                                   PRODUCT_DESC = x.ProductName,
                                   PROFIT_MARGIN_RATE = x.MarginRate,
                                   PAYBLE_PRICE = x.PayblePrice,
@@ -64,7 +64,7 @@ namespace CodeezTech.POS.Web.DAL
                                   EXPIRY_TO = x.ExpiryTo,
                                   CategoryDesc = x.ProductCategory,
                                   TypeDesc = x.ProductType,
-                                  UnitDesc = x.Units,
+                                 // UnitDesc = x.Units,
                                   ISACTIVE_FLAG = x.IsActive,
                                   CREATEDBY = x.CreatedBy,
                                   MODIFIEDBY = x.ModifiedBy,
@@ -86,7 +86,7 @@ namespace CodeezTech.POS.Web.DAL
                 var result = (from ctx in _dbContext.POS_PRODUCT
                               join c in _dbContext.POS_PRODUCT_CATEGORY on ctx.CATEGORY_ID equals c.CATEGORY_ID
                               join t in _dbContext.POS_PRODUCT_TYPE on ctx.TYPE_ID equals t.TYPE_ID
-                              join u in _dbContext.POS_UNITS on ctx.UNIT_ID equals u.UNIT_ID
+                              join u in _dbContext.POS_UNI on ctx.UNIT_ID equals u.UNIT_ID
                               where ctx.PRODUCT_ID == id
                               select new
                               {
