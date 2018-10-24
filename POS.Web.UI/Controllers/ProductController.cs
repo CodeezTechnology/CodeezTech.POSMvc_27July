@@ -271,6 +271,7 @@ namespace POS.Web.UI.Controllers
 
         }
 
+
         // GET: /Product/Delete/5
         public ActionResult Delete(long? id)
         {
